@@ -11,14 +11,10 @@
             "id": "3ff852419407c21f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "index.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "index"
+              "title": "New tab"
             }
           }
         ]
@@ -93,7 +89,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +98,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for index"
+              "title": "Backlinks"
             }
           },
           {
@@ -112,12 +107,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "index.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from index"
+              "title": "Outgoing links"
             }
           },
           {
@@ -138,11 +132,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "index.md"
-              },
+              "state": {},
               "icon": "lucide-list",
-              "title": "Outline of index"
+              "title": "Outline"
             }
           }
         ]
@@ -164,6 +156,7 @@
   },
   "active": "3ff852419407c21f",
   "lastOpenFiles": [
-    "index.md"
+    "index.md",
+    "index.html"
   ]
 }
