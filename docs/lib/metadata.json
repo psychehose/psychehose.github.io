@@ -1,0 +1,245 @@
+{
+  "vaultName": "psychehose.github.io",
+  "lastExport": 1735494868371,
+  "pluginVersion": "1.8.01",
+  "validBodyClasses": "publish css-settings-manager theme-dark show-inline-title show-ribbon",
+  "useCustomHeadContent": false,
+  "useCustomFavicon": false,
+  "files": [
+    "BLE/Image/ble-attribute-table.png",
+    "BLE/Image/ble-conn-fig-1.png",
+    "BLE/Image/ble-conn-fig-2.png",
+    "BLE/Image/ble-conn-fig-3.png",
+    "BLE/Image/ble-connection.png",
+    "BLE/Image/ble-connection 1.png",
+    "BLE/Image/ble-data-exchange.png",
+    "BLE/Image/ble-gatt-structure.png",
+    "BLE/Image/ble-l2cap.png",
+    "BLE/Image/ble-link-layer.png",
+    "BLE/Image/host_controller.png",
+    "BLE/Image/구성.png",
+    "BLE/1. BLE.md",
+    "BLE/2. BLE 프로토콜 스택.md",
+    "BLE/3. BLE ATT, GATT.md",
+    "BLE/4. BLE 디바이스 연결.md",
+    "BLE/5. BLE 적용.md",
+    "lib/fonts/94f2f163d4b698242fef.otf",
+    "lib/fonts/72505e6a122c6acd5471.woff2",
+    "lib/fonts/2d5198822ab091ce4305.woff2",
+    "lib/fonts/c8ba52b05a9ef10f4758.woff2",
+    "lib/fonts/cb10ffd7684cd9836a05.woff2",
+    "lib/fonts/b5f0f109bc88052d4000.woff2",
+    "lib/fonts/cbe0ae49c52c920fd563.woff2",
+    "lib/fonts/535a6cf662596b3bd6a6.woff2",
+    "lib/fonts/70cc7ff27245e82ad414.ttf",
+    "lib/fonts/454577c22304619db035.ttf",
+    "lib/fonts/52ac8f3034507f1d9e53.ttf",
+    "lib/fonts/05b618077343fbbd92b7.ttf",
+    "lib/fonts/4bb6ac751d1c5478ff3a.woff2",
+    "lib/media/874d8b8e340f75575caa.svg"
+  ],
+  "mainDependencies": [
+    "lib/fonts/94f2f163d4b698242fef.otf",
+    "lib/fonts/72505e6a122c6acd5471.woff2",
+    "lib/fonts/2d5198822ab091ce4305.woff2",
+    "lib/fonts/c8ba52b05a9ef10f4758.woff2",
+    "lib/fonts/cb10ffd7684cd9836a05.woff2",
+    "lib/fonts/b5f0f109bc88052d4000.woff2",
+    "lib/fonts/cbe0ae49c52c920fd563.woff2",
+    "lib/fonts/535a6cf662596b3bd6a6.woff2",
+    "lib/fonts/70cc7ff27245e82ad414.ttf",
+    "lib/fonts/454577c22304619db035.ttf",
+    "lib/fonts/52ac8f3034507f1d9e53.ttf",
+    "lib/fonts/05b618077343fbbd92b7.ttf",
+    "lib/fonts/4bb6ac751d1c5478ff3a.woff2",
+    "lib/media/874d8b8e340f75575caa.svg"
+  ],
+  "fileInfo": {
+    "BLE/Image/ble-attribute-table.png": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 97663,
+      "exportedPath": "BLE/Image/ble-attribute-table.png",
+      "dependencies": []
+    },
+    "BLE/Image/ble-conn-fig-1.png": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 97797,
+      "exportedPath": "BLE/Image/ble-conn-fig-1.png",
+      "dependencies": []
+    },
+    "BLE/Image/ble-conn-fig-2.png": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 39578,
+      "exportedPath": "BLE/Image/ble-conn-fig-2.png",
+      "dependencies": []
+    },
+    "BLE/Image/ble-conn-fig-3.png": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 38156,
+      "exportedPath": "BLE/Image/ble-conn-fig-3.png",
+      "dependencies": []
+    },
+    "BLE/Image/ble-connection.png": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 103318,
+      "exportedPath": "BLE/Image/ble-connection.png",
+      "dependencies": []
+    },
+    "BLE/Image/ble-connection 1.png": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 103318,
+      "exportedPath": "BLE/Image/ble-connection 1.png",
+      "dependencies": []
+    },
+    "BLE/Image/ble-data-exchange.png": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 109854,
+      "exportedPath": "BLE/Image/ble-data-exchange.png",
+      "dependencies": []
+    },
+    "BLE/Image/ble-gatt-structure.png": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 111762,
+      "exportedPath": "BLE/Image/ble-gatt-structure.png",
+      "dependencies": []
+    },
+    "BLE/Image/ble-l2cap.png": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 90933,
+      "exportedPath": "BLE/Image/ble-l2cap.png",
+      "dependencies": []
+    },
+    "BLE/Image/ble-link-layer.png": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 31520,
+      "exportedPath": "BLE/Image/ble-link-layer.png",
+      "dependencies": []
+    },
+    "BLE/Image/host_controller.png": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 93521,
+      "exportedPath": "BLE/Image/host_controller.png",
+      "dependencies": []
+    },
+    "BLE/Image/구성.png": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 83464,
+      "exportedPath": "BLE/Image/구성.png",
+      "dependencies": []
+    },
+    "BLE/1. BLE.md": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 512,
+      "exportedPath": "BLE/1. BLE.html",
+      "dependencies": []
+    },
+    "BLE/2. BLE 프로토콜 스택.md": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 3258,
+      "exportedPath": "BLE/2. BLE 프로토콜 스택.html",
+      "dependencies": []
+    },
+    "BLE/3. BLE ATT, GATT.md": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 1045,
+      "exportedPath": "BLE/3. BLE ATT, GATT.html",
+      "dependencies": []
+    },
+    "BLE/4. BLE 디바이스 연결.md": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 3826,
+      "exportedPath": "BLE/4. BLE 디바이스 연결.html",
+      "dependencies": []
+    },
+    "BLE/5. BLE 적용.md": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 6385,
+      "exportedPath": "BLE/5. BLE 적용.html",
+      "dependencies": []
+    },
+    "lib/fonts/94f2f163d4b698242fef.otf": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 66800,
+      "exportedPath": "lib/fonts/94f2f163d4b698242fef.otf",
+      "dependencies": []
+    },
+    "lib/fonts/72505e6a122c6acd5471.woff2": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 104232,
+      "exportedPath": "lib/fonts/72505e6a122c6acd5471.woff2",
+      "dependencies": []
+    },
+    "lib/fonts/2d5198822ab091ce4305.woff2": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 104332,
+      "exportedPath": "lib/fonts/2d5198822ab091ce4305.woff2",
+      "dependencies": []
+    },
+    "lib/fonts/c8ba52b05a9ef10f4758.woff2": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 98868,
+      "exportedPath": "lib/fonts/c8ba52b05a9ef10f4758.woff2",
+      "dependencies": []
+    },
+    "lib/fonts/cb10ffd7684cd9836a05.woff2": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 106876,
+      "exportedPath": "lib/fonts/cb10ffd7684cd9836a05.woff2",
+      "dependencies": []
+    },
+    "lib/fonts/b5f0f109bc88052d4000.woff2": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 105804,
+      "exportedPath": "lib/fonts/b5f0f109bc88052d4000.woff2",
+      "dependencies": []
+    },
+    "lib/fonts/cbe0ae49c52c920fd563.woff2": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 106108,
+      "exportedPath": "lib/fonts/cbe0ae49c52c920fd563.woff2",
+      "dependencies": []
+    },
+    "lib/fonts/535a6cf662596b3bd6a6.woff2": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 111708,
+      "exportedPath": "lib/fonts/535a6cf662596b3bd6a6.woff2",
+      "dependencies": []
+    },
+    "lib/fonts/70cc7ff27245e82ad414.ttf": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 192740,
+      "exportedPath": "lib/fonts/70cc7ff27245e82ad414.ttf",
+      "dependencies": []
+    },
+    "lib/fonts/454577c22304619db035.ttf": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 161376,
+      "exportedPath": "lib/fonts/454577c22304619db035.ttf",
+      "dependencies": []
+    },
+    "lib/fonts/52ac8f3034507f1d9e53.ttf": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 191568,
+      "exportedPath": "lib/fonts/52ac8f3034507f1d9e53.ttf",
+      "dependencies": []
+    },
+    "lib/fonts/05b618077343fbbd92b7.ttf": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 155288,
+      "exportedPath": "lib/fonts/05b618077343fbbd92b7.ttf",
+      "dependencies": []
+    },
+    "lib/fonts/4bb6ac751d1c5478ff3a.woff2": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 7876,
+      "exportedPath": "lib/fonts/4bb6ac751d1c5478ff3a.woff2",
+      "dependencies": []
+    },
+    "lib/media/874d8b8e340f75575caa.svg": {
+      "modifiedTime": 1735494868371,
+      "sourceSize": 317,
+      "exportedPath": "lib/media/874d8b8e340f75575caa.svg",
+      "dependencies": []
+    }
+  }
+}
