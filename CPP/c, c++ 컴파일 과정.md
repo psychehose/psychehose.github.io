@@ -1,0 +1,82 @@
+
+
+
+
+
+
+
+![[build_process.png]]
+
+
+1. 전처리 과정
+
+소스 코드 파일 (.c / .cpp)를 전처리된 파일 \*.i로 변환한다. 
+*  Header file Inclusion - \#include를 actual content로 대체한 후에 소스코드에 삽입한다.
+* Macro Expansion - \#define PI 3.14를 확인하고 PI를 3.14로 치환한다.
+* Comments Removal - 주석을 삭제한다.
+
+
+2. 컴파일 과정
+
+컴파일러를 통해 전처리된 파일 \*.i를 어셈블리어 파일 .\*s로 변환한다. 이 과정에서 언어의 문법 검사를 수행하고 Static한 Section에 대한 메모리 할당을 이뤄진다. 그리고 코드 최적화를 수행하고 코드를 생성한다.
+
+
+
+3. 어셈블리어 과정
+
+어셈블러를 통해 어셈블리어 파일(\*.s)을 오브젝트 파일 (\*.o)로 변환한다. 오브젝트 파일은 어셈블된 코드를 소스코드와 긱어 코드의 중간 형태로 저장하고 표현하는데 사용되는 파일 형식이다. 이러한 오브젝트 파일은 실행파일에 결합하는 링커에 대한 입력 역할을 한다.
+
+
+![[object_file_header.png]]
+
+Object File Header: 일반적으로 아키텍처, 섹션의 크기, entry point에 대한 정보가 들어있다.
+
+Text Section: 변환된 기계어로 이뤄진 코드가 들어 있다.
+
+Data Section: 프로그램에서 사용되는 초기화된 / 되지 않은 데이터가 들어있다. (전역변수 / static 변수)
+
+Symbol Table Section:  변수 및 함수 이름과 같이 코드에 사용된 기호에 대한 정보가 포함됩니다. 이 정보는 연결 및 디버깅에 필수적입니다.
+
+Relocation Information Section:  이 정보는 프로그램이 최종 실행 파일을 형성하기 위해 다른 개체 파일과 연결될 때 코드의 주소를 조정해야 하는 방법을 지정합니다. 이는 기호에 대한 참조가 올바르게 해석되도록 보장합니다. 링킹 전까지 심볼의 위치를 확정할 수 없으므로 심볼의 위치가 확정 나면 바꿔야 할 내용을 적어놓은 부분입니다.
+
+Debugging Information Section: 디버깅에 필요한 정보가 있는 부분입니다.
+
+
+심볼(Symbol)은 함수나 변수를 식별할 때 사용하는 이름으로 심볼 테이블(Symbol Table) 안에는 오브젝트 파일에서 참조되고 있는 심볼 정보(이름과 데이터의 주소 등)를 가지고 있다.
+
+이때 오브젝트 파일의 심볼 테이블에는 해당 오브젝트 파일의 심볼 정보만 가지고 있어야 하기 때문에 다른 파일에서 참조되고 있는 심볼 정보의 경우 심볼 테이블에 저장할 수 없다.
+
+
+
+![[printf.png]]
+
+
+
+이 소스 코드 파일을 컴파일하여 하나의 오브젝트 파일을 생성할 수 있다.
+하지만, 이 오브젝트 파일은 독립적으로 실행할 수가 없다. 왜냐하면 이 소스코드에서 printf 함수를 구현한 내용이 없기 때문이다. 
+
+전처리 과정을 통해 include <stdio.h>로부터 printf()의 원형은 복사했지만 구현한 내용은 포함되어 있지 않다. 
+Symbol Table에는 자신의 심볼 정보만 가지고 있지 외부에서 참조하는 printf에 대한 심볼 정보는 가지고 있지 않다.
+
+이 오브젝트 파일을 실행하기 위해서 printf 함수를 구현한 libc.a와 연결시키는 작업이 필요하다. 이러한 연결 과정을 링킹이라고 한다. 
+
+링킹 이후에  심볼의 위치가 확정되고 이 위치들은 Relocation Information Section에 저장된다.
+
+참고: 개체 파일 형식은 플랫폼마다 다릅니다.
+
+- **ELF(Executable and Linkable Format):** Linux를 포함한 Unix 계열 시스템
+- **Mach-O(Mach Object):** macOS 및 iOS
+- **COFF(Common Object File Format):** 이전 Windows 
+- **PE(Portable Executable):** 최신 Windows 시스템
+
+4. 링킹
+
+프로그램에서 사용되는 모든 Object 파일과 라이브러리를 실행파일로 결합하는 과정이다. 이 과정을 통해 다양한 소스파일에서 참조되는 모든 함수와 변수가 올바르게 링크된다.
+
+링커는 한 Object 파일에서 참조하는 Symbol을 다른 Object 파일의 Symbol 정의와 일치시켜 확인한다. 만약 Symbol을 찾을 수 없다면 Link Error가 발생한다. (Symbol Resolution)
+
+그리고 Object 파일의 데이터의 주소나 코드의 메모리 참조 주소를 조정하여 알맞게 배치한다.
+각 오브젝트 파일에 있는 데이터의 주소나 코드의 메모리 참조 주소가 실행 파일에서의 주소와 다르므로 알맞게 수정한다. (오브젝트 파일의 Relocation Information Section의 존재 이유)
+이 과정을 Relocation 이라고 한다.
+
+링킹을 하기 전 오브젝트 파일을 재배치 가능한 오브젝트 파일(Relocatable Object File)이라 부르고 링킹을 통해 만들어지는 오브젝트 파일을 실행 가능한 오브젝트 파일(Executable Object File)이라 부른다.

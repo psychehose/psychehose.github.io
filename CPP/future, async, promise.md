@@ -1,0 +1,231 @@
+
+### 동기 (synchronous) 와 비동기 (asynchronous) 실행
+
+c++ 초기에는 비동기 하려면 쓰레드로 직접 했어야 했다.
+
+c++11 std에서 도구 제공 되기 시작.
+
+### std::promise 와 std::future
+
+동기적 실행으로 하고 싶은 일은, 어떠한 데이터를 다른 쓰레드를 통해 처리해서 받아내는 것
+어떤 쓰레드 T 를 사용해서, 비동기적으로 값을 받아내겠다 라는 의미는, 미래에 (future) 쓰레드 T 가 원하는 데이터를 돌려 주겠다 라는 약속 (promise) 라고 볼 수 있습니다.
+
+```cpp
+#include <future>
+#include <iostream>
+#include <string>
+#include <thread>
+using std::string;
+
+void worker(std::promise<string>* p) {
+  // 약속을 이행하는 모습. 해당 결과는 future 에 들어간다.
+  p->set_value("some data");
+}
+int main() {
+  std::promise<string> p;
+
+  // 미래에 string 데이터를 돌려 주겠다는 약속.
+  std::future<string> data = p.get_future();
+
+  std::thread t(worker, &p);
+
+  // 미래에 약속된 데이터를 받을 때 까지 기다린다.
+  data.wait();
+
+  // wait 이 리턴했다는 뜻이 future 에 데이터가 준비되었다는 의미.
+  // 참고로 wait 없이 그냥 get 해도 wait 한 것과 같다.
+  std::cout << "받은 데이터 : " << data.get() << std::endl;
+
+  t.join();
+  
+}
+```
+
+`promise` 객체는 자신이 가지고 있는 `future` 객체에 값을 넣어주게 됩니다.
+대응되는 `future` 객체의 [get](https://modoocode.com/191) 함수를 통해 얻어낼 수 있습니다. 한 가지 중요한 점은 `promise` 가 `future` 에 값을 전달하기 전 까지 [wait](https://modoocode.com/wait-fwait) 함수가 기다린다는 점입니다. [wait](https://modoocode.com/wait-fwait) 함수가 리턴을 하였다면 [get](https://modoocode.com/191) 을 통해서 `future` 에 전달된 객체를 얻을 수 있습니다.
+
+참고로 굳이 [wait](https://modoocode.com/wait-fwait) 함수를 따로 호출할 필요는 없는데, [get](https://modoocode.com/191) 함수를 바로 호출하더라도 알아서 `promise` 가 `future` 에 객체를 전달할 때 까지 기다린다음에 리턴합니다. 참고로 [get](https://modoocode.com/191) 을 호출하면 `future` 내에 있던 데이터가 이동 됩니다. 따라서 [get](https://modoocode.com/191) 을 다시 호출하면 안됩니다.
+
+```
+`future` 에서 get 을 호출하면, 설정된 객체가 이동 됩니다. 따라서 절대로 get을 두 번 호출하면 안됩니다.
+```
+
+#### wait_for
+
+그냥 [wait](https://modoocode.com/wait-fwait) 을 하였다면 `promise` 가 `future` 에 전달할 때 까지 기다리게 됩니다. 하지만 `wait_for` 을 사용하면, 정해진 시간 동안만 기다리고 그냥 진행할 수 있습니다.
+
+
+```cpp
+#include <chrono>
+#include <exception>
+#include <future>
+#include <iostream>
+#include <string>
+#include <thread>
+
+void worker(std::promise<void>* p) {
+  std::this_thread::sleep_for(std::chrono::seconds(10));
+  p->set_value();
+}
+int main() {
+  // void 의 경우 어떠한 객체도 전달하지 않지만, future 가 set 이 되었냐
+  // 안되었느냐의 유무로 마치 플래그의 역할을 수행할 수 있습니다.
+  std::promise<void> p;
+
+  // 미래에 string 데이터를 돌려 주겠다는 약속.
+  std::future<void> data = p.get_future();
+
+  std::thread t(worker, &p);
+
+  // 미래에 약속된 데이터를 받을 때 까지 기다린다.
+  while (true) {
+    std::future_status status = data.wait_for(std::chrono::seconds(1));
+
+    // 아직 준비가 안됨
+    if (status == std::future_status::timeout) {
+      std::cerr << ">";
+    }
+    // promise 가 future 를 설정함.
+    else if (status == std::future_status::ready) {
+      break;
+    }
+  }
+  t.join();
+}
+```
+
+`future_status` 는 총 3 가지 상태를 가질 수 있습니다. 먼저 `future` 에 값이 설정 됬을 때 나타나는 `future_status::ready` 가 있고, `wait_for` 에 지정한 시간이 지났지만 값이 설정되지 않아서 리턴한 경우에는 `future_status::timeout` 이 리턴됩니다.
+
+마지막으로 `future_status::deferred` 가 있는데 이는 결과값을 계산하는 함수가 채 실행되지 않았다는 의미인데, 뒤에서 좀더 자세히 다루도록 하겠습니다.
+
+### shared_future
+앞서 `future` 의 경우 딱 한 번만 [get](https://modoocode.com/191) 을 할 수 있다고 하였습니다. 왜냐하면 [get](https://modoocode.com/191) 을 호출하면 `future` 내부의 객체가 이동되기 때문
+
+but 종종 여러 개의 다른 쓰레드에서 `future` 를 [get](https://modoocode.com/191) 할 필요성이 있음
+
+```cpp
+#include <chrono>
+#include <future>
+#include <iostream>
+#include <thread>
+using std::thread;
+
+void runner(std::shared_future<void> start) {
+  start.get();
+  std::cout << "출발!" << std::endl;
+}
+
+int main() {
+  std::promise<void> p;
+  std::shared_future<void> start = p.get_future();
+
+  thread t1(runner, start);
+  thread t2(runner, start);
+  thread t3(runner, start);
+  thread t4(runner, start);
+
+  // 참고로 cerr 는 std::cout 과는 다르게 버퍼를 사용하지 않기 때문에 터미널에
+  // 바로 출력된다.
+  std::cerr << "준비...";
+  std::this_thread::sleep_for(std::chrono::seconds(1));
+  std::cerr << "땅!" << std::endl;
+
+  p.set_value();
+
+  t1.join();
+  t2.join();
+  t3.join();
+  t4.join();
+}
+```
+
+
+### packaged_task
+
+C++ 에서는 위 `promise-future` 패턴을 비동기적 함수(정확히는 Callable - 즉 람다 함수, Functor 포함) 의 리턴값에 간단히 적용할 수 있는 `packaged_task` 라는 것을 지원
+![[cpp_14.png]]
+
+
+```cpp
+#include <future>
+#include <iostream>
+#include <thread>
+
+int some_task(int x) { return 10 + x; }
+
+int main() {
+  // int(int) : int 를 리턴하고 인자로 int 를 받는 함수. (std::function 참조)
+  std::packaged_task<int(int)> task(some_task);
+
+  std::future<int> start = task.get_future();
+
+  std::thread t(std::move(task), 5);
+
+  std::cout << "결과값 : " << start.get() << std::endl;
+  t.join();
+}
+```
+
+
+생성된 `packaged_task` 를 쓰레드에 전달하면 됩니다. 참고로 `packaged_task` 는 복사 생성이 불가능하므로 (`promise` 도 마찬가지 입니다.) 명시적으로 [move](https://modoocode.com/301) 해줘야만 합니다.
+
+비동기적으로 실행된 함수의 결과값은 추후에 `future` 의 [get](https://modoocode.com/191) 함수로 받을 수 있게 됩니다. 이와 같이 `packaged_task` 를 사용하게 된다면 쓰레드에 굳이 `promise` 를 전달하지 않아도 알아서 `packaged_task` 가 함수의 리턴값을 처리해줘서 매우 편리 -> some_task 함수에 set_value() 같은 거 없음
+
+### std::async
+
+`std::async` 에 어떤 함수를 전달한다면, 아예 쓰레드를 알아서 만들어서 해당 함수를 비동기적으로 실행하고, 그 결과값을 `future` 에 전달
+
+즉 thread 만들 필요 없음
+
+
+`parallel` 함수는 1 부터 1000 까지의 덧셈을 총 2 개의 쓰레드에서 실행한다고 보면 됩니다. 1 부터 500 까지의 합은, `async` 를 통해 생성된 새로운 쓰레드에서 더하게 되고, 나머지 501 부터 1000 까지의 합은 원래의 쓰레드에서 처리하게 되죠.
+
+```cpp
+#include <future>
+#include <iostream>
+#include <thread>
+#include <vector>
+
+// std::accumulate 와 동일
+int sum(const std::vector<int>& v, int start, int end) {
+  int total = 0;
+  for (int i = start; i < end; ++i) {
+    total += v[i];
+  }
+  return total;
+}
+
+int parallel_sum(const std::vector<int>& v) {
+  // lower_half_future 는 1 ~ 500 까지 비동기적으로 더함
+  // 참고로 람다 함수를 사용하면 좀 더 깔끔하게 표현할 수 도 있다.
+  // --> std::async([&v]() { return sum(v, 0, v.size() / 2); });
+  std::future<int> lower_half_future =
+    std::async(std::launch::async, sum, cref(v), 0, v.size() / 2);
+
+  // upper_half 는 501 부터 1000 까지 더함
+  int upper_half = sum(v, v.size() / 2, v.size());
+
+  return lower_half_future.get() + upper_half;
+}
+
+int main() {
+  std::vector<int> v;
+  v.reserve(1000);
+
+  for (int i = 0; i < 1000; ++i) {
+    v.push_back(i + 1);
+  }
+
+  std::cout << "1 부터 1000 까지의 합 : " << parallel_sum(v) << std::endl;
+}
+```
+
+`async` 함수는 인자로 받은 함수를 비동기적으로 실행한 후에, 해당 결과값을 보관할 `future` 를 리턴합니다. 첫 번째 인자로는 어떠한 형태로 실행할지를 전달하는데 두 가지 값이 가능합니다.
+
+- `std::launch::async` : 바로 쓰레드를 생성해서 인자로 전달된 함수를 실행한다.
+    
+- `std::launch::deferred` : `future` 의 [get](https://modoocode.com/191) 함수가 호출되었을 때 실행한다. (새로운 쓰레드를 생성하지 않음)
+    
+
+즉 `launch::async` 옵션을 주면 바로 그 자리에서 쓰레드를 생성해서 실행하게 되고, `launch::deferred` 옵션을 주면, `future` 의 [get](https://modoocode.com/191) 을 하였을 때 비로소 (동기적으로) 실행하게 됩니다. 다시 말해, 해당 함수를 굳이 바로 당장 비동기적으로 실행할 필요가 없다면 `deferred` 옵션을 주면 됩니다.
+

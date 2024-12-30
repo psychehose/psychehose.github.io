@@ -1,3 +1,6 @@
 *.DS_Store
 .obsidian/
 src/
+Company/
+
+docs/Company

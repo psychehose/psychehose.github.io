@@ -1,0 +1,352 @@
+
+
+### Callable
+
+Callable 이란, 이름 그대로 나타내듯이 호출(Call) 할 수 있는 모든 것을 의미
+
+### std::function
+
+C++ 에서는 이러한 `Callable` 들을 객체의 형태로 보관할 수 있는 `std::function` 이라는 클래스를 제공합니다. C 에서의 함수 포인터는 진짜 함수들만 보관할 수 있는 객체라고 볼 수 있다면 이 `std::function` 의 경우 함수 뿐만이 아니라 모든 `Callable` 들을 보관할 수 있는 객체
+
+
+```cpp
+#include <functional>
+#include <iostream>
+#include <string>
+
+int some_func1(const std::string& a) {
+  std::cout << "Func1 호출! " << a << std::endl;
+  return 0;
+}
+
+struct S {
+  void operator()(char c) { std::cout << "Func2 호출! " << c << std::endl; }
+};
+
+int main() {
+  std::function<int(const std::string&)> f1 = some_func1;
+  std::function<void(char)> f2 = S();
+  std::function<void()> f3 = []() { std::cout << "Func3 호출! " << std::endl; };
+
+  f1("hello");
+  f2('c');
+  f3();
+}
+```
+
+
+### 멤버 함수를 가지는 std::function
+
+
+```cpp
+#include <functional>
+#include <iostream>
+#include <string>
+
+class A {
+  int c;
+
+ public:
+  A(int c) : c(c) {}
+  int some_func() { std::cout << "내부 데이터 : " << c << std::endl; }
+};
+
+int main() {
+  A a(5);
+  std::function<int()> f1 = a.some_func;
+}
+```
+
+이건 컴파일 오류
+
+```
+test2.cc: In function 'int main()':
+test2.cc:17:26: error: invalid use of non-static member function 'int A::some_func()'
+   std::function<int()> f1 = a.some_func;
+                        ~~^~~~~~~~~
+test2.cc:10:9: note: declared here
+     int some_func() {
+         ^~~~~~~~~
+```
+
+`f1` 을 호출하였을 때, 함수의 입장에서 자신을 호출하는 객체가 무엇인지 알 길이 없기 때문에 `c` 를 참조 하였을 때 어떤 객체의 `c` 인지를 알 수 없겠지요. 따라서 이 경우 `f1` 에 `a` 에 관한 정보도 추가로 전달해야 합니다.
+
+사실 멤버 함수들은 구현 상 자신을 호출한 객체를 인자로 암묵적으로 받고 있었습니다.
+
+
+```cpp
+#include <functional>
+#include <iostream>
+#include <string>
+
+class A {
+  int c;
+
+ public:
+  A(int c) : c(c) {}
+  int some_func() {
+    std::cout << "비상수 함수: " << ++c << std::endl;
+    return c;
+  }
+
+  int some_const_function() const {
+    std::cout << "상수 함수: " << c << std::endl;
+    return c;
+  }
+
+  static void st() {}
+};
+
+int main() {
+  A a(5);
+  std::function<int(A&)> f1 = &A::some_func;
+  std::function<int(const A&)> f2 = &A::some_const_function;
+
+/*
+위와 같이 원래 인자에 추가적으로 객체를 받는 인자를 전달해주면 됩니다. 이 때 상수 함수의 경우 당연히 상수 형태로 인자를 받아야 하고 (`const A&`), 반면에 상수 함수가 아닌 경우 단순히 `A&` 의 형태로 인자를 받으면 되겠습니다.
+  f1(a);
+  f2(a);
+*/
+}
+```
+
+### 멤버 함수들을 함수 객체로 - mem_fn
+
+`vector` 들을 가지는 `vector` 가 있을 때, 각각의 `vector` 들의 크기들을 벡터로 만들어주는 코드를 생각해봅시다.
+```cpp
+#include <algorithm>
+#include <functional>
+#include <iostream>
+#include <vector>
+using std::vector;
+
+int main() {
+  vector<int> a(1);
+  vector<int> b(2);
+  vector<int> c(3);
+  vector<int> d(4);
+
+  vector<vector<int>> container;
+  container.push_back(b);
+  container.push_back(d);
+  container.push_back(a);
+  container.push_back(c);
+
+  vector<int> size_vec(4);
+  std::transform(container.begin(), container.end(), size_vec.begin(),
+            &vector<int>::size);
+  for (auto itr = size_vec.begin(); itr != size_vec.end(); ++itr) {
+    std::cout << "벡터 크기 :: " << *itr << std::endl;
+  }
+}
+```
+
+위 코드를 컴파일 하면 아래와 같은 컴파일 오류
+
+왜 그럴까요? 이 역시 전달된 `size` 함수가 멤버 함수여서 발생하는 문제 입니다. 위 템플릿에 `&vector<int>::size` 가 들어간다면 해당 `unary_op` 를 호출하는 부분은 아래와 같이 변환
+
+
+```cpp
+
+// from
+unary_op(*first1);
+
+// to로 변환됨
+&vector<int>::size(*first);
+
+
+
+// 멤버함수의 경우
+(*first).(*&vector<int>::size)
+
+// or
+first->(*&vector<int>::size)
+// 둘중 하나로 호출해야함. c++ 규칙이니까 그래서 std::function을 이용해야함.
+
+```
+
+
+`std::function` 으로 변환해서 전달
+
+```cpp
+#include <algorithm>
+#include <functional>
+#include <iostream>
+#include <vector>
+using std::vector;
+
+int main() {
+  vector<int> a(1);
+  vector<int> b(2);
+  vector<int> c(3);
+  vector<int> d(4);
+
+  vector<vector<int>> container;
+  container.push_back(a);
+  container.push_back(b);
+  container.push_back(c);
+  container.push_back(d);
+
+  std::function<size_t(const vector<int>&)> sz_func = &vector<int>::size;
+
+  vector<int> size_vec(4);
+  std::transform(container.begin(), container.end(), size_vec.begin(), sz_func);
+  for (auto itr = size_vec.begin(); itr != size_vec.end(); ++itr) {
+    std::cout << "벡터 크기 :: " << *itr << std::endl;
+  }
+}
+```
+
+근데 매번 `function` 객체를 따로 만들어서 전달하는 것은 매우 귀찮습니다. 따라서 C++ 개발자들은 라이브러리에 위 `function` 객체를 리턴해버리는 함수를 추가
+
+```cpp
+#include <algorithm>
+#include <functional>
+#include <iostream>
+#include <vector>
+using std::vector;
+
+int main() {
+  vector<int> a(1);
+  vector<int> b(2);
+  vector<int> c(3);
+  vector<int> d(4);
+
+  vector<vector<int>> container;
+  container.push_back(a);
+  container.push_back(b);
+  container.push_back(c);
+  container.push_back(d);
+
+  vector<int> size_vec(4);
+  transform(container.begin(), container.end(), size_vec.begin(),
+            std::mem_fn(&vector<int>::size));
+  for (auto itr = size_vec.begin(); itr != size_vec.end(); ++itr) {
+    std::cout << "벡터 크기 :: " << *itr << std::endl;
+  }
+}
+```
+
+참고로 `mem_fn` 은 그리 자주 쓰이지는 않는데, 람다 함수로도 동일한 작업을 수행할 수 있기 때문입니다. 위 코드의 경우 `mem_fn(&vector<int>::size)` 대신에 `[](const auto& v){ return v.size()}` 를 전달해도 동일한 작업을 수행합니다.
+
+`mem_fn` 을 사용하기 위해서는 `<functional>` 헤더를 추가해야 하지만 람다함수는 그냥 쓸 수 있으니 좀 더 편리한 면이 있습니다. 물론, 코드 길이 면에서는 `mem_fn` 을 사용하는 것이 좀더 깔끔한 편입니다.
+
+
+### std::bind
+
+`std::bind`는 함수 객체를 생성하는 도구로, 함수의 일부 인자를 고정하거나 인자의 순서를 변경할 수 있게 해줍니다.
+
+```cpp
+#include <functional>
+#include <iostream>
+
+void add(int x, int y) {
+  std::cout << x << " + " << y << " = " << x + y << std::endl;
+}
+
+void subtract(int x, int y) {
+  std::cout << x << " - " << y << " = " << x - y << std::endl;
+}
+int main() {
+  auto add_with_2 = std::bind(add, 2, std::placeholders::_1);
+  add_with_2(3);
+
+  // 두 번째 인자는 무시된다.
+  add_with_2(3, 4);
+
+  auto subtract_from_2 = std::bind(subtract, std::placeholders::_1, 2);
+  auto negate =
+      std::bind(subtract, std::placeholders::_2, std::placeholders::_1);
+
+  subtract_from_2(3);  // 3 - 2 를 계산한다.
+  negate(4, 2);        // 2 - 4 를 계산한다
+}
+```
+
+bind를 사용할 때 레퍼런스로 넘길 때 주의 해야함.
+
+```cpp
+#include <functional>
+#include <iostream>
+
+struct S {
+  int data;
+  S(int data) : data(data) { std::cout << "일반 생성자 호출!" << std::endl; }
+  S(const S& s) {
+    std::cout << "복사 생성자 호출!" << std::endl;
+    data = s.data;
+  }
+
+  S(S&& s) {
+    std::cout << "이동 생성자 호출!" << std::endl;
+    data = s.data;
+  }
+};
+
+void do_something(S& s1, const S& s2) { s1.data = s2.data + 3; }
+
+int main() {
+  S s1(1), s2(2);
+
+  std::cout << "Before : " << s1.data << std::endl;
+
+  // s1 이 그대로 전달된 것이 아니라 s1 의 복사본이 전달됨!
+  auto do_something_with_s1 = std::bind(do_something, s1, std::placeholders::_1);
+  do_something_with_s1(s2);
+
+  std::cout << "After :: " << s1.data << std::endl;
+}
+```
+
+
+```
+일반 생성자 호출!
+일반 생성자 호출!
+Before : 1
+복사 생성자 호출!
+After :: 1
+```
+
+
+그 이유는 위 생성자 호출 메세지에서 확인할 수 있듯이 `bind` 함수로 인자가 복사 되서 전달되기 때문입니다. 따라서 이를 해결 하기 위해서는 명시적으로 `s1` 의 레퍼런스를 전달해줘야 합니다.
+
+```cpp
+#include <functional>
+#include <iostream>
+
+struct S {
+  int data;
+  S(int data) : data(data) { std::cout << "일반 생성자 호출!" << std::endl; }
+  S(const S& s) {
+    std::cout << "복사 생성자 호출!" << std::endl;
+    data = s.data;
+  }
+
+  S(S&& s) {
+    std::cout << "이동 생성자 호출!" << std::endl;
+    data = s.data;
+  }
+};
+
+void do_something(S& s1, const S& s2) { s1.data = s2.data + 3; }
+
+int main() {
+  S s1(1), s2(2);
+
+  std::cout << "Before : " << s1.data << std::endl;
+
+  // s1 이 그대로 전달된 것이 아니라 s1 의 복사본이 전달됨!
+  auto do_something_with_s1 =
+      std::bind(do_something, std::ref(s1), std::placeholders::_1);
+  do_something_with_s1(s2);
+
+  std::cout << "After :: " << s1.data << std::endl;
+}
+```
+
+```
+일반 생성자 호출!
+일반 생성자 호출!
+Before : 1
+After :: 5
+```

@@ -1,0 +1,298 @@
+
+러 개의 스마트 포인터가 하나의 객체를 같이 소유 해야 하는 경우가 발생합니다. 예를 들어서 여러 객체에서 하나의 자원을 사용하고자 합니다. 후에 자원을 해제하기 위해서는 이 자원을 사용하는 모든 객체들이 소멸되야 하는데, 어떤 객체가 먼저 소멸되는지 알 수 없기 때문에 이 자원 역시 어느 타이밍에 해제 시켜야 할 지 알 수 없게 됩니다.
+
+특정 자원을 몇 개의 객체에서 가리키는지를 추적한 다음에, 그 수가 0 이 되야만 비로소 해제를 시켜주는 방식의 포인터가 필요 : reference count
+
+
+### shared_ptr
+
+```cpp
+std::shared_ptr<A> p1(new A());
+std::shared_ptr<A> p2(p1);  // p2 역시 생성된 객체 A 를 가리킨다.
+```
+
+
+```cpp
+#include <iostream>
+#include <memory>
+#include <vector>
+
+class A {
+  int *data;
+
+ public:
+  A() {
+    data = new int[100];
+    std::cout << "자원을 획득함!" << std::endl;
+  }
+
+  ~A() {
+    std::cout << "소멸자 호출!" << std::endl;
+    delete[] data;
+  }
+};
+
+int main() {
+  std::vector<std::shared_ptr<A>> vec;
+
+  vec.push_back(std::shared_ptr<A>(new A()));
+  vec.push_back(std::shared_ptr<A>(vec[0]));
+  vec.push_back(std::shared_ptr<A>(vec[1]));
+
+  // 벡터의 첫번째 원소를 소멸 시킨다.
+  std::cout << "첫 번째 소멸!" << std::endl;
+  vec.erase(vec.begin());
+
+  // 그 다음 원소를 소멸 시킨다.
+  std::cout << "다음 원소 소멸!" << std::endl;
+  vec.erase(vec.begin());
+
+  // 마지막 원소 소멸
+  std::cout << "마지막 원소 소멸!" << std::endl;
+  vec.erase(vec.begin());
+
+  std::cout << "프로그램 종료!" << std::endl;
+}
+```
+
+```
+자원을 획득함!
+첫 번째 소멸!
+다음 원소 소멸!
+마지막 원소 소멸!
+소멸자 호출!
+프로그램 종료!
+```
+
+
+`shared_ptr` 들은 참조 개수가 몇 개 인지 알고 있어야만 합니다. 이 경우 어떻게 하면 같은 객체를 가리키는 `shared_ptr` 끼리 동기화를 시킬 수 있을까요?
+
+처음으로 실제 객체를 가리키는 `shared_ptr` 가 제어 블록(control block) 을 동적으로 할당한 후, `shared_ptr` 들이 이 제어 블록에 필요한 정보를 공유하는 방식으로 구현
+
+![[cpp_10.png]]
+
+
+`shared_ptr` 는 복사 생성할 때 마다 해당 제어 블록의 위치만 공유하면 되고, `shared_ptr` 가 소멸할 때 마다 제어 블록의 참조 개수를 하나 줄이고, 생성할 때 마다 하나 늘리는 방식으로 작동
+
+
+### shared_ptr 생성 시 주의 할 점
+`shared_ptr` 은 인자로 주소값이 전달된다면, 마치 자기가 해당 객체를 첫번째로 소유하는 `shared_ptr` 인 것 마냥 행동
+
+```cpp
+A* a = new A();
+std::shared_ptr<A> pa1(a);
+std::shared_ptr<A> pa2(a);
+```
+
+
+![[cpp_11.png]]
+
+따라서 위와 같이 각각의 제어 블록들은, 다른 제어 블록들의 존재를 모르고 참조 개수를 1 로 설정하게 되겠지요. 만약에 `pa1` 이 소멸된다면, 참조 카운트가 0 이 되어서 자신이 가리키는 객체 A 를 소멸시켜 버립니다. `pa2` 가 아직 가리키고 있는데도 말이지요!
+
+물론 `pa2` 의 참조 카운트는 계속 1 이기 때문에 자신이 가리키는 객체가 살아 있을 것이라 생각할 것입니다. 설사 운 좋게도 `pa2` 를 사용하지 않아도, `pa2` 가 소멸되면 참조 개수가 0 으로 떨어지고 자신이 가리키고 있는 (이미 해제된) 객체를 소멸시키기 때문에 오류가 발생
+
+```cpp
+#include <iostream>
+#include <memory>
+
+class A {
+  int* data;
+
+ public:
+  A() {
+    data = new int[100];
+    std::cout << "자원을 획득함!" << std::endl;
+  }
+
+  ~A() {
+    std::cout << "소멸자 호출!" << std::endl;
+    delete[] data;
+  }
+};
+
+int main() {
+  A* a = new A();
+
+  std::shared_ptr<A> pa1(a);
+  std::shared_ptr<A> pa2(a);
+
+  std::cout << pa1.use_count() << std::endl;
+  std::cout << pa2.use_count() << std::endl;
+}
+```
+
+```
+자원을 획득함!
+1
+1
+소멸자 호출!
+소멸자 호출!
+test(37272,0x11254d5c0) malloc: *** error for object 0x4000000000000000: pointer being freed was not allocated
+test(37272,0x11254d5c0) malloc: *** set a breakpoint in malloc_error_break to debug
+[1]    37272 abort      ./test
+```
+
+이와 같은 상황을 방지하려면 `shared_ptr` 를 주소값을 통해서 생성하는 것을 지양해야 합니다.
+
+하지만, 어쩔 수 없는 상황도 있습니다. 바로 객체 내부에서 자기 자신을 가리키는 `shared_ptr` 를 만들 때 를 생각해봅시다.
+
+
+```cpp
+#include <iostream>
+#include <memory>
+
+class A {
+  int *data;
+
+ public:
+  A() {
+    data = new int[100];
+    std::cout << "자원을 획득함!" << std::endl;
+  }
+
+  ~A() {
+    std::cout << "소멸자 호출!" << std::endl;
+    delete[] data;
+  }
+
+  std::shared_ptr<A> get_shared_ptr() { return std::shared_ptr<A>(this); }
+};
+
+int main() {
+  std::shared_ptr<A> pa1 = std::make_shared<A>();
+  std::shared_ptr<A> pa2 = pa1->get_shared_ptr();
+
+  std::cout << pa1.use_count() << std::endl;
+  std::cout << pa2.use_count() << std::endl;
+}
+```
+
+```
+자원을 획득함!
+1
+1
+소멸자 호출!
+소멸자 호출!
+test(38479,0x10e0945c0) malloc: *** error for object 0x7fa1e0e02700: pointer being freed was not allocated
+test(38479,0x10e0945c0) malloc: *** set a breakpoint in malloc_error_break to debug
+[1]    38479 abort      ./test
+```
+
+위와 같이 이전과 같은 이유로 오류가 발생하게 됩니다. `get_shared_ptr` 함수에서 `shared_ptr` 을 생성할 때, 이미 자기 자신을 가리키는 `shared_ptr` 가 있다는 사실을 모른채 새로운 제어 블록을 생성하기 때문
+
+이 문제는 `enable_shared_from_this` 를 통해 깔끔하게 해결
+
+```cpp
+#include <iostream>
+#include <memory>
+
+class A : public std::enable_shared_from_this<A> {
+  int *data;
+
+ public:
+  A() {
+    data = new int[100];
+    std::cout << "자원을 획득함!" << std::endl;
+  }
+
+  ~A() {
+    std::cout << "소멸자 호출!" << std::endl;
+    delete[] data;
+  }
+
+  std::shared_ptr<A> get_shared_ptr() { return shared_from_this(); }
+};
+
+int main() {
+  std::shared_ptr<A> pa1 = std::make_shared<A>();
+  std::shared_ptr<A> pa2 = pa1->get_shared_ptr();
+
+  std::cout << pa1.use_count() << std::endl;
+  std::cout << pa2.use_count() << std::endl;
+}
+```
+
+근데 위의 코드는 보통 언제쯤 사용하는걸까?
+
+콜백이나 비동기 작업에서 객체의 안전한 수명 관리가 필요할 때 주로 사용한다고 함. 
+
+
+### 서로 참조하는 shared_ptr
+
+순환참조 문제 발생 이러한 순환 참조 문제를 해결하기 위해 나타난 것이 바로 `weak_ptr`
+
+
+### weak_ptr
+
+우리는 트리 구조를 지원하는 클래스를 만드려고 합니다. 트리 구조라 함은 아래와 가계도와 비슷하다고 생각하시면 됩니다.
+
+![[cpp_12.png]]
+
+```cpp
+class Node {
+  std::vector<std::shared_ptr<Node>> children;
+  /* 어떤 타입이 와야할까? */ parent;
+
+ public:
+  Node(){};
+  void AddChild(std::shared_ptr<Node> node) { children.push_back(node); }
+};
+```
+
+- 만약에 일반 포인터(`Node *`) 로 하게 된다면, 메모리 해제를 까먹고 하지 않을 경우 혹은 예외가 발생하였을 경우 적절하게 자원을 해제하기 어렵습니다. 물론 이미 해제된 메모리를 계속 가리키고 있을 위험도 있습니다.
+    
+- 하지만 이를 `shared_ptr` 로 하게 된다면 앞서 본 순환 참조 문제가 생깁니다. 부모와 자식이 서로를 가리키기 때문에 참조 개수가 절대로 0 이 될 수 없습니다. 따라서, 이들 객체들은 프로그램 끝날 때 까지 절대로 소멸되지 못하고 남아있게 됩니다.
+  
+`weak_ptr` 는 일반 포인터와 `shared_ptr` 사이에 위치한 스마트 포인터로, 스마트 포인터 처럼 객체를 안전하게 참조할 수 있게 해주지만, `shared_ptr` 와는 다르게 참조 개수를 늘리지는 않습니다. 이름 그대로 약한 포인터 인것이지요.
+
+따라서 설사 어떤 객체를 `weak_ptr` 가 가리키고 있다고 하더라도, 다른 `shared_ptr` 들이 가리키고 있지 않다면 이미 메모리에서 소멸되었을 것입니다.
+
+이 때문에 `weak_ptr` 자체로는 원래 객체를 참조할 수 없고, 반드시 `shared_ptr` 로 변환해서 사용해야 합니다. 이 때 가리키고 있는 객체가 이미 소멸되었다면 빈 `shared_ptr` 로 변환되고, 아닐경우 해당 객체를 가리키는 `shared_ptr` 로 변환
+
+```cpp
+#include <iostream>
+#include <memory>
+#include <string>
+#include <vector>
+
+class A {
+  std::string s;
+  std::weak_ptr<A> other;
+
+ public:
+  A(const std::string& s) : s(s) { std::cout << "자원을 획득함!" << std::endl; }
+
+  ~A() { std::cout << "소멸자 호출!" << std::endl; }
+
+  void set_other(std::weak_ptr<A> o) { other = o; }
+  void access_other() {
+    std::shared_ptr<A> o = other.lock();
+    if (o) {
+      std::cout << "접근 : " << o->name() << std::endl;
+    } else {
+      std::cout << "이미 소멸됨 ㅠ" << std::endl;
+    }
+  }
+  std::string name() { return s; }
+};
+
+int main() {
+  std::vector<std::shared_ptr<A>> vec;
+  vec.push_back(std::make_shared<A>("자원 1"));
+  vec.push_back(std::make_shared<A>("자원 2"));
+
+  vec[0]->set_other(vec[1]);
+  vec[1]->set_other(vec[0]);
+
+  // pa 와 pb 의 ref count 는 그대로다.
+  std::cout << "vec[0] ref count : " << vec[0].use_count() << std::endl;
+  std::cout << "vec[1] ref count : " << vec[1].use_count() << std::endl;
+
+  // weak_ptr 로 해당 객체 접근하기
+  vec[0]->access_other();
+
+  // 벡터 마지막 원소 제거 (vec[1] 소멸)
+  vec.pop_back();
+  vec[0]->access_other();  // 접근 실패!
+}
+```

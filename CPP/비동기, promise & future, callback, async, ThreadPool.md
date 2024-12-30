@@ -1,0 +1,118 @@
+
+### 비동기
+
+* 개념: "나중에 끝날 작업을 시작하고, 다른 일을 하는 것"
+* 일종의 프로그래밍 패러다임
+* Promise & Future, Callback은 비동기를 구현하는 서로 다른 방식
+
+
+```cpp
+// 상황: 오래 걸리는 파일 읽기 작업
+
+// 1. Promise/Future 방식
+std::future<string> readFile(string path) {
+    return std::async([path]() {
+        // 파일 읽기
+        return content;
+    });
+}
+
+// 사용
+auto future = readFile("data.txt");
+// 다른 작업 수행
+string content = future.get();  // 필요할 때 결과를 가져옴
+
+
+// 2. Callback 방식
+void readFile(string path, function<void(string)> callback) {
+    std::thread([path, callback]() {
+        // 파일 읽기
+        callback(content);  // 완료되면 callback 호출
+    }).detach();
+}
+
+// 사용
+readFile("data.txt", [](string content) {
+    // 여기서 결과 처리
+});
+```
+
+### Promise & Future, Callback의 차이점
+
+1. 결과 처리 방식
+	* Promise/Future: 결과가 필요한 시점에 우리가 직접 가져옴 (get)
+	* Callback: 결과가 준비되면 자동으로 호출
+2. 코드 구조
+	* Promise/Future: 선형적
+	* Callback: 중첩될 수록 복잡
+3.  예외처리
+```cpp
+// Promise/Future
+try {
+    auto result = future.get();
+} catch (exception& e) {
+    // 에러 처리
+}
+
+// Callback
+readFile("data.txt", 
+    [](string content) { /* 성공 처리 */ },
+    [](error_code e) { /* 에러 처리 */ }
+);
+```
+
+#### 언제 사용해야하는가
+
+1. Promise/Future 선호 상황
+	- 결과를 특정 시점에 확실히 필요로 할 때
+	- 여러 비동기 작업의 결과를 한번에 모아야 할 때
+	- 예외 처리가 중요할 때
+
+2. Callback 선호 상황
+	- 이벤트 기반 프로그래밍
+	- GUI 프로그래밍
+	- 결과를 즉시 처리해야 할 때
+
+
+### async는 뭐야
+
+std::async는 C++11에서 도입된 고수준 비동기 실행 도구. 쓰레드 생성과 관리를 자동으로 처리해주는 편리한 함수
+
+```cpp
+// 기본적인 async 사용
+std::future<int> result = std::async([]() {
+    return 42;  // 비동기로 실행될 작업
+});
+```
+
+[async의 장점]
+
+1. 쓰레드 관리 자동화
+	- 직접 std::thread를 생성/관리할 필요가 없습니다
+	- 리소스 정리가 자동으로 이루어집니다.
+	  
+2. 예외 처리 용이
+
+```cpp
+try {
+    auto future = std::async([]() { 
+        throw std::runtime_error("에러 발생!");
+    });
+    future.get();  // 예외가 여기서 캐치됩니다
+} catch (const std::exception& e) {
+    std::cout << "에러: " << e.what() << std::endl;
+}
+```
+
+### async vs Thread Pool
+
+[std::async vs ThreadPool]
+1. std::async
+	- 간단한 비동기 작업에 적합
+	- 시스템이 쓰레드 관리
+	- 작업량이 적을 때 사용
+
+2. ThreadPool
+	- 많은 작업을 효율적으로 처리
+	- 쓰레드 재사용으로 성능 향상
+	- 대규모 작업에 적합
