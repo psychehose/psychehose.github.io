@@ -1,0 +1,352 @@
+
+#### 메모리는 느리다
+
+CPU 와 컴퓨터 메모리인 RAM 은 물리적으로 떨어져 있습니다. 따라서 CPU 가 메모리에서 데이터를 읽어 오기 위해서는 꽤 많은 시간이 걸립니다. 실제로, 인텔의 i7-6700 CPU 의 경우 최소 42 사이클 정도 걸린다고 보시면 됩니다. CPU 에서 덧셈 한 번을 1 사이클에 끝낼 수 있는데, 메모리에서 데이터 오는 것을 기다리느라, 42 번 덧셈을 연산할 시간을 놓치게 되는 것
+
+### 캐시
+
+CPU 에서 연산을 수행하는 부분이랑 거의 붙어 있다 싶이 해서, 읽기 / 쓰기 속도가 매우 빠르다는 점입니다.
+CPU 에서 가장 많이 접근하는 메모리 영역은 L1 캐시에 가져다 놓게 되고, 그 다음으로, 자주 접근하는 부분은 L2, 마지막으로 L3 캐시 순임
+
+CPU 가 특정한 주소에 있는 데이터에 접근하려 한다면, 일단 캐시에 있는지 확인한 후, 캐시에 있다면 해당 값을 읽고, 없다면 메모리 까지 갔다 오는 방식으로 진행됩니다. 이렇게 캐시에 있는 데이터를 다시 요청해서 시간을 절약하는 것을 Cache hit 이라과 하며 반대로 캐시에 요청한 데이터가 없어서 메모리 까지 갔다 오는 것을 Cache miss 라고 부릅니다.
+
+ CPU 가 어떻게 어느 영역의 메모리에 자주 접근할 지 어떻게 아는 것일까요? 답은 알 수 없다 입니다. 따라서 보통 CPU 에서 캐시가 작동하는 방식은 다음과 같습니다.
+ 
+- 메모리를 읽으면 일단 캐시에 저장해놓는다.
+- 만일 캐시가 다 찼다면 특정한 방식에 따라 처리한다. (LRU: Least Recently Used)
+
+예를 들어서 캐시 크기가 1 KB 밖에 안되고 LRU 방식을 사용하는 CPU 가 있다고 했을 때 첫 번째 코드가 더 빠르게 작동할까요? 아니면 두 번째 코드가 더 빨리 작동할까요? 두 코드는 동일한 연산을 수행합니다.
+
+```cpp
+for (int i = 0; i < 10000; i++) {
+  for (int j = 0; j < 10000; j++) {
+    s += data[j];
+  }
+}
+```
+
+```cpp
+for (int j = 0; j < 10000; j++) {
+  for (int i = 0; i < 10000; i++) {
+    s += data[j];
+  }
+}
+```
+
+답은 두 번째 방식입니다. 왜냐하면 첫 번째 경우에서 `data[0]` 를 접근하는 것을 생각해봅시다. 일단 첫 번째 루프에서 `data[0]` 는 캐시에 들어가게 됩니다. 하지만, CPU 캐시가 매우 작기 때문에 `j = 256` 이 되었을 때 `data[0]` 는 캐시에서 사라지게 되지요 (1KB = 1024 byte = int 256 개).
+
+따라서 `i = 1` 인 루프에서 `data[0]` 에 다시 접근했을 때 이미 `data[0]` 는 캐시에서 사라진 이후기에 Cache Miss 가 발생하게 됩니다. 따지고 보면 `data` 원소의 모든 접근이 Cache Miss 가 되서 느리겠지요.
+
+반면에 후자의 경우 `data[0]` 을 `10000` 번 연속으로 접근하므로, 처음에 접근할 때 빼고 나머지 `9999` 번 접근이 Cache hit 이 되어서 빠르게 덧셈을 수행할 수 있게 됩니다.
+
+### 컴퓨터는 사실 여러분이 시키는 대로 하지 않는다.
+
+컴파일러는 지 알아서 명령어 재배치를 함.
+
+#### CPU 파이프라이닝 (pipelining)
+
+이와 같이, 한 작업 (세탁 - 건조 - 개기) 이 끝나기 전에, 다음 작업을 시작하는 방식으로 동시에 여러 개의 작업을 동시에 실행하는 것을 파이프라이닝(pipelining) 이라고 합니다.
+CPU 에서 명령어를 실행할 때 여러 단계를 거치게 됩니다. 명령어를 읽어야 하고 (fetch), 읽은 명령어가 무엇 인지 해석해야 하고 (decode), 해석된 명령어를 실행하고 (execute), 마지막으로 결과를 써야 하지요 (write).
+
+
+따라서, 컴파일러는 우리가 어떠한 최대한 CPU 의 파이프라인을 효율적으로 활용할 수 있도록 명령어를 재배치함.
+
+그리고 CPU도 캐시에 따라 실행 순서를 변경할 수 있음.
+
+
+### 무엇을 믿어야해?
+
+명령어 순서도 뒤죽 박죽 바꾸고 심지어 CPU 에서도 명령어들을 제대로 된 순서로 실행하지 않는다면, 도대체 무엇을 믿을 수 있을까?
+
+C++ 의 모든 객체들은 수정 순서(modification order) 라는 것을 정의
+C++ 에서 보장하는 사실은, 원자적 연산을 할 경우에 모든 쓰레드에서 같은 객체에 대해서 동일한 수정 순서 를 관찰할 수 있다는 사실입니다.
+
+같은 시간에 변수 `a` 의 값을 관찰했다고 해서 굳이 모든 쓰레드들이 동일한 값을 관찰할 필요는 없다 라는 점
+
+
+### 원자성(atomicity)
+
+원자적 연산이란, CPU 가 명령어 1 개로 처리하는 명령으로, 중간에 다른 쓰레드가 끼어들 여지가 전혀 없는 연산
+C++ 에서는 몇몇 타입들에 원자적인 연산을 쉽게 할 수 있도록 여러가지 도구들을 지원하고 있습니다. 또한 이러한 원자적 연산들은 올바른 연산을 위해 굳이 뮤텍스가 필요하지 않습니다! 즉 속도가 더 빠름
+
+```cpp
+#include <atomic>
+#include <iostream>
+#include <thread>
+#include <vector>
+
+void worker(std::atomic<int>& counter) {
+  for (int i = 0; i < 10000; i++) {
+    counter++;
+  }
+}
+
+int main() {
+  std::atomic<int> counter(0);
+
+  std::vector<std::thread> workers;
+  for (int i = 0; i < 4; i++) {
+    workers.push_back(std::thread(worker, ref(counter)));
+  }
+
+  for (int i = 0; i < 4; i++) {
+    workers[i].join();
+  }
+
+  std::cout << "Counter 최종 값 : " << counter << std::endl;
+}
+```
+
+
+어셈블리를 까보면
+
+```assembly
+lock add DWORD PTR [rdi], 1
+```
+이런 부분이 나오는데, x86 컴파일러가 알고 있었기 때문에 사용가능한거.
+
+CPU에 따라 사용 못할 수도 있음. 이러한 연산이 가능한지 확인하는 방법
+
+```cpp
+std::atomic<int> x;
+std::cout << "is lock free ? : " << boolalpha << x.is_lock_free() << std::endl;
+```
+
+### memory_order
+`atomic` 객체들의 경우 원자적 연산 시에 메모리에 접근할 때 어떠한 방식으로 접근하는지 지정할 수 있습니다.
+
+#### memory_order_relexed
+
+가장 느슨한 조건입니다. 다시 말해, `memory_order_relaxed` 방식으로 메모리에서 읽거나 쓸 경우, 주위의 다른 메모리 접근들과 순서가 바뀌어도 무방
+```cpp
+#include <atomic>
+#include <cstdio>
+#include <thread>
+#include <vector>
+using std::memory_order_relaxed;
+
+void t1(std::atomic<int>* a, std::atomic<int>* b) {
+  b->store(1, memory_order_relaxed);      // b = 1 (쓰기)
+  int x = a->load(memory_order_relaxed);  // x = a (읽기)
+
+  printf("x : %d \n", x);
+}
+
+void t2(std::atomic<int>* a, std::atomic<int>* b) {
+  a->store(1, memory_order_relaxed);      // a = 1 (쓰기)
+  int y = b->load(memory_order_relaxed);  // y = b (읽기)
+
+  printf("y : %d \n", y);
+}
+
+int main() {
+  std::vector<std::thread> threads;
+
+  std::atomic<int> a(0);
+  std::atomic<int> b(0);
+
+  threads.push_back(std::thread(t1, &a, &b));
+  threads.push_back(std::thread(t2, &a, &b));
+
+  for (int i = 0; i < 2; i++) {
+    threads[i].join();
+  }
+}
+```
+
+```
+x : 1 
+y : 0
+
+or
+
+x : 0 
+y : 1
+
+or 
+
+y : 1 
+x : 1
+
+이 경우는 가능할까?
+x : 0 
+y : 0 
+```
+
+x : 0 
+y : 0
+
+위 명령어들이 순서대로 실행된다면 이는 불가능 하다는 사실을 알 수 있습니다.
+하지만, 메모리 연산들 사이에서 어떠한 제약조건도 없다고 하였습니다. 다시 말해 서로 다른 변수의 `relaxed` 메모리 연산은 CPU 마음대로 재배치 할 수 있습니다 (단일 쓰레드 관점에서 결과가 동일하다면)..
+
+`emory_order_relaxed` 는 CPU 에서 메모리 연산 순서에 관련해서 무한한 자유를 주는 것과 같습니다. 덕분에 CPU 에서 매우 빠른 속도로 실행할 수 있게됩니다.
+
+
+#### memory_order_acquire 과 memory_order_release
+
+```cpp
+#include <atomic>
+#include <iostream>
+#include <thread>
+#include <vector>
+
+void producer(std::atomic<bool>* is_ready, int* data) {
+  *data = 10;
+  is_ready->store(true, std::memory_order_release);
+}
+
+void consumer(std::atomic<bool>* is_ready, int* data) {
+  // data 가 준비될 때 까지 기다린다.
+  while (!is_ready->load(std::memory_order_acquire)) {
+  }
+
+  std::cout << "Data : " << *data << std::endl;
+}
+
+int main() {
+  std::vector<std::thread> threads;
+
+  std::atomic<bool> is_ready(false);
+  int data = 0;
+
+  threads.push_back(std::thread(producer, &is_ready, &data));
+  threads.push_back(std::thread(consumer, &is_ready, &data));
+
+  for (int i = 0; i < 2; i++) {
+    threads[i].join();
+  }
+}
+```
+
+
+`data` 에 0 이 들어가는 일 불가능!
+
+`memory_order_release` 는 해당 명령 이전의 모든 메모리 명령들이 해당 명령 이후로 재배치 되는 것을 금지
+또한, 만약에 같은 변수를 `memory_order_acquire` 으로 읽는 쓰레드가 있다면, `memory_order_release` 이전에 오는 모든 메모리 명령들이 해당 쓰레드에 의해서 관찰 될 수 있어야 합니다.
+
+쉽게 말해 `is_ready->store(true, std::memory_order_release);` 밑으로 `*data = 10` 이 올 수 없게 됩니다. 또한 `is_ready` 가 `true` 가 된다면, `memory_order_acquire` 로 `is_ready` 를 읽는 쓰레드에서 `data` 의 값을 확인했을 때 `10` 임을 관찰할 수 있어야하죠.
+
+`memory_order_acquire` 의 경우, `release` 와는 반대로 해당 명령 뒤에 오는 모든 메모리 명령들이 해당 명령 위로 재배치 되는 것을 금지 합니다.
+
+이와 같이 두 개의 다른 쓰레드들이 같은 변수의 `release` 와 `acquire` 를 통해서 동기화 (synchronize) 를 수행하는 것을 볼 수 있습니다.
+
+
+#### memory_order_acq_rel
+
+`memory_order_acq_rel` 은 이름에서도 알 수 있듯이, `acquire` 와 `release` 를 모두 수행하는 것입니다. 이는, 읽기와 쓰기를 모두 수행하는 명령들, 예를 들어서 `fetch_add` 와 같은 함수에서 사용될 수 있습니다.
+
+#### memory_order_seq_cst
+
+`memory_order_seq_cst` 는 메모리 명령의 순차적 일관성(sequential consistency) 을 보장해줍니다.
+
+순차적 일관성이란, 메모리 명령 재배치도 없고, 모든 쓰레드에서 모든 시점에 동일한 값을 관찰할 수 있는, 여러분이 생각하는 그대로 CPU 가 작동하는 방식
+
+
+```cpp
+#include <atomic>
+#include <iostream>
+#include <thread>
+
+std::atomic<bool> x(false);
+std::atomic<bool> y(false);
+std::atomic<int> z(0);
+
+void write_x() { x.store(true, std::memory_order_release); }
+
+void write_y() { y.store(true, std::memory_order_release); }
+
+void read_x_then_y() {
+  while (!x.load(std::memory_order_acquire)) {
+  }
+  if (y.load(std::memory_order_acquire)) {
+    ++z;
+  }
+}
+
+void read_y_then_x() {
+  while (!y.load(std::memory_order_acquire)) {
+  }
+  if (x.load(std::memory_order_acquire)) {
+    ++z;
+  }
+}
+
+int main() {
+  thread a(write_x);
+  thread b(write_y);
+  thread c(read_x_then_y);
+  thread d(read_y_then_x);
+  a.join();
+  b.join();
+  c.join();
+  d.join();
+  std::cout << "z : " << z << std::endl;
+}
+```
+
+```
+실행결과
+z : 0
+or
+z : 1
+or
+z : 2
+```
+
+왜 0이 나올 수 있을까?
+
+`memory_order_seq_cst` 를 사용하게 된다면, 해당 명령을 사용하는 메모리 연산들 끼리는 모든 쓰레드에서 동일한 연산 순서를 관찰할 수 있도록 보장
+
+```cpp
+#include <atomic>
+#include <iostream>
+#include <thread>
+using std::memory_order_seq_cst;
+using std::thread;
+
+std::atomic<bool> x(false);
+std::atomic<bool> y(false);
+std::atomic<int> z(0);
+
+void write_x() { x.store(true, memory_order_seq_cst); }
+
+void write_y() { y.store(true, memory_order_seq_cst); }
+
+void read_x_then_y() {
+  while (!x.load(memory_order_seq_cst)) {
+  }
+  if (y.load(memory_order_seq_cst)) {
+    ++z;
+  }
+}
+
+void read_y_then_x() {
+  while (!y.load(memory_order_seq_cst)) {
+  }
+  if (x.load(memory_order_seq_cst)) {
+    ++z;
+  }
+}
+
+int main() {
+  thread a(write_x);
+  thread b(write_y);
+  thread c(read_x_then_y);
+  thread d(read_y_then_x);
+  a.join();
+  b.join();
+  c.join();
+  d.join();
+  std::cout << "z : " << z << std::endl;
+}
+```
+
+```
+z : 2
+
+or
+
+z : 1
+```
+
+`z` 의 값이 0 이 되는 경우는 발생X

@@ -1,0 +1,2 @@
+
+확인해보니깐 백그라운드 이동시에 IOSAppDelegate.cpp -(void)MainAppThread:(NSDictionary*)launchOptions 함수의 FAppEntry::SuspendTick() 에서 Suspend를 걸고 있는데 포그라운드로 다시 이동되서 메인쓰레드가 동작됐을때 FCoreDelegates::ApplicationHasEnteredForegroundDelegate 이벤트 또는 World Tick 동작시에 Suspend 상태가 유지되는 경우가 발생됩니다. FCoreDelegates::ApplicationHasEnteredForegroundDelegate 에서만 문제가 있었으면 그부분을 수정하면 되는데 World Tick까지 발생되서 반드시 수정이 필요한 부분
