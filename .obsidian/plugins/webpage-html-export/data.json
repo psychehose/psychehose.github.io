@@ -12,22 +12,7 @@
     "inlineHTML": false,
     "exportPath": "/Users/psychehose/psychehose.github.io/docs",
     "filesToExport": [
-      "Algorithm",
-      "BLE",
-      "CMake",
-      "CPP",
-      "Error",
-      "Golf Simulator",
-      "graphics",
-      "Hose",
-      "images",
-      "Infra",
-      "iOS",
-      "Network",
-      "physics",
-      "Tip",
-      "UE",
-      "index.md"
+      "all"
     ],
     "addBodyClasses": true,
     "addMathjaxStyles": true,
