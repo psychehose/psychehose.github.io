@@ -176,6 +176,23 @@ void Simulator::updateCamera() {
 }
 ```
 
+
+
+### 리팩토링
+
+표준 STL을 이용해서 리팩토링 진행함.
+
+1. Simulator에서 GolfBall을 참조할 때 raw pointer를 사용 했는데 unique_ptr로 변경
+2. make_pair(x,y)를 이용해 Position을 정의 하는 것보다 Struct으로 정의하는 것이 확장에 유리
+3. Event Handler를 visitor pattern으로 해결
+
+
+
+
+
+
+
+
 ####  repos
 
 https://github.com/psychehose/golf_simulator
