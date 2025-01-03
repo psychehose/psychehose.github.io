@@ -1,6 +1,57 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><parsererror xmlns="http://www.w3.org/1999/xhtml" style="display: block; white-space: pre; border: 2px solid #c77; padding: 0 1em 0 1em; margin: 1em; background-color: #fdd; color: black"><h3>This page contains the following errors:</h3><div style="font-family:monospace;font-size:12px">error on line 1 at column 826: Input is not proper UTF-8, indicate encoding !
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><parsererror xmlns="http://www.w3.org/1999/xhtml" style="display: block; white-space: pre; border: 2px solid #c77; padding: 0 1em 0 1em; margin: 1em; background-color: #fdd; color: black"><h3>This page contains the following errors:</h3><div style="font-family:monospace;font-size:12px">error on line 52 at column 267: Input is not proper UTF-8, indicate encoding !
 Bytes: 0x08 0xEB 0xA7 0x88
-</div><h3>Below is a rendering of the page up to the first error.</h3></parsererror><channel><title><![CDATA[psychehose.github.io]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>site-lib/media/favicon.png</url><title>psychehose.github.io</title><link/></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Tue, 31 Dec 2024 18:44:46 GMT</lastBuildDate><atom:link href="site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Tue, 31 Dec 2024 18:42:19 GMT</pubDate><ttl>60</ttl><dc:creator/><item><title><![CDATA[Golf Simulator using SFML]]></title><description/></item><item><title><![CDATA[Resume]]></title><description><![CDATA[Not Yet..]]></description><link>hose/resume/resume.html</link><guid isPermaLink="false">Hose/Resume/Resume.canvas</guid><pubDate>Tue, 31 Dec 2024 09:30:05 GMT</pubDate></item><item><title><![CDATA[ Home]]></title><description><![CDATA[개발을 진행하면서 공부하는 내용을 포스팅 합니다.
+</div><h3>Below is a rendering of the page up to the first error.</h3></parsererror><channel><title><![CDATA[psychehose.github.io]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>site-lib/media/favicon.png</url><title>psychehose.github.io</title><link/></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Thu, 02 Jan 2025 15:09:00 GMT</lastBuildDate><atom:link href="site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Thu, 02 Jan 2025 15:06:39 GMT</pubDate><ttl>60</ttl><dc:creator/><item><title><![CDATA[Visitor Pattern]]></title><description><![CDATA[기존의 SFML에서는 멤버 변수 sf::Event::EventType을 확인해서 각 이벤트를 처리 했었다. 내가 사용하는 3.0 버전에서는 이벤트를 visitor를 이용해서 처리 한다. Visitor 패턴은 객체 구조와 처리를 분리하는 디자인 패턴. 즉 '다른 클래스에 있는 알고리즘을 가져와서 실행할 수 있게 해주는 패턴'임 // 기존 방식 (이제 지원하지 않음)
+if (event.type == sf::Event::Closed) { window.close();
+} // Visitor 패턴 사용 (새로운 방식)
+event.visit([&amp;window](const sf::Event::Closed&amp;) { window.close();
+}); 컴파일 타임 검사: 잘못된 이벤트 타임에 접근하는 것을 방지하고 타입 불일치 오류를 컴파일 단계에서 발견할 수 있다. 기존의 방식을 사용하면 아래처럼 런타임에서 에러를 잡을 수 있다.
+// 기존
+if (event.type == sf::Event::MouseMoved) { // 실수로 KeyPressed의 데이터를 사용하려고 하면... bool isShiftPressed = event.key.shift; // 잘못된 메모리 접근
+} // visitor
+event.visit([](const sf::Event::MouseMoved&amp; mouse) { // mouse.position만 사용할 수 있음 // 다른 이벤트의 멤버는 접근 불가능
+}); 코드 가독성: 중첩 if문, switch문 없음. 각 이벤트 타입별 처리가 원활
+유지보수 좋음: 기존 코드 수정하지 않고 새로운 핸들러 추가가 쉬움
+sf:Event 클래스를 확인하면 클래스 내에 struct으로 각 이벤트가 정의 되어 있다. 그리고 내부 변수에 private로 m_data를 가지고 있다.
+이 m_data의 타입은 std::variant&lt;Closed, Resized, FocusLost, /*...*/ &gt; 이다.std::variant는 여러 타입 중 하나를 저장할 수 있는 type-safe union이다. 그렇다면 어떻게 SFML에서 m_data와 visit을 통해서 이벤트를 처리할까?이를 이해하기 위해 먼저 std::variant와 std::visit의 관계와 사용법에 대해 알아야만 한다.// 기본구조 // Variant: 여러 타입 중 하나를 저장할 수 있는 컨테이너
+std::variant&lt;A, B, C&gt; data;
+// Visitor: variant에 저장된 데이터를 처리하는 방법
+auto visitor = [](const auto&amp; value) { /* 처리 로직 */ }; // 동작 방식
+// 1. variant가 데이터 저장
+std::variant&lt;int, std::string&gt; data = 42;
+// 2. visitor가 데이터 처리
+std::visit([](const auto&amp; value) { using T = std::decay_t&lt;decltype(value)&gt;; if constexpr (std::is_same_v&lt;T, int&gt;) { std::cout &lt;&lt; "정수 처리: " &lt;&lt; value &lt;&lt; std::endl; } else if constexpr (std::is_same_v&lt;T, std::string&gt;) { std::cout &lt;&lt; "문자열 처리: " &lt;&lt; value &lt;&lt; std::endl; }
+}, data);
+using T = std::decay_t&lt;decltype(value)&gt; 에서 decltype(value)는 value의 정확한 타입을 추론하고 std::decay_t는 참조와 const를 제거한 순수한 타입을 얻는다. 위 코드에서 const int&amp;는 int로 변환된다.이렇게 얻은 타입 T로 컴파일 타임에 타입 체크를 수행한다.if constexpr (std::is_same_v&lt;T, int&gt;) { // int 타입일 때의 처리
+}
+else if constexpr (std::is_same_v&lt;T, std::string&gt;) { // string 타입일 때의 처리
+}
+위의 예시와 같이std::variant 과 std::visit를 이용하면 컴파일 타임에서 안전하게 타입을 추론할 수 있고 각 타입마다 처리를 하기 용이 해진다는 장점을 알 수 있다.Window::pollEvnet() 를 호출하면 m_data가 변경된다.//SFML Event 내부 구현
+template &lt;typename TEventSubtype&gt; Event::Event(const TEventSubtype&amp; eventSubtype)
+{ static_assert(isEventSubtype&lt;TEventSubtype&gt;, "TEventSubtype must be a subtype of sf::Event"); if constexpr (isEventSubtype&lt;TEventSubtype&gt;) m_data = eventSubtype;
+}
+// SFML Event 내부 구현
+class Event {
+public: // visitor 패턴을 이용한 이벤트 처리 template &lt;typename T&gt; auto visit(T&amp;&amp; visitor) const { // visitor는 람다함수 or 함수 객체 return std::visit(std::forward&lt;T&gt;(visitor), m_data); }
+};
+여기에서 Visitor 패턴의 핵심 동작이 일어난다. Event::visit 함수는 std::visit의 단순 래퍼다.
+std::forward&lt;T&gt;를 통해 visitor (람다나 함수 객체) 를 perfect 전달한다. 따라서 m_data와 visitor를 통해서 각 이벤트에 대해서 처리를 할 수 있게 된다.void Simulator::handleEvents() {
+if (auto event = window.pollEvent()) { event-&gt;visit([this](const auto&amp; e) { using T = std::decay_t&lt;decltype(e)&gt;; if constexpr (std::is_same_v&lt;T, sf::Event::Closed&gt;) { window.close(); } else if constexpr (std::is_same_v&lt;T, sf::Event::KeyPressed&gt;) { if (e.code == sf::Keyboard::Key::X) { window.close(); } } }); }
+}
+이 코드가 실행될 때 내부적으로 아래와 같은 과정이 일어난다.
+람다 함수가 Event::visit에 전달
+Event::visit은 람다 함수를 std::visit으로 전달
+std::visit은 m_data에 저장된 실제 타입을 확인하고 람다를 호출 한다.
+이걸 좀 풀어서 설명하면 아래처럼 코드가 실행되는 것이다.std::visit( [this](const auto&amp; e) { // 여기서 e는 variant에 저장된 실제 타입의 참조 using T = std::decay_t&lt;decltype(e)&gt;; if constexpr (std::is_same_v&lt;T, sf::Event::Closed&gt;) { window.close(); } else if constexpr (std::is_same_v&lt;T, sf::Event::KeyPressed&gt;) { if (e.code == sf::Keyboard::Key::X) { window.close(); } } }, m_data // variant 객체 전달
+);
+struct EventVisitor { Simulator&amp; simulator; // 참조를 저장 // 특정 이벤트용 처리기 void operator()(const sf::Event::Closed&amp; event) { simulator.window.close(); } void operator()(const sf::Event::KeyPressed&amp; event) { ... } // 다른 모든 이벤트를 처리하는 템플릿 template&lt;typename T&gt; void operator()(const T&amp; event) {}
+};
+void Simulator::handleEvents() { if (auto event = window.pollEvent()) { event-&gt;visit(EventVisitor{*this}); }
+} 객체를 만들고 operator()를 구현하면 객체를 함수처럼 사용할 수 있다.EventVisitor visitor; visitor(something);
+내부적으로는 위의 람다 함수의 경우와 사실 거의 같다. 람다 함수 대신에 함수 객체를 넘겨주는 것이 차이점이다. 그리고 기본적으로 std::visit은 variant에 저장된 실제 타입을 확인해서 그 타입에 맞는 operator를 호출한다
+event-&gt;visit(EventVisitor{*this}); 호출 한다.
+Event::visit은 std::visit에 함수 객체와, m_data를 전달한다.
+std::visit은 m_data(variant)를 실제 타입을 확인해서 그 타입에 맞는 operator를 호출한다.
+]]></description><link>golf-simulator/visitor-pattern.html</link><guid isPermaLink="false">Golf Simulator/Visitor Pattern.md</guid><pubDate>Thu, 02 Jan 2025 15:00:26 GMT</pubDate></item><item><title><![CDATA[Golf Simulator using SFML]]></title><description/></item><item><title><![CDATA[Resume]]></title><description><![CDATA[Not Yet..]]></description><link>hose/resume/resume.html</link><guid isPermaLink="false">Hose/Resume/Resume.canvas</guid><pubDate>Tue, 31 Dec 2024 09:30:05 GMT</pubDate></item><item><title><![CDATA[ Home]]></title><description><![CDATA[개발을 진행하면서 공부하는 내용을 포스팅 합니다.
 Clang++
 Vision
 Robotics

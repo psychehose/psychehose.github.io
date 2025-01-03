@@ -53,6 +53,8 @@ event.visit([](const sf::Event::MouseMoved& mouse) {
 
 이를 이해하기 위해 먼저 `std::variant`와 `std::visit`의 관계와 사용법에 대해 알아야만 한다.
 
+#### std::variant와 std::visit
+
 ```cpp
 // 기본구조 
 // Variant: 여러 타입 중 하나를 저장할 수 있는 컨테이너
@@ -75,65 +77,136 @@ std::visit([](const auto& value) {
 }, data);
 ```
 
+`using T = std::decay_t<decltype(value)>` 에서 `decltype(value)`는 value의 정확한 타입을 추론하고 `std::decay_t`는 참조와 const를 제거한 순수한 타입을 얻는다. 위 코드에서 `const int&`는 int로 변환된다.
 
-using T부터 다시 공부하고 작성하기
-std::visit()을 사용할 때 주의점은 모든 타입 처리가 필요하다는 것이다.
+이렇게 얻은 타입 T로 컴파일 타임에 타입 체크를 수행한다.
+
+```cpp
+if constexpr (std::is_same_v<T, int>) {
+    // int 타입일 때의 처리
+}
+else if constexpr (std::is_same_v<T, std::string>) {
+    // string 타입일 때의 처리
+}
+```
+
+위의 예시와 같이`std::variant` 과 `std::visit`를 이용하면 컴파일 타임에서 안전하게 타입을 추론할 수 있고 각 타입마다 처리를 하기 용이 해진다는 장점을 알 수 있다.
+
+#### SFML에서의 visit - Event::visit()
+
+`Window::pollEvnet()` 를 호출하면 m_data가 변경된다.
+
+```cpp
+//SFML Event 내부 구현
+template <typename TEventSubtype>
+
+Event::Event(const TEventSubtype& eventSubtype)
+{
+	static_assert(isEventSubtype<TEventSubtype>, "TEventSubtype must be a subtype of sf::Event");
+	if constexpr (isEventSubtype<TEventSubtype>)
+		m_data = eventSubtype;
+}
+```
 
 
 ```cpp
+// SFML Event 내부 구현
 class Event {
-private:
-    // 여러 이벤트 타입을 저장할 수 있는 variant
-    std::variant<Closed, KeyPressed, MouseMoved, ...> m_data;
-
 public:
     // visitor 패턴을 이용한 이벤트 처리
-    template <typename Visitor>
-    auto visit(Visitor&& visitor) const {
-        return std::visit(std::forward<Visitor>(visitor), m_data);
+    template <typename T>
+    auto visit(T&& visitor) const {
+    // visitor는 람다함수 or 함수 객체
+        return std::visit(std::forward<T>(visitor), m_data);
     }
 };
 ```
 
+여기에서 Visitor 패턴의 핵심 동작이 일어난다. Event::visit 함수는 std::visit의 단순 래퍼다.
+`std::forward<T>`를 통해 visitor **(람다나 함수 객체)** 를 perfect 전달한다. 따라서 m_data와 visitor를 통해서 각 이벤트에 대해서 처리를 할 수 있게 된다.
+
+#### 이벤트 처리하는 방법 - 람다 함수
 
 ```cpp
-namespace sf
-{
-class Event
-{
-public:
-	struct Closed
-	{
-	};
-	struct KeyPressed
-	{
-		Keyboard::Key code{}; //!< Code of the key that has been pressed
-		Keyboard::Scancode scancode{}; //!< Physical code of the key that has been pressed
-		bool alt{}; //!< Is the Alt key pressed?
-		bool control{}; //!< Is the Control key pressed?
-		bool shift{}; //!< Is the Shift key pressed?
-		bool system{}; //!< Is the System key pressed?
-	};
+void Simulator::handleEvents() {
+if (auto event = window.pollEvent()) {
+		event->visit([this](const auto& e) {
+		    using T = std::decay_t<decltype(e)>;
+		    if constexpr (std::is_same_v<T, sf::Event::Closed>) {
+		        window.close();
+		    } else if constexpr (std::is_same_v<T, sf::Event::KeyPressed>) {
+		        if (e.code == sf::Keyboard::Key::X) {
+		            window.close();
+		        }
+		    }
+		});
+	}
+}
+```
 
-private: 
-	std::variant<Closed, Resized, FocusLost, /*...*/ > m_data;
+이 코드가 실행될 때 내부적으로 아래와 같은 과정이 일어난다.
 
-// ... 
+1. 람다 함수가 `Event::visit`에 전달
+2. `Event::visit`은 람다 함수를 `std::visit`으로 전달
+3. `std::visit`은 m_data에 저장된 실제 타입을 확인하고 람다를 호출 한다.
+
+이걸 좀 풀어서 설명하면 아래처럼 코드가 실행되는 것이다.
+
+```cpp
+std::visit(
+    [this](const auto& e) {  // 여기서 e는 variant에 저장된 실제 타입의 참조
+        using T = std::decay_t<decltype(e)>;
+        if constexpr (std::is_same_v<T, sf::Event::Closed>) {
+            window.close();
+        } else if constexpr (std::is_same_v<T, sf::Event::KeyPressed>) {
+            if (e.code == sf::Keyboard::Key::X) {
+                window.close();
+            }
+        }
+    },
+    m_data  // variant 객체 전달
+);
+```
+
+#### 이벤트 처리하는 방법 - 함수 객체
+
+```cpp
+struct EventVisitor {
+    Simulator& simulator;  // 참조를 저장
+    
+    
+    // 특정 이벤트용 처리기
+	void operator()(const sf::Event::Closed& event) {
+	    simulator.window.close();
+	}
+	void operator()(const sf::Event::KeyPressed& event) { ... }
+
+	// 다른 모든 이벤트를 처리하는 템플릿
+	template<typename T>
+	void operator()(const T& event) {}
 };
-}
-
 ```
-
-
-SFML에서 m_data는 Window::pollEvnet() 호출 시 변경 된다.
 
 ```cpp
-sf::RenderWindow window;
-sf::Event event;
-
-while (window.pollEvent(event)) {
-     // 여기서 m_data가 변경됨!
+void Simulator::handleEvents() {
+	if (auto event = window.pollEvent()) {
+		event->visit(EventVisitor{*this});
+	}
 }
 ```
 
-그런 다음에 visit 함수를 사용해서
+ 객체를 만들고 `operator()`를 구현하면 객체를 함수처럼 사용할 수 있다.
+ 
+```cpp
+EventVisitor visitor; 
+visitor(something);
+```
+
+내부적으로는 위의 람다 함수의 경우와 사실 거의 같다. 람다 함수 대신에 함수 객체를 넘겨주는 것이 차이점이다. 그리고 기본적으로 std::visit은 variant에 저장된 실제 타입을 확인해서 그 타입에 맞는 operator를 호출한다
+
+1. `event->visit(EventVisitor{*this});` 호출 한다.
+2. Event::visit은 std::visit에 함수 객체와, m_data를 전달한다.
+3. std::visit은 m_data(variant)를 실제 타입을 확인해서 그 타입에 맞는 operator를 호출한다.
+
+
+
