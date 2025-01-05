@@ -1,6 +1,30 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><parsererror xmlns="http://www.w3.org/1999/xhtml" style="display: block; white-space: pre; border: 2px solid #c77; padding: 0 1em 0 1em; margin: 1em; background-color: #fdd; color: black"><h3>This page contains the following errors:</h3><div style="font-family:monospace;font-size:12px">error on line 52 at column 267: Input is not proper UTF-8, indicate encoding !
-Bytes: 0x08 0xEB 0xA7 0x88
-</div><h3>Below is a rendering of the page up to the first error.</h3></parsererror><channel><title><![CDATA[psychehose.github.io]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>site-lib/media/favicon.png</url><title>psychehose.github.io</title><link/></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Thu, 02 Jan 2025 15:09:00 GMT</lastBuildDate><atom:link href="site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Thu, 02 Jan 2025 15:06:39 GMT</pubDate><ttl>60</ttl><dc:creator/><item><title><![CDATA[Visitor Pattern]]></title><description><![CDATA[기존의 SFML에서는 멤버 변수 sf::Event::EventType을 확인해서 각 이벤트를 처리 했었다. 내가 사용하는 3.0 버전에서는 이벤트를 visitor를 이용해서 처리 한다. Visitor 패턴은 객체 구조와 처리를 분리하는 디자인 패턴. 즉 '다른 클래스에 있는 알고리즘을 가져와서 실행할 수 있게 해주는 패턴'임 // 기존 방식 (이제 지원하지 않음)
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><parsererror xmlns="http://www.w3.org/1999/xhtml" style="display: block; white-space: pre; border: 2px solid #c77; padding: 0 1em 0 1em; margin: 1em; background-color: #fdd; color: black"><h3>This page contains the following errors:</h3><div style="font-family:monospace;font-size:12px">error on line 76 at column 260: Input is not proper UTF-8, indicate encoding !
+Bytes: 0x08 0x64 0x65 0x76
+</div><h3>Below is a rendering of the page up to the first error.</h3></parsererror><channel><title><![CDATA[psychehose.github.io]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>site-lib/media/favicon.png</url><title>psychehose.github.io</title><link/></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Sun, 05 Jan 2025 10:36:16 GMT</lastBuildDate><atom:link href="site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Sun, 05 Jan 2025 10:34:02 GMT</pubDate><ttl>60</ttl><dc:creator/><item><title><![CDATA[62. Unique Paths]]></title><description><![CDATA[There is a robot on an&nbsp;m x n&nbsp;grid. The robot is initially located at the&nbsp;top-left corner&nbsp;(i.e.,&nbsp;grid[0][0]). The robot tries to move to the&nbsp;bottom-right corner&nbsp;(i.e.,&nbsp;grid[m - 1][n - 1]). The robot can only move either down or right at any point in time.Given the two integers&nbsp;m&nbsp;and&nbsp;n, return&nbsp;the number of possible unique paths that the robot can take to reach the bottom-right corner.The test cases are generated so that the answer will be less than or equal to&nbsp;2 * 109.Example 1:<img alt="robot_maze.png" src="images/robot_maze.png" target="_self">Input: m = 3, n = 7
+Output: 28Example 2:Input: m = 3, n = 2
+Output: 3
+Explanation: From the top-left corner, there are a total of 3 ways to reach the bottom-right corner 1. Right -&gt; Down -&gt; Down
+2. Down -&gt; Down -&gt; Right
+3. Down -&gt; Right -&gt; Down#include &lt;vector&gt; class Solution {
+public: int uniquePaths(int m, int n) { // dp 초기화 std::vector&lt;std::vector&lt;int&gt;&gt; dp(m, std::vector&lt;int&gt;(n,1)); for (std::vector&lt;std::vector&lt;int&gt;&gt;::size_type r = 1; r &lt; dp.size(); ++r) { for (std::vector&lt;int&gt;::size_type c = 1; c &lt; dp[r].size(); ++c) { dp[r][c] = dp[r-1][c] + dp[r][c-1]; } } return dp[m-1][n-1]; }
+};
+]]></description><link>algorithm/blind75/62.-unique-paths.html</link><guid isPermaLink="false">Algorithm/blind75/62. Unique Paths.md</guid><pubDate>Sun, 05 Jan 2025 10:22:11 GMT</pubDate><enclosure url="images/robot_maze.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="images/robot_maze.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[robot_maze]]></title><description><![CDATA[<img src="images/robot_maze.png" target="_self">]]></description><link>images/robot_maze.html</link><guid isPermaLink="false">images/robot_maze.png</guid><pubDate>Sun, 05 Jan 2025 08:12:34 GMT</pubDate><enclosure url="images/robot_maze.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="images/robot_maze.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[70. Climbing Stair]]></title><description><![CDATA[You are climbing a staircase. It takes&nbsp;n&nbsp;steps to reach the top.Each time you can either climb&nbsp;1&nbsp;or&nbsp;2&nbsp;steps. In how many distinct ways can you climb to the top?Example 1:Input: n = 2
+Output: 2
+Explanation: There are two ways to climb to the top.
+1 step + 1 step
+2 steps
+Example 2:Input: n = 3
+Output: 3
+Explanation: There are three ways to climb to the top.
+1 step + 1 step + 1 step
+1 step + 2 steps
+2 steps + 1 step
+Constraints:
+1 &lt;= n &lt;= 45
+점화식으로 해결class Solution {
+public: int climbStairs(int n) { if (n == 1) return 1; std::vector&lt;int&gt; dp { 1, 2 }; dp.reserve(n); for (int i = 2; i &lt; n; ++i) { dp.push_back(dp[i-1] + dp[i-2]); } return *(dp.end() - 1); }
+};
+]]></description><link>algorithm/blind75/70.-climbing-stair.html</link><guid isPermaLink="false">Algorithm/blind75/70. Climbing Stair.md</guid><pubDate>Fri, 03 Jan 2025 16:39:39 GMT</pubDate></item><item><title><![CDATA[Visitor Pattern]]></title><description><![CDATA[기존의 SFML에서는 멤버 변수 sf::Event::EventType을 확인해서 각 이벤트를 처리 했었다. 내가 사용하는 3.0 버전에서는 이벤트를 visitor를 이용해서 처리 한다. Visitor 패턴은 객체 구조와 처리를 분리하는 디자인 패턴. 즉 '다른 클래스에 있는 알고리즘을 가져와서 실행할 수 있게 해주는 패턴'임 // 기존 방식 (이제 지원하지 않음)
 if (event.type == sf::Event::Closed) { window.close();
 } // Visitor 패턴 사용 (새로운 방식)
 event.visit([&amp;window](const sf::Event::Closed&amp;) { window.close();
@@ -51,7 +75,7 @@ void Simulator::handleEvents() { if (auto event = window.pollEvent()) { event-&g
 event-&gt;visit(EventVisitor{*this}); 호출 한다.
 Event::visit은 std::visit에 함수 객체와, m_data를 전달한다.
 std::visit은 m_data(variant)를 실제 타입을 확인해서 그 타입에 맞는 operator를 호출한다.
-]]></description><link>golf-simulator/visitor-pattern.html</link><guid isPermaLink="false">Golf Simulator/Visitor Pattern.md</guid><pubDate>Thu, 02 Jan 2025 15:00:26 GMT</pubDate></item><item><title><![CDATA[Golf Simulator using SFML]]></title><description/></item><item><title><![CDATA[Resume]]></title><description><![CDATA[Not Yet..]]></description><link>hose/resume/resume.html</link><guid isPermaLink="false">Hose/Resume/Resume.canvas</guid><pubDate>Tue, 31 Dec 2024 09:30:05 GMT</pubDate></item><item><title><![CDATA[ Home]]></title><description><![CDATA[개발을 진행하면서 공부하는 내용을 포스팅 합니다.
+]]></description><link>golf-simulator/visitor-pattern.html</link><guid isPermaLink="false">Golf Simulator/Visitor Pattern.md</guid><pubDate>Fri, 03 Jan 2025 15:33:44 GMT</pubDate></item><item><title><![CDATA[Perforce 도움말]]></title><description/></item><item><title><![CDATA[Resume]]></title><description><![CDATA[Not Yet..]]></description><link>hose/resume/resume.html</link><guid isPermaLink="false">Hose/Resume/Resume.canvas</guid><pubDate>Tue, 31 Dec 2024 09:30:05 GMT</pubDate></item><item><title><![CDATA[ Home]]></title><description><![CDATA[개발을 진행하면서 공부하는 내용을 포스팅 합니다.
 Clang++
 Vision
 Robotics

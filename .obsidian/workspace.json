@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Algorithm/bliend75/70. Climbing Stair.md",
+                "file": "Algorithm/blind75/62. Unique Paths.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "70. Climbing Stair"
+              "title": "62. Unique Paths"
             }
           }
         ]
@@ -176,13 +176,11 @@
       "webpage-html-export:Export as HTML": false
     }
   },
-  "active": "e1025940bba3c3ee",
+  "active": "affd05fc01baedd7",
   "lastOpenFiles": [
-    "Algorithm/bliend75/78. Subsets.md",
-    "Algorithm/bliend75/70. Climbing Stair.md",
-    "Golf Simulator/Visitor Pattern.md",
     "docs/site-lib/search-index.json",
     "docs/site-lib/metadata.json",
+    "docs/images/robot_maze.png",
     "CPP/Problem1.md",
     "CPP/포인터에 const 사용하기.md",
     "CPP/참조 vs 포인터.md",
@@ -206,15 +204,18 @@
     "CMake/CMake 사용법.md",
     "UE/Invalidation Box.md",
     "CPP/생성자.md",
+    "CPP/Overloading.md",
+    "CPP/상속3 - 다중 상속.md",
+    "docs/algorithm/blind75/217.-contains-duplicate.html",
+    "docs/algorithm/blind75/78.-subsets.html",
     "Hose/Resume/Resume.canvas",
-    "docs/golf-simulator/visitor-pattern.html",
-    "docs/graphics/sfml.html",
-    "docs/golf-simulator/golf-simulator-using-sfml.html",
-    "docs/site-lib/styles/theme.css",
-    "docs/site-lib/styles/supported-plugins.css",
-    "docs/site-lib/styles/global-variable-styles.css",
-    "docs/site-lib/styles/obsidian.css",
-    "docs/site-lib/styles/other-plugins.css",
+    "docs/algorithm/blind75/70.-climbing-stair.html",
+    "docs/images/robot_maze.html",
+    "docs/algorithm/blind75/62.-unique-paths.html",
+    "docs/algorithm/blind75",
+    "images/robot_maze.png",
+    "attachments",
+    "Algorithm/bliend75/Untitled",
     "docs/site-lib/media/favicon.png",
     "docs/site-lib/media/874d8b8e340f75575caa.svg",
     "docs/images/whoami.png",
@@ -222,8 +223,6 @@
     "docs/images/vertext_shader_parallel.png",
     "docs/images/vertex_shader.png",
     "docs/images/var_error.jpg",
-    "docs/images/using_uniform.png",
-    "docs/images/usermode_kernalmode.png",
-    "docs/images/use_vertex_attirbute_arrays.png"
+    "docs/images/using_uniform.png"
   ]
 }
