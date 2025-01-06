@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "9a450ec138cde8c8",
+        "id": "464f892558ffd6ba",
         "type": "tabs",
         "children": [
           {
-            "id": "affd05fc01baedd7",
+            "id": "8132aef68b7eb22b",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Hose/Develop.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Develop"
+              "title": "New tab"
             }
           }
         ]
@@ -52,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#include와",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -176,10 +172,20 @@
       "webpage-html-export:Export as HTML": false
     }
   },
-  "active": "affd05fc01baedd7",
+  "active": "e1025940bba3c3ee",
   "lastOpenFiles": [
+    "Untitled.canvas",
+    "Golf Simulator/Golf Simulator using SFML.md",
+    "Algorithm/LeetCode/198. House Robber.md",
+    "Algorithm/LeetCode/217. Contains Duplicate.md",
+    "Algorithm/LeetCode/78. Subsets.md",
+    "Algorithm/LeetCode/70. Climbing Stair.md",
+    "Algorithm/LeetCode/62. Unique Paths.md",
+    "2025-01-07.md",
+    "iOS/Missing required module 'RxCocoaRuntime'에 대한 고찰 - SPM과 UnitTest에서의 오류.md",
+    "Algorithm/LeetCode",
+    "Hose/Develop.md",
     "Hose/내가 블로그를 시작한 이유.md",
-    "Algorithm/blind75/62. Unique Paths.md",
     "docs/site-lib/search-index.json",
     "docs/site-lib/metadata.json",
     "docs/images/robot_maze.png",
@@ -198,15 +204,6 @@
     "iOS/Objective - C.md",
     "iOS/Network Timeout UnitTest.md",
     "iOS/Orientation.md",
-    "iOS/동기, 비동기.md",
-    "UE/Mac에서 UE4 엔진 소스 빌드 시 유의사항.md",
-    "UE/enum vs enum class.md",
-    "UE/bool vs uint8.md",
-    "Company/KPI.md",
-    "CMake/CMake 사용법.md",
-    "UE/Invalidation Box.md",
-    "CPP/생성자.md",
-    "CPP/Overloading.md",
     "docs/algorithm/blind75/217.-contains-duplicate.html",
     "docs/algorithm/blind75/78.-subsets.html",
     "Hose/Resume/Resume.canvas",
@@ -216,7 +213,6 @@
     "docs/algorithm/blind75",
     "images/robot_maze.png",
     "attachments",
-    "Algorithm/bliend75/Untitled",
     "docs/site-lib/media/favicon.png",
     "docs/site-lib/media/874d8b8e340f75575caa.svg",
     "docs/images/whoami.png",

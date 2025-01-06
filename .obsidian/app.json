@@ -1,5 +1,6 @@
 {
   "newFileLocation": "root",
   "attachmentFolderPath": "images",
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "promptDelete": false
 }

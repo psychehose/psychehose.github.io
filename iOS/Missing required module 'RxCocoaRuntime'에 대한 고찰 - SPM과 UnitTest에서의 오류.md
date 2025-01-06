@@ -131,7 +131,7 @@ $(BUILT_PRODUCTS_DIR)/<YOUR APPNAME>.app/<YOUR APPNAME>
   
 3. 전처리 사용해서 해결 - 중복적재 (O)
 
-Other Swift Flags는 Swift 컴파일러에게 pass 하라고 명령하는 것입니다. 이걸 입력하지 않을 경우 SPM에 구현되어 있는 RxCocoa에서 import RxCocoaRuntime 할 때 import를 못했으나, Other Swift Flags를 설정하면 컴파일하기 전에 코드를 올리기 때문에 에러가 발생하지 않는 것 같습니다. 테스트 타겟에 RxTest와 RxBlocking을 추가하면 코드 중복 적재 경고가 뜨는데요. 위의 이유 때문입니다. C언어에서 #include와 똑같은 것입니다.
+Other Swift Flags는 Swift 컴파일러에게 pass 하라고 명령하는 것입니다. 이걸 입력하지 않을 경우 SPM에 구현되어 있는 RxCocoa에서 import RxCocoaRuntime 할 때 import를 못했으나, Other Swift Flags를 설정하면 컴파일하기 전에 코드를 올리기 때문에 에러가 발생하지 않는 것 같습니다. 테스트 타겟에 RxTest와 RxBlocking을 추가하면 코드 중복 적재 경고가 뜨는데요. 위의 이유 때문입니다. C언어에서 `#include`와 똑같은 것입니다.
 
 > Test Target -> Build Setting -> Other Swift Flags 검색 -> -Xcc -fmodule-map-file=$(PROJECT_TEMP_ROOT)/GeneratedModuleMaps-$(PLATFORM_NAME)/RxCocoaRuntime.modulemap
 
