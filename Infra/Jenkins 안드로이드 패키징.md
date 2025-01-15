@@ -1,7 +1,7 @@
 
 ### TL; DR
 
-1. Jenkins는 JAVA 11 지원 X -> JDK 21
+1. Jenkins는 JAVA 11 지원 X -> JDK 17
    
 
 ```bat
@@ -189,6 +189,7 @@ domain과 id를 하는 법은 cmd를 열고 whoami 입력
 
 
 ### Gradle 문제 (JAVA 버전)
+
 ```
 
   

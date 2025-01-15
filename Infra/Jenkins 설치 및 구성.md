@@ -3,7 +3,7 @@
 ## Jenkins 설치
 
 1. 젠킨스에서 Java 11은 2024.07.31까지 지원 Deprecated 될 예정
-2. OpenJDK 21로 구성 완료
+2. OpenJDK 17로 구성 완료
 
 ## 설정 이슈 및 해결 과정
 
