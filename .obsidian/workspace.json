@@ -11,10 +11,14 @@
             "id": "cf85eaff13e0717f",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Tip/Linux 명령어.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Linux 명령어"
             }
           }
         ]
@@ -174,6 +178,12 @@
   },
   "active": "cf85eaff13e0717f",
   "lastOpenFiles": [
+    "Infra/Jenkins 설치 및 구성.md",
+    "Infra/Swarm Teams.md",
+    "Tip/Linux 명령어.md",
+    "Tip/Tip.md",
+    "Tip/비트 다루기.md",
+    "Tip/터미널 명령어로 원하는 .gitignore를 빠르게 생성하기.md",
     "docs/site-lib/search-index.json",
     "docs/site-lib/metadata.json",
     "docs/site-lib/fonts/mathjax_vector-bold.woff",
@@ -184,7 +194,6 @@
     "docs/site-lib/fonts/mathjax_sansserif-bold.woff",
     "docs/site-lib/fonts/mathjax_sansserif-regular.woff",
     "docs/site-lib/fonts/mathjax_fraktur-bold.woff",
-    "docs/site-lib/fonts/mathjax_fraktur-regular.woff",
     "CPP/Problem1.md",
     "CPP/포인터에 const 사용하기.md",
     "CPP/참조 vs 포인터.md",
@@ -205,11 +214,6 @@
     "UE/enum vs enum class.md",
     "UE/bool vs uint8.md",
     "Company/KPI.md",
-    "CMake/CMake 사용법.md",
-    "UE/Invalidation Box.md",
-    "CPP/생성자.md",
-    "CPP/Overloading.md",
-    "CPP/상속3 - 다중 상속.md",
     "Hose/Resume/Resume.canvas",
     "Untitled.canvas",
     "docs/images/robot_maze.png",
