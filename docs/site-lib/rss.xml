@@ -1,6 +1,220 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><parsererror xmlns="http://www.w3.org/1999/xhtml" style="display: block; white-space: pre; border: 2px solid #c77; padding: 0 1em 0 1em; margin: 1em; background-color: #fdd; color: black"><h3>This page contains the following errors:</h3><div style="font-family:monospace;font-size:12px">error on line 1 at column 892: Input is not proper UTF-8, indicate encoding !
-Bytes: 0x1D 0xEC 0x9D 0xB4
-</div><h3>Below is a rendering of the page up to the first error.</h3></parsererror><channel><title><![CDATA[psychehose.github.io]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>site-lib/media/favicon.png</url><title>psychehose.github.io</title><link/></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Mon, 06 Jan 2025 15:13:45 GMT</lastBuildDate><atom:link href="site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Mon, 06 Jan 2025 15:11:20 GMT</pubDate><ttl>60</ttl><dc:creator/><item><title><![CDATA[Missing required module 'RxCocoaRuntime'에 대한 고찰 - SPM과 UnitTest에서의 오류]]></title><description/></item><item><title><![CDATA[62. Unique Paths]]></title><description><![CDATA[There is a robot on an&nbsp;m x n&nbsp;grid. The robot is initially located at the&nbsp;top-left corner&nbsp;(i.e.,&nbsp;grid[0][0]). The robot tries to move to the&nbsp;bottom-right corner&nbsp;(i.e.,&nbsp;grid[m - 1][n - 1]). The robot can only move either down or right at any point in time.Given the two integers&nbsp;m&nbsp;and&nbsp;n, return&nbsp;the number of possible unique paths that the robot can take to reach the bottom-right corner.The test cases are generated so that the answer will be less than or equal to&nbsp;2 * 109.Example 1:<img alt="robot_maze.png" src="images/robot_maze.png" target="_self">Input: m = 3, n = 7
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><parsererror xmlns="http://www.w3.org/1999/xhtml" style="display: block; white-space: pre; border: 2px solid #c77; padding: 0 1em 0 1em; margin: 1em; background-color: #fdd; color: black"><h3>This page contains the following errors:</h3><div style="font-family:monospace;font-size:12px">error on line 215 at column 331: Input is not proper UTF-8, indicate encoding !
+Bytes: 0x08 0xEC 0x9D 0xB4
+</div><h3>Below is a rendering of the page up to the first error.</h3></parsererror><channel><title><![CDATA[psychehose.github.io]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>site-lib/media/favicon.png</url><title>psychehose.github.io</title><link/></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Sun, 19 Jan 2025 11:57:48 GMT</lastBuildDate><atom:link href="site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Sun, 19 Jan 2025 11:55:19 GMT</pubDate><ttl>60</ttl><dc:creator/><item><title><![CDATA[271. Encode and Decode Strings]]></title><description><![CDATA[<a href=".?query=tag:medium" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#medium">#medium</a> <a href=".?query=tag:blind75" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#blind75">#blind75</a> Design an algorithm to encode a list of strings to a single string. The encoded string is then decoded back to the original list of strings.Please implement&nbsp;encode&nbsp;and&nbsp;decodeExample 1:Input: ["neet","code","love","you"] Output:["neet","code","love","you"]
+Example 2:Input: ["we","say",":","yes"] Output: ["we","say",":","yes"]
+Constraints:
+0 &lt;= strs.length &lt; 100
+0 &lt;= strs[i].length &lt; 200
+strs[i]&nbsp;contains only UTF-8 characters.
+이 문제는 인코딩과 디코딩을 디자인하는 문제다. 평소에 푸는 PS와 좀 다른 스타일의 문제였다. 특징은 시간 복잡도는 이여야 하고, 공간 복잡도는 이여야 한다. 그래서 저장하는 멤버변수를 사용할 수 없다. #include &lt;vector&gt;
+using namespace std; class Solution {
+public: string encode(vector&lt;string&gt;&amp; strs) { string res; for (const auto&amp; c : strs) { res += to_string(c.size()) + "#" + c; } return res; } vector&lt;string&gt; decode(string s) { vector&lt;string&gt; res; int i = 0; while(i &lt; s.size()) { int j = i; while(s[j] != '#') { ++j; } int len = stoi(s.substr(i, j-i)); string sub = s.substr(j+1, len); res.push_back(sub); i = j + len + 1; } return res; }
+}; stoi(), substr 사용 방법을 숙지할 수 있었다.]]></description><link>algorithm/leetcode/271.-encode-and-decode-strings.html</link><guid isPermaLink="false">Algorithm/LeetCode/271. Encode and Decode Strings.md</guid><pubDate>Sun, 19 Jan 2025 11:54:09 GMT</pubDate></item><item><title><![CDATA[Swarm Teams]]></title><description><![CDATA[Swarm에 있는 모듈을 만들어야함. module.config.php Swarm이 모듈을 인식하도록 하는 설정 파일
+PHP 배열 형태로 이벤트 리스너 바인딩, 서비스 등록 등을 설정합니다. Module.php (이름은 꼭 ‘Module’일 필요는 없지만 일반적으로 많이 사용) Swarm에서 제공하는 다양한 Hook(Listener)나 Config 설정을 등록하고, 실제 기능(웹훅 전송 로직 등)을 구현하는 파일입니다. ]]></description><link>infra/swarm-teams.html</link><guid isPermaLink="false">Infra/Swarm Teams.md</guid><pubDate>Sun, 19 Jan 2025 09:32:38 GMT</pubDate></item><item><title><![CDATA[Linux 명령어]]></title><description><![CDATA[읽기, 쓰기 권한을 다른사용자 (others)에게 부여sudo chmod o+x # 쓰기 권한 cd sudo chmod o+r # 읽기 권한 ls
+리눅스 전체 삭제 및 파일 내용 지우기$ gg # 첫번째 줄로 이동
+$ dG # 현재부터 끝까지 지움
+$ dd #한줄삭제
+$ 5dd #현재위치부터 5줄 삭제
+로그 보는 방법$ tail -n {몇라인 볼 지 = 수} {log_path}
+]]></description><link>tip/linux-명령어.html</link><guid isPermaLink="false">Tip/Linux 명령어.md</guid><pubDate>Sun, 19 Jan 2025 09:32:38 GMT</pubDate></item><item><title><![CDATA[Develop]]></title><description><![CDATA[
+목표: Clang으로의 포팅 작업을 성공적으로 마치고, 이 과정에서 컴파일러와 빌드 시스템에 대한 심도 있는 이해를 확보.
+학습 내용: 컴파일러 작동 원리: Clang의 컴파일 단계(프론트엔드, 미들엔드, 백엔드), LLVM의 역할.
+C++ 표준 호환성: MSVC와 Clang 간 차이점 및 비호환 코드 처리 방법.
+빌드 시스템: CMake, Ninja 등으로 프로젝트를 관리하고 디버깅하는 방법.
+디버깅과 성능 최적화: Clang의 -fsanitize 옵션, clang-tidy, AddressSanitizer 등 툴 활용. 목표: ROS2와 리눅스 환경에 대한 깊은 이해를 통해 실전 로봇 프로젝트에서 문제를 해결할 수 있는 능력 배양.
+학습 내용: ROS2 미들웨어 (DDS): 데이터 통신 구조와 QoS 설정 이해.
+리눅스 시스템 프로그래밍: 파일 시스템, 프로세스 관리, IPC(파이프, 메시지 큐 등).
+네트워킹: ROS2의 분산 네트워크 구조와 리눅스 소켓 프로그래밍.
+디버깅 툴: gdb, valgrind, perf 등을 활용한 로깅과 문제 추적. 목표: RISC-V 또는 ARM ISA를 이해하고, 이를 활용한 최적화나 커스텀 하드웨어 프로젝트에서 차별화된 능력 확보.
+학습 내용: 어셈블리 언어: 간단한 프로그램 작성, 디스어셈블 분석.
+RISC-V/ARM ISA: 기본 명령어 구조와 실행 원리.
+임베디드 개발: 로봇 시스템에서 저전력 및 실시간 프로세싱을 위한 코드 작성.
+시뮬레이션과 실습: QEMU, RARS, 또는 실제 임베디드 보드 사용. 컴파일러 (Clang, MSVC) 현재 회사 업무와 직접적으로 연결된 부분이므로, 당면 과제 해결에 집중. 리눅스 및 ROS2 통합 C++ 개발자로서 ROS2와 리눅스를 능숙하게 다루는 것은 장기적으로 중요한 자산. ISA와 어셈블리 로봇의 하드웨어와 소프트웨어를 깊이 이해하고 싶다면 필수적이지만, 단기적으로는 필요성이 낮음. 주간 업무 중심의 학습: 컴파일러와 포팅 작업에 대한 심화 학습.
+ROS2와 리눅스 주말 학습: 간단한 ROS2 패키지를 리눅스 환경에서 만들어보고 문제를 해결.
+장기 계획으로 ISA 학습: 매주 2~3시간 정도 어셈블리나 ISA 기본 개념 학습. 목표: 가상 환경에서 로봇을 제어하고 경로를 탐색.
+구현 요소: ROS를 설치하고 Gazebo에서 TurtleBot3 모델 실행.
+ROS Navigation Stack으로 자율 경로 계획. ]]></description><link>hose/develop.html</link><guid isPermaLink="false">Hose/Develop.md</guid><pubDate>Thu, 16 Jan 2025 14:18:35 GMT</pubDate></item><item><title><![CDATA[424. Longest Repeating Character Replacement]]></title><description><![CDATA[<a href=".?query=tag:medium" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#medium">#medium</a> <a href=".?query=tag:blind75" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#blind75">#blind75</a> You are given a string&nbsp;s&nbsp;and an integer&nbsp;k. You can choose any character of the string and change it to any other uppercase English character. You can perform this operation at most&nbsp;k&nbsp;times.Return&nbsp;the length of the longest substring containing the same letter you can get after performing the above operations.Example 1:Input: s = "ABAB", k = 2
+Output: 4
+Explanation: Replace the two 'A's with two 'B's or vice versa.Example 2:Input: s = "AABABBA", k = 1
+Output: 4
+Explanation: Replace the one 'A' in the middle with 'B' and form "AABBBBA".
+The substring "BBBB" has the longest repeating letters, which is 4.
+There may exists other ways to achieve this answer too.Constraints:
+1 &lt;= s.length &lt;= 105
+s&nbsp;consists of only uppercase English letters.
+0 &lt;= k &lt;= s.length
+못풀었다. 문제를 봤을 때 슬라이딩 윈도우일 것 같긴 했는데 조건을 생각하지 못했다.window size - max_count &gt; k 를 생각했어야 했다. 이걸 떠올리지 못한 이유가 무엇일까라고 생각해봤을 때, 빈도수 관리를 떠올리지 못해서 그런가 싶다.max_count 최적화에 대한 문제가 있는데 이해하면 간단하지만 이해가 쉽지 않았다. 이해를 힘들게 했는데 댓글을 보니 저렇게 생각하면 더 쉽게 이해할 수 있었을 것 같다.For those who are struggling to understand the optimisation with maxf, here is how i understood it: For a substring to be valid, we need window_length - maxf &lt;= k. Here, maxf is the frequency of the most common character in the current window. The difference window_length - maxf tells us how many characters we'd need to change to make the whole window the same character. The biggest valid substring we can get is of size maxf + k. So, the larger maxf is, the better. If maxf doesn't change or goes down, our potential best answer doesn't change. We don't need to update maxf in this case. On the other hand, if maxf goes up, it means we've found a character in the current window that appears more often than in previous windows. This means we might be able to get a longer valid substring, so we update maxf. Hope this helps! And thank you neetcode for the wonderful video as always.
+#include &lt;string&gt;
+#include &lt;unordered_map&gt;
+#include &lt;algorithm&gt;
+using namespace std; class Solution {
+public: int characterReplacement(string s, int k) { unordered_map&lt;char, int&gt; countmap; int res = 0; int l = 0; for (int r = 0; r &lt; s.size(); ++r) { countmap[s[r]] = 1 + countmap[s[r]]; while((r - l + 1) - most_frequent(countmap) &gt; k) { countmap[s[l]] = countmap[s[l]] - 1; l += 1; } res = max(res, r - l + 1); } } int characterReplacement_opt(string s, int k) { unordered_map&lt;char, int&gt; countmap; int l = 0; int max_len = 0; int max_count = 0; for (int r = 0; r &lt; s.size(); ++r) { countmap[s[r]] = countmap[s[r]] + 1; max_count = max(max_count, countmap[s[r]]); while((r - l + 1) - max_count &gt; k) { countmap[s[l]] = countmap[s[l]] - 1; l += 1; } max_len = max(max_len, r-l+1); } return max_len; } int most_frequent(unordered_map&lt;char, int&gt;&amp; m) { int frequent = 0; for (auto&amp; [k, v] : m) { frequent = max(frequent, v); } }
+};
+]]></description><link>algorithm/leetcode/424.-longest-repeating-character-replacement.html</link><guid isPermaLink="false">Algorithm/LeetCode/424. Longest Repeating Character Replacement.md</guid><pubDate>Wed, 15 Jan 2025 14:54:13 GMT</pubDate></item><item><title><![CDATA[Jenkins 설치 및 구성]]></title><description><![CDATA[자동화 시스템 구축
+젠킨스에서 Java 11은 2024.07.31까지 지원 Deprecated 될 예정
+OpenJDK 17로 구성 완료 sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target at java.base/sun.security.provider.certpath.SunCertPathBuilder.build(SunCertPathBuilder.java:148) at java.base/sun.security.provider.certpath.SunCertPathBuilder.engineBuild(SunCertPathBuilder.java:129) at java.base/java.security.cert.CertPathBuilder.build(CertPathBuilder.java:297) at java.base/sun.security.validator.PKIXValidator.doBuild(PKIXValidator.java:383)
+Caused: sun.security.validator.ValidatorException: PKIX path building failed at java.base/sun.security.validator.PKIXValidator.doBuild(PKIXValidator.java:388) at java.base/sun.security.validator.PKIXValidator.engineValidate(PKIXValidator.java:271) at java.base/sun.security.validator.Validator.validate(Validator.java:256) at java.base/sun.security.ssl.X509TrustManagerImpl.checkTrusted(X509TrustManagerImpl.java:230) at java.base/sun.security.ssl.X509TrustManagerImpl.checkServerTrusted(X509TrustManagerImpl.java:132) at java.base/sun.security.ssl.CertificateMessage$T13CertificateConsumer.checkServerCerts(CertificateMessage.java:1302)
+Caused: javax.net.ssl.SSLHandshakeException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target at java.base/sun.security.ssl.Alert.createSSLException(Alert.java:130) at java.base/sun.security.ssl.TransportContext.fatal(TransportContext.java:378) at java.base/sun.security.ssl.TransportContext.fatal(TransportContext.java:321) at java.base/sun.security.ssl.TransportContext.fatal(TransportContext.java:316) at java.base/sun.security.ssl.CertificateMessage$T13CertificateConsumer.checkServerCerts(CertificateMessage.java:1318) at java.base/sun.security.ssl.CertificateMessage$T13CertificateConsumer.onConsumeCertificate(CertificateMessage.java:1195) at java.base/sun.security.ssl.CertificateMessage$T13CertificateConsumer.consume(CertificateMessage.java:1138) at java.base/sun.security.ssl.SSLHandshake.consume(SSLHandshake.java:393) at java.base/sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:476) at java.base/sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:447) at java.base/sun.security.ssl.TransportContext.dispatch(TransportContext.java:201) at java.base/sun.security.ssl.SSLTransport.decode(SSLTransport.java:172) at java.base/sun.security.ssl.SSLSocketImpl.decode(SSLSocketImpl.java:1506) at java.base/sun.security.ssl.SSLSocketImpl.readHandshakeRecord(SSLSocketImpl.java:1421) at java.base/sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:455) at java.base/sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:426) at java.base/sun.net.www.protocol.https.HttpsClient.afterConnect(HttpsClient.java:586) at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:187) at java.base/sun.net.www.protocol.http.HttpURLConnection.followRedirect0(HttpURLConnection.java:2909) at java.base/sun.net.www.protocol.http.HttpURLConnection.followRedirect(HttpURLConnection.java:2818) at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1929) at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1599) at java.base/sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:223) at hudson.model.UpdateCenter$UpdateCenterConfiguration.download(UpdateCenter.java:1321)
+Caused: java.io.IOException: Failed to load https://updates.jenkins.io/download/plugins/mailer/470.vc91f60c5d8e2/mailer.hpi to C:\ProgramData\Jenkins\.jenkins\plugins\mailer.jpi.tmp at hudson.model.UpdateCenter$UpdateCenterConfiguration.download(UpdateCenter.java:1332)
+Caused: java.io.IOException: Failed to download from https://updates.jenkins.io/download/plugins/mailer/470.vc91f60c5d8e2/mailer.hpi (redirected to: https://get.jenkins.io/plugins/mailer/470.vc91f60c5d8e2/mailer.hpi) at hudson.model.UpdateCenter$UpdateCenterConfiguration.download(UpdateCenter.java:1366) at hudson.model.UpdateCenter$DownloadJob._run(UpdateCenter.java:1923) at hudson.model.UpdateCenter$InstallationJob._run(UpdateCenter.java:2235) at hudson.model.UpdateCenter$DownloadJob.run(UpdateCenter.java:1897) at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572) at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) at hudson.remoting.AtmostOneThreadExecutor$Worker.run(AtmostOneThreadExecutor.java:121) at java.base/java.lang.Thread.run(Thread.java:1583)
+suncertpathbuilderexception unable to find valid certification path to requested target를 인터넷에 검색했을 때 -Https를 사용하는 웹사이트에 연결을 시도할 때 Java에서 신뢰하는 인증서 목록에 해당 웹사이트의 인증서가 존재하지 않아서 발생하는 문제라고 한다.그래서 예전에 전달받은 인증서를 jdk(jre)/lib/securites/cacert에 keytool 명령어를 이용해 현재 사용하는 자바인증서에 인증서를 넣었음.keytool -importcert -alias {alias name} -keystore "C:\Program Files\Java\jdk-21.0.2\lib\security\cacerts" -storepass changeit -file C:\Users\psyche95\Desktop\CERT\{.cer}
+suncertpathbuilderexception unable to find valid certification path to requested target는 해결 되었으나 아래의 문제가 발생java.security.InvalidAlgorithmParameterException: the trustAnchors parameter must be non-empty
+검색하니, openjdk에서 발생할 수 있다고 함 -&gt; oracle jdk의 cacert로 교체하면 된다고 해서 교체 -&gt; 같은 에러 반복 cacert 문제가 아님을 확인환경변수 JAVA_HOME 확인-&gt; java8 사용하고 있었음.
+JAVA_HOME java21로 변경이로써 플러그인 업데이트 가능하게 됨. + 배치파일 작성 후 빌드 가능그래도 계속 안된다면, java cacert에서 회사 사내 인증서 없애고 JAVA_HOME 설정 다시 할 것java.security.InvalidAlgorithmParameterException: the trustAnchors parameter must be non-empty at java.base/java.security.cert.PKIXParameters.setTrustAnchors(PKIXParameters.java:200) at java.base/java.security.cert.PKIXParameters.&lt;init&gt;(PKIXParameters.java:120) at java.base/java.security.cert.PKIXBuilderParameters.&lt;init&gt;(PKIXBuilderParameters.java:104) at java.base/sun.security.validator.PKIXValidator.&lt;init&gt;(PKIXValidator.java:94) Caused: java.lang.RuntimeException: Unexpected error
+해결한 줄 알았는데, 다시 발생해서 재설치 진행함.jdk 21은 젠킨스에 도입된 지 얼마 되지 않아서 jdk 17로 교체.sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target그냥 check certificate 하지 않는 게 정신건강에 이로울 거 같아서 skip-certificate-check 플러그인을 hpi로 받음. 그러고나서 C:\ProgramData\Jenkins.jenkins\plugins에 직접 hpi를 넣고 설치 젠킨스 재시작이로써 해결 완료되었고 현재까지는 잘 작동함.Unreal Engine4로 작업을 하고 있는데, ugs를 사용하지 않아 개발자가 주기적으로 binary를 depot에 올려줘야 하는 상황 (perforce helix core 사용)아래 batch 파일을 통해 일정 시간에 컴파일하고 만들어진 binary를 submit 함.@echo off
+setlocal enabledelayedexpansion set ENGINE_PATH=C:\Users\owner\Perforce\psyche95_GZ-PSYCHE9503_8014\GolfzonMEngine
+set PROJECT_PATH=C:\Users\owner\Perforce\psyche95_GZ-PSYCHE9503_8014\WaveM\U2Client_Wave :: 접근 권한 설정
+icacls "%ENGINE_PATH%" /grant Everyone:(F)
+icacls "%PROJECT_PATH%" /grant Everyone:(F) :: 필요한 폴더와 파일 삭제
+echo Deleting unnecessary files and folders...
+if exist "%PROJECT_PATH%\.vs" rmdir /s /q "%PROJECT_PATH%\.vs"
+if exist "%PROJECT_PATH%\DerivedDataCache" rmdir /s /q "%PROJECT_PATH%\DerivedDataCache"
+if exist "%PROJECT_PATH%\Intermediate" rmdir /s /q "%PROJECT_PATH%\Intermediate"
+if exist "%PROJECT_PATH%\Saved" rmdir /s /q "%PROJECT_PATH%\Saved"
+if exist "%PROJECT_PATH%\U2Client.sln" del /f /q "%PROJECT_PATH%\U2Client.sln" :: Unreal Engine을 이용해 비주얼 스튜디오 프로젝트 파일 생성
+echo Generating Visual Studio project files...
+"%ENGINE_PATH%\Engine\Binaries\DotNET\UnrealBuildTool.exe" -projectfiles -project="%PROJECT_PATH%\U2Client.uproject" -game -progress
+if %errorlevel% neq 0 ( echo Failed to generate Visual Studio project files. curl -X POST -H "Content-type: application/json" --data "{\"text\":\"Failed to generate Visual Studio project files\", \"channel\":\"#dev_build\"}" "https://hooks.slack.com/services/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" exit /b %errorlevel%
+) :: 비주얼 스튜디오를 이용해 U2Client.sln 빌드
+echo Building the U2Client.sln...
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\devenv.com" "%PROJECT_PATH%\U2Client.sln" /Build "Development Editor|Win64" /Project "U2Client"
+echo Errorlevel after build: %errorlevel%
+if %errorlevel% neq 0 ( echo Build process failed, checking log... curl -X POST -H "Content-type: application/json" --data "{\"text\":\"Build process failed\", \"channel\":\"#dev_build\"}" "https://hooks.slack.com/services/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" exit /b %errorlevel%
+) :: 변경된 PDB 및 DLL 파일 검사 및 Perforce로 체크아웃
+pushd "%PROJECT_PATH%\Binaries\Win64"
+set CHANGES_EXIST=
+for %%f in (*.pdb *.dll) do ( :: 파일 접미사 체크 및 변경 검사 echo %%f | findstr /R /C:".*-[0-9][0-9][0-9][0-9]\." &gt; nul if errorlevel 1 ( :: 파일이 마지막으로 변경된 시간 가져오기 for /f "tokens=2 delims==" %%t in ('wmic datafile where name^="%%f" get lastmodified /value') do set LASTMOD=%%t :: Perforce에 저장된 파일의 수정 시간 비교 p4 -u psyche95 fstat -T headTime %%f | findstr /C:"headTime" set HEADTIME=!headTime! if "!LASTMOD:~0,14!" neq "!HEADTIME!" ( set CHANGES_EXIST=true p4 -u psyche95 edit %%f ) )
+)
+popd :: 변경점이 있으면 제출하고, 없으면 되돌리기
+if defined CHANGES_EXIST ( echo Changes detected. Submitting to Perforce... p4 -u psyche95 submit -d "automate submit"
+) else ( echo No changes detected. Reverting changes... pushd "%PROJECT_PATH%\Binaries\Win64" for %%f in (*.pdb *.dll) do ( p4 -u psyche95 revert %%f ) popd
+) echo Finished: SUCCESS ]]></description><link>infra/jenkins-설치-및-구성.html</link><guid isPermaLink="false">Infra/Jenkins 설치 및 구성.md</guid><pubDate>Wed, 15 Jan 2025 12:54:31 GMT</pubDate></item><item><title><![CDATA[Jenkins 안드로이드 패키징]]></title><description><![CDATA[
+Jenkins는 JAVA 11 지원 X -&gt; JDK 17
+@echo off
+setlocal enabledelayedexpansion :: Java 11 Setting -
+set JAVA_HOME=C:\Program Files\Android\Android Studio\jre
+set PATH=%JAVA_HOME%\bin;%PATH%
+set JAVA_EXE="%JAVA_HOME%\bin\java.exe"
+:: Gradle 설정
+set GRADLE_USER_HOME=%USERPROFILE%\.gradle_java11
+:: Java 옵션 설정
+set _JAVA_OPTIONS=-Djava.specification.version=11 :: 기본 경로 설정
+set ENGINE_PATH=D:\Develop\GolfzonMEngine
+set PROJECT_PATH=C:\Users\psyche95\Desktop\jenkins_build\GolfzonM\U2Client
+set PROJECT_NAME=U2Client
+set OUTPUT_DIR=C:\Users\psyche95\Desktop\Golfzon\M_Packaging :: Android SDK 및 NDK 설정
+set ANDROID_HOME=C:\Users\psyche95\AppData\Local\Android\Sdk
+set ANDROID_NDK_PATH=%ANDROID_HOME%\ndk\25.2.9519653
+set NDKROOT=%ANDROID_NDK_PATH% :: 출력 폴더 설정
+for /f "tokens=2 delims==" %%I in ('wmic os get localdatetime /value') do set TIMESTAMP=%%I
+set NEW_OUTPUT_DIR=%OUTPUT_DIR%\Build_Android_%TIMESTAMP:~0,8%_%TIMESTAMP:~8,6% :: 필요한 디렉토리 생성
+if not exist "%NEW_OUTPUT_DIR%" mkdir "%NEW_OUTPUT_DIR%" :: 프로젝트 파일 확인
+if not exist "%PROJECT_PATH%\%PROJECT_NAME%.uproject" ( echo Error: Project file not found! exit /b 1
+) echo Starting Android packaging for %PROJECT_NAME%... :: Project Build
+call "%ENGINE_PATH%\Engine\Build\BatchFiles\RunUAT.bat" ^
+BuildCookRun ^
+-nocompileeditor ^
+-installed -nop4 ^
+-project=%PROJECT_PATH%\%PROJECT_NAME%.uproject ^
+-cook -stage -archive -archivedirectory="%NEW_OUTPUT_DIR%" ^
+-package ^
+-ue4exe="%ENGINE_PATH%\Engine\Binaries\Win64\UE4Editor-Cmd.exe" ^
+-compressed ^
+-ddc=InstalledDerivedDataBackendGraph ^
+-pak ^
+-prereqs ^
+-targetplatform=Android -cookflavor=ASTC ^
+-build ^
+-CrashReporter ^
+-target=%PROJECT_NAME% ^
+-clientconfig=Development ^
+-utf8output ^
+-AndroidSDK="%ANDROID_HOME%" ^
+-AndroidNDK="%NDKROOT%" if %ERRORLEVEL% neq 0 ( echo Error: Build failed with exit code %ERRORLEVEL% exit /b %ERRORLEVEL%
+) echo Android packaging completed successfully.
+echo Output directory: %NEW_OUTPUT_DIR%
+exit /b 0 -nocompileeditor: 에디터 컴파일을 건너뜀 -installed: 엔진 바이너리로 빌드 -nop4: Perforce 연동을 비활성화 -project: 프로젝트 파일의 경로를 지정 -cook: 콘텐츠 쿠킹을 수행 -stage: 패키징된 게임을 스테이징 디렉토리로 복사 -archive: 패키지된 게임을 아카이브 -archivedirectory: 아카이브 디렉토리를 지정 -package: 게임을 패키징 -ue4exe: 사용할 UE4 Editor 실행 파일의 경로를 지정 -compressed: 패키지를 압축 -ddc: 사용할 파생 데이터 캐시(DDC) 설정을 지정 DDC는 파생 데이터 캐시를 의미합니다. 이는 에셋 처리 결과를 저장하는 캐시 시스템입니다. 예를 들어, 텍스처의 압축 버전이나 머티리얼의 컴파일된 버전 등이 여기에 저장됩니다. DDC를 사용하면 에셋 처리 시간을 줄이고, 여러 사용자 간에 처리된 데이터를 공유할 수 있습니다. -pak: 콘텐츠를 PAK 파일로 패키징 -prereqs: 필요한 선행 요구사항을 포함 -targetplatform: 대상 플랫폼을 Android로 설정 -cookflavor: 쿠킹 설정을 ASTC(텍스처 압축 형식)로 지정 -build: 코드를 빌드 -CrashReporter: 크래시 리포터를 포함 -target: 빌드할 프로젝트 이름을 지정 -clientconfig: 클라이언트 구성을 Development or Shipping -utf8output: 출력을 UTF-8로 인코딩 -AndroidSDK: Android SDK 경로를 지정 -AndroidNDK: Android NDK 경로를 지정 Execution of commandlet took: 123.49 seconds LogShaderCompilers: Display: === FShaderJobCache stats === LogShaderCompilers: Display: Total job queries 0, among them cache hits 0 (0.00%) LogShaderCompilers: Display: Tracking 0 distinct input hashes that result in 0 distinct outputs (0.00%) LogShaderCompilers: Display: RAM used: 0.00 MB (0.00 GB) of 1638.40 MB (1.60 GB) budget. Usage: 0.00% LogShaderCompilers: Display: ================================================ LogShaderCompilers: Display: Shaders left to compile 0 LogShaderCompilers: Display: Shaders left to compile 0 OptickLog: Display: OptickPlugin UnLoaded! LogHttp: Display: cleaning up 0 outstanding Http requests. LogContentStreaming: Display: There are 1 unreleased StreamingManagers
+Took 140.1294547s to run UE4Editor-Cmd.exe, ExitCode=0
+********** COOK COMMAND COMPLETED **********
+********** BUILD COMMAND STARTED **********
+Running: D:\Develop\GolfzonMEngine\Engine\Binaries\DotNET\UnrealBuildTool.exe U2Client Android Development -Project=C:\Users\psyche95\Desktop\jenkins_build\GolfzonM\U2Client\U2Client.uproject -Manifest=C:\Users\psyche95\Desktop\jenkins_build\GolfzonM\U2Client\Intermediate\Build\Manifest.xml -nobuilduht -NoHotReload -xgeexport C:\Users\psyche95\Desktop\jenkins_build\GolfzonM\U2Client\U2Client.uproject -NoUBTMakefiles -remoteini="C:\Users\psyche95\Desktop\jenkins_build\GolfzonM\U2Client" -skipdeploy -log="C:\Windows\system32\config\systemprofile\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+Develop+GolfzonMEngine\UBT-U2Client-Android-Development.txt" Engine Directory:D:\Develop\GolfzonMEngine\Engine Project Directory:C:\Users\psyche95\Desktop\jenkins_build\GolfzonM\U2Client Adjust SDK found in C:\Users\psyche95\Desktop\jenkins_build\GolfzonM\U2Client\Plugins\Adjust\Source\Adjust\../ThirdParty/Android Engine Directory:D:\Develop\GolfzonMEngine\Engine Project Directory:C:\Users\psyche95\Desktop\jenkins_build\GolfzonM\U2Client Engine Directory:D:\Develop\GolfzonMEngine\Engine Project Directory:C:\Users\psyche95\Desktop\jenkins_build\GolfzonM\U2Client D:\Develop\GolfzonMEngine\Engine\Source\Runtime\Engine\Engine.Build.cs: warning: Referenced directory 'D:\Develop\GolfzonMEngine\Engine\Source\Launch\Public' does not exist. PLATFORM_ANDROID_NDK_VERSION = 250300 NDK toolchain: r25c, NDK version: 33, GccVersion: 4.9, ClangVersion: 14.0.7 Parsing headers for U2Client Running UnrealHeaderTool "C:\Users\psyche95\Desktop\jenkins_build\GolfzonM\U2Client\U2Client.uproject" "C:\Users\psyche95\Desktop\jenkins_build\GolfzonM\U2Client\Intermediate\Build\Android\U2Client\Development\U2Client.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -abslog="C:\Windows\system32\config\systemprofile\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+Develop+GolfzonMEngine\UHT-U2Client-Android-Development.txt" -installed LogInit: Display: Loading text-based GConfig.... Reflection code generated for U2Client in 3.4027725 seconds Compiling Native 64-bit code with NDK API 'android-33' Writing manifest to C:\Users\psyche95\Desktop\jenkins_build\GolfzonM\U2Client\Intermediate\Build\Manifest.xml XGEEXPORT: Exported 'D:\Develop\GolfzonMEngine\Engine\Intermediate\Build\UBTExport.000.xge.xml' Total execution time: 6.14 seconds
+Took 6.2589684s to run UnrealBuildTool.exe, ExitCode=0
+Running: C:\Program Files (x86)\Incredibuild\xgConsole.exe "C:\Windows\system32\config\systemprofile\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+Develop+GolfzonMEngine\UAT_XGE.xml" /Rebuild /NoLogo /ShowAgent /ShowTime /no_watchdog_thread Fatal Error: File not found: C:\Windows\system32\config\systemprofile\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+Develop+GolfzonMEngine\UAT_XGE.xml
+Took 0.0520074s to run xgConsole.exe, ExitCode=3
+BUILD FAILED: Command failed (Result:3): C:\Program Files (x86)\Incredibuild\xgConsole.exe "C:\Windows\system32\config\systemprofile\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+Develop+GolfzonMEngine\UAT_XGE.xml" /Rebuild /NoLogo /ShowAgent /ShowTime /no_watchdog_thread. See logfile for details: 'xgConsole-2024.07.31-10.14.49.txt'
+AutomationTool exiting with ExitCode=1 (Error_Unknown)
+Error: AutomationTool execution failed. Check log: C:\Windows\system32\config\systemprofile\UnrealEngine\BuildTemp\UAT_Log.txt
+Build step 'Execute Windows batch command' marked build as failure
+Finished: FAILURE
+인크레디빌드 사용시에 패키징 에러가 발생함.
+로그에서 실패한 이유가 File Not found인데 실제 경로에 가보니 해당 파일이 있었다.
+그래서 권한을 주는 등 다양한 방법을 적용해봤으나 계속해서 같은 이유로 실패했다.인크레디빌드 Agent를 끄고 패키징을 하면 Incredibuild 관련 부분을 통과할 수 있었다. 또는 RunUAT 실행 인자에 -noxge를 추가해도 Incredibuild가 꺼져서 관련 부분을 통과할 수 있었다. 이를 통해, Incredibuild 관련 이슈라 판단하고 incredibuild support에 질문함.<img alt="inc_support.png" src="images/inc_support.png" target="_self">윈도우 젠킨스 설치시에 Windows Service에 등록된다.젠킨스를 이용해서 빌드를 할 때 Window Service에 등록된 사용자로 빌드를 하는데 기본 값이 SYSTEM 사용자다. 그래서 이를 바꿔줘야한다.WIN + R를 누르고 services.msc를 입력해서 서비스를 연다.Jenkins Service를 돌릴 윈도우 계정이 필요한데 회사 도메인을 이용한 사내아이디를 사용 해야했다.Jenkins - 속성 - 로그온 - 찾아보기
+아이디 검색 - 비밀번호 입력하고 젠킨스 중지C:\Program Files\Jenkins 로 이동해서 jenkins.xml을 수정한다. xml을 열어서 &lt;arguments&gt; 있는 곳에 다음 값을 추가한다. (젠킨스 서비스가 시작할 때 domain 아이디로 로그인 하겠다고 알려줘야함)&lt;arguments&gt;-Xrs -Xmx256m -Dhudson.lifecycle=hudson.lifecycle.WindowsServiceLifecycle -jar "C:\Program Files\Jenkins\jenkins.war" --httpPort=12000 --webroot="%ProgramData%\Jenkins\war --serviceLogonAccount={yourdomain\yourid} --serviceLogonPassword={your_passward}"&lt;/arguments&gt;
+domain과 id를 하는 법은 cmd를 열고 whoami 입력<br><img alt="whoami.png" src="images/whoami.png" target="_self">젠킨스 다시 시작하고 젠킨스 빌드시에 Incredibuild에서 에러나는 부분을 넘어갈 수 있다. ====2024-07-31 오후 2:17:26====PERFORMING FINAL APK PACKAGE OPERATION=====-arm64===========================================
+Copied file C:\Users\psyche95\Desktop\jenkins_build\GolfzonM\U2Client\Intermediate\Android\arm64\gradle\app\src\main\jniLibs\arm64-v8a\libUE4.so.
+Copied file C:\Users\psyche95\Desktop\jenkins_build\GolfzonM\U2Client\Intermediate\Android\arm64\gradle\app\src\main\assets\main.obb.png.
+[FirebaseGoodies] Crashlytics debug symbols upload enabled. Adding native libraries... Creating rungradle.bat to work around commandline length limit (using unused drive letter Z:)
+Making .apk with Gradle...
+To honour the JVM settings for this build a single-use Daemon process will be forked. See [https://docs.gradle.org/7.5/userguide/gradle_daemon.html#sec:disabling_the_daemon](https://docs.gradle.org/7.5/userguide/gradle_daemon.html#sec:disabling_the_daemon).
+Daemon will be stopped at the end of the build FAILURE: Build failed with an exception. * Where:
+Build file 'Z:\build.gradle' line: 14 * What went wrong:
+A problem occurred evaluating root project 'app'.
+&gt; Could not open dsl generic class cache for script 'Z:\buildscriptAdditions.gradle' (C:\Users\psyche95\.gradle\caches\7.5\scripts\cp2i11tnu00nybyfrpbih872t). &gt; BUG! exception in phase 'semantic analysis' in source unit '_BuildScript_' Unsupported class file major version 65 * Try:
+&gt; Run with --stacktrace option to get the stack trace.
+&gt; Run with --info or --debug option to get more log output.
+&gt; Run with --scan to get full insights. Deprecated Gradle features were used in this build, making it incompatible with Gradle 8.0. You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins. See [https://docs.gradle.org/7.5/userguide/command_line_interface.html#sec:command_line_warnings](https://docs.gradle.org/7.5/userguide/command_line_interface.html#sec:command_line_warnings)
+* Get more help at [https://help.gradle.org](https://help.gradle.org/) BUILD FAILED in 4s
+ERROR: cmd.exe failed with args /c "C:\Users\psyche95\Desktop\jenkins_build\GolfzonM\U2Client\Intermediate\Android\arm64\gradle\rungradle.bat" :app:assembleDebug (see C:\Users\psyche95\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+Develop+GolfzonMEngine\Log.txt for full exception trace)
+AutomationTool exiting with ExitCode=1 (Error_Unknown)
+BUILD FAILED
+Error: Build failed with exit code 1
+Build step 'Execute Windows batch command' marked build as failure
+Finished: FAILURE
+Dataview (inline field '===2024-07-31 오후 2:17:26====PERFORMING FINAL APK PACKAGE OPERATION=====-arm64===========================================
+Copied file C:\Users\psyche95\Desktop\jenkins_build\GolfzonM\U2Client\Intermediate\Android\arm64\gradle\app\src\main\jniLibs\arm64-v8a\libUE4.so.
+Copied file C:\Users\psyche95\Desktop\jenkins_build\GolfzonM\U2Client\Intermediate\Android\arm64\gradle\app\src\main\assets\main.obb.png.
+[FirebaseGoodies] Crashlytics debug symbols upload enabled. Adding native libraries... Creating rungradle.bat to work around commandline length limit (using unused drive letter Z:)
+Making .apk with Gradle...
+To honour the JVM settings for this build a single-use Daemon process will be forked. See [https://docs.gradle.org/7.5/userguide/gradle_daemon.html#sec:disabling_the_daemon](https://docs.gradle.org/7.5/userguide/gradle_daemon.html#sec:disabling_the_daemon).
+Daemon will be stopped at the end of the build FAILURE: Build failed with an exception. * Where:
+Build file 'Z:\build.gradle' line: 14 * What went wrong:
+A problem occurred evaluating root project 'app'.
+&gt; Could not open dsl generic class cache for script 'Z:\buildscriptAdditions.gradle' (C:\Users\psyche95\.gradle\caches\7.5\scripts\cp2i11tnu00nybyfrpbih872t). &gt; BUG! exception in phase 'semantic analysis' in source unit '_BuildScript_' Unsupported class file major version 65 * Try:
+&gt; Run with --stacktrace option to get the stack trace.
+&gt; Run with --info or --debug option to get more log output.
+&gt; Run with --scan to get full insights. Deprecated Gradle features were used in this build, making it incompatible with Gradle 8.0. You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins. See [https://docs.gradle.org/7.5/userguide/command_line_interface.html#sec:command_line_warnings](https://docs.gradle.org/7.5/userguide/command_line_interface.html#sec:command_line_warnings)
+* Get more help at [https://help.gradle.org](https://help.gradle.org/) BUILD FAILED in 4s
+ERROR: cmd.exe failed with args /c "C:\Users\psyche95\Desktop\jenkins_build\GolfzonM\U2Client\Intermediate\Android\arm64\gradle\rungradle.bat" :app:assembleDebug (see C:\Users\psyche95\AppData\Roaming\Unreal Engine\AutomationTool\Logs\D+Develop+GolfzonMEngine\Log.txt for full exception trace)
+AutomationTool exiting with ExitCode=1 (Error_Unknown)
+BUILD FAILED
+Error: Build failed with exit code 1
+Build step 'Execute Windows batch command' marked build as failure
+Finished: FAILURE'): Error: -- PARSING FAILED -------------------------------------------------- &gt; 1 | ===2024-07-31 오후 2:17:26====PERFORMING FINAL APK PACKAGE OPERATION=====-arm64=========================================== | ^ 2 | Copied file C:\Users\psyche95\Desktop\jenkins_build\GolfzonM\U2Client\Intermediate\Android\arm64\gradle\app\src\main\jniLibs\arm64-v8a\libUE4.so. 3 | Copied file C:\Users\psyche95\Desktop\jenkins_build\GolfzonM\U2Client\Intermediate\Android\arm64\gradle\app\src\main\assets\main.obb.png. Expected one of the following: '(', 'null', boolean, date, duration, file link, list ('[1, 2, 3]'), negated field, number, object ('{ a: 1, b: 2 }'), string, variable
+젠킨스 설정시에 java 버전을 21로 올렸기 때문에 발생하는 에러다. 현재 gradle 7.5를 사용하고 있는데 gradle 7.5가 지원하는 상방은 java 18이다. 그래서 패키징시에 명시적으로 java 11 path를 넣고 패키징을 했다.
+:: batch 파일 상단 :: Java 11 Setting -
+set JAVA_HOME=C:\Program Files\Android\Android Studio\jre
+set PATH=%JAVA_HOME%\bin;%PATH%
+set JAVA_EXE="%JAVA_HOME%\bin\java.exe"
+:: Gradle 설정
+set GRADLE_USER_HOME=%USERPROFILE%\.gradle_java11
+:: Java 옵션 설정
+set _JAVA_OPTIONS=-Djava.specification.version=11 ]]></description><link>infra/jenkins-안드로이드-패키징.html</link><guid isPermaLink="false">Infra/Jenkins 안드로이드 패키징.md</guid><pubDate>Wed, 15 Jan 2025 12:54:13 GMT</pubDate><enclosure url="images/inc_support.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="images/inc_support.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[3. Longest Substring Without Repeating Characters]]></title><description><![CDATA[<a href=".?query=tag:blind75" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#blind75">#blind75</a> <a href=".?query=tag:medium" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#medium">#medium</a>Given a string&nbsp;s, find the length of the&nbsp;longest&nbsp;substring&nbsp;without repeating characters.Example 1:Input: s = "abcabcbb"
+Output: 3
+Explanation: The answer is "abc", with the length of 3.Example 2:Input: s = "bbbbb"
+Output: 1
+Explanation: The answer is "b", with the length of 1.Example 3:Input: s = "pwwkew"
+Output: 3
+Explanation: The answer is "wke", with the length of 3.
+Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.Constraints:
+0 &lt;= s.length &lt;= 5 * 104
+s&nbsp;consists of English letters, digits, symbols and spaces.
+내 답시간복잡도 - find, erase = 공간복잡도 class Solution {
+public: int lengthOfLongestSubstring(string s) { size_t result = 0; string sub_s; for (size_t i = 0; i &lt; s.size(); ++i) { if (auto p = sub_s.find(s[i]); p != string::npos) { // find result = max(result, sub_s.size()); sub_s.erase(0,p + 1); } sub_s += s[i]; } return max(result, sub_s.size()); }
+};
+neetcode 답Sliding window using set시간복잡도 공간복잡도 class Solution {
+public: int lengthOfLongestSubstring(string s) { unordered_set&lt;char&gt; charSet; int l = 0; int res = 0; for (int r = 0; r &lt; s.size(); r++) { while (charSet.find(s[r]) != charSet.end()) { charSet.erase(s[l]); l++; } charSet.insert(s[r]); res = max(res, r - l + 1); } return res; }
+};
+]]></description><link>algorithm/leetcode/3.-longest-substring-without-repeating-characters.html</link><guid isPermaLink="false">Algorithm/LeetCode/3. Longest Substring Without Repeating Characters.md</guid><pubDate>Tue, 14 Jan 2025 13:54:54 GMT</pubDate></item><item><title><![CDATA[55. Jump Game]]></title><description/></item><item><title><![CDATA[62. Unique Paths]]></title><description><![CDATA[There is a robot on an&nbsp;m x n&nbsp;grid. The robot is initially located at the&nbsp;top-left corner&nbsp;(i.e.,&nbsp;grid[0][0]). The robot tries to move to the&nbsp;bottom-right corner&nbsp;(i.e.,&nbsp;grid[m - 1][n - 1]). The robot can only move either down or right at any point in time.Given the two integers&nbsp;m&nbsp;and&nbsp;n, return&nbsp;the number of possible unique paths that the robot can take to reach the bottom-right corner.The test cases are generated so that the answer will be less than or equal to&nbsp;2 * 109.Example 1:<img alt="robot_maze.png" src="images/robot_maze.png" target="_self">Input: m = 3, n = 7
 Output: 28Example 2:Input: m = 3, n = 2
 Output: 3
 Explanation: From the top-left corner, there are a total of 3 ways to reach the bottom-right corner 1. Right -&gt; Down -&gt; Down
