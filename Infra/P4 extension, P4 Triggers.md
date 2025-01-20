@@ -21,7 +21,30 @@ trigger와 extension을 사용하면 Helix core에서 발생하는 동작과 바
 #### p4 trigger 적용법
 
 
+예시는 form-out 이벤트가 발생할 때 default description를 변경하는  것이다.
 
+* p4 trigger와 바인딩할 파일(shell, python 등등 가능) 을 p4 서버 내에 만든다.
+```bash
+#!/bin/bash
+
+formfile="$1"
+
+sed -i '/\<enter description\>/c\r [기능출시예정일자][이름][커밋내용]' "$formfile"
+```
+
+* p4 서버 내에서 trigger와 바인딩 한다.
+
+```bash
+$ p4 triggers
+# Triggers 아래에
+# $ {Trigger 이름} {Trigger 이벤트 종류} "{file path}"
+
+Triggers:
+	form_template form-out change "/opt/perforce/triggers/form_template.sh %formfile%"
+
+```
+
+앞으로는 form-out change가 이벤트가 발생하면 자동으로 해당 스크립트가 실행된다.
 
 #### p4 extension 적용법
 
