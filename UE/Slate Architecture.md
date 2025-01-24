@@ -196,4 +196,3 @@ The key functions that define an SWidget's behavior in Slate are:
   ## Composition
   
  Composition is the notion that any slot should be able to contain arbitrary widget content. This affords users of Slate a great deal of flexibility. Composition is used whenever possible in core Slate widgets. 구성은 모든 슬롯이 임의의 위젯 콘텐츠를 포함할 수 있어야 한다는 개념입니다. 이는 Slate 사용자에게 상당한 유연성을 제공합니다. 컴포지션은 핵심 슬레이트 위젯에서 가능할 때마다 사용됩니다.
-## Declarative Syntax

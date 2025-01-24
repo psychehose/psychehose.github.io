@@ -1,8 +1,6 @@
+#unreal #error 
 ## auto FGenericPlatformMisc::RequestExit(bool)::$_27::operator()
 
-
-
-2c90
 
 ```
           Crashed: Thread
@@ -28,8 +26,6 @@
 
 ```
 
-
-9f40
 
 ```
           Crashed: Thread
@@ -139,9 +135,6 @@ UE의 FlushLoading은:
 이는 UE의 리소스 로딩 시스템에서 필수적인 메커니즘
 
 
-
-
-
 1. 크래쉬 발생 경로 
 
     ```
@@ -171,10 +164,10 @@ UE의 FlushLoading은:
 
 
 2. 이유
-   
    AsyncLoadingThread가 suspend 상태일 때 LoadClass를 호출
    LoadClass는 내부적으로 리소스 로딩을 위해 FlushLoading 호출
    UE는 ALT가 Suspend 상태일 때 FlushLoading을 명시적으로 금지
+
    ```cpp
    UE_CLOG(IsAsyncLoadingSuspendedInternal(), LogStreaming, Fatal, 
         TEXT("Cannot Flush Async Loading while async loading is suspended (%d)"), 
@@ -182,14 +175,9 @@ UE의 FlushLoading은:
    ```
 
 3. UE가 이를 명시적으로 금지하는 이유
-
     교착 상태 방지
-
     리소스 로딩의 안전성 보장
-
     명확한 에러 메시지로 개발자에게 문제 상황 전달
-
-
+    
 4. 해결방안
-
     ALT 상태를 먼저 체크하고 Suspend 상태일 때 지연 로딩을 하기

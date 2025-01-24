@@ -89,3 +89,12 @@ sudo dnf install helix-swarm
 sudo /opt/perforce/swarm/bin/configure-swarm.sh
 ```
 
+
+5. post installation 설정 (거의 꼭 해야함)
+   
+https://help.perforce.com/helix-core/helix-swarm/swarm/current/Content/Swarm/setup.post.html#Post-install_configuration_options
+
+```
+p4 configure set filetype.bypasslock=1 #exclusive lock 핸들링
+p4 configure show filetype.bypasslock
+```
