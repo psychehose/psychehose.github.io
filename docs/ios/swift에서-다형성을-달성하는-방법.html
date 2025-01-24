@@ -1,0 +1,642 @@
+<!DOCTYPE html> <html lang="en"><head>
+<title>Swift에서 다형성을 달성하는 방법</title>
+<base href="..">
+<meta name="pathname" content="ios/swift에서-다형성을-달성하는-방법.html">
+<meta name="description" content="psychehose.github.io - Swift에서 다형성을 달성하는 방법">
+<meta property="og:title" content="Swift에서 다형성을 달성하는 방법">
+<meta property="og:description" content="psychehose.github.io - Swift에서 다형성을 달성하는 방법">
+<meta property="og:type" content="website">
+<meta property="og:url" content="ios/swift에서-다형성을-달성하는-방법.html">
+<meta property="og:image" content="https://blog.kakaocdn.net/dn/bad809/btskUMGVFT1/3Wfq3cbT9hTwOGWwsvBIk0/img.png">
+<meta property="og:site_name" content="psychehose.github.io"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=1.0, maximum-scale=5.0"><meta charset="UTF-8"><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="site-lib/rss.xml"><script async="" id="webpage-script" src="site-lib/scripts/webpage.js" onload="this.onload=null;this.setAttribute(&quot;loaded&quot;, &quot;true&quot;)"></script><script async="" id="graph-wasm-script" src="site-lib/scripts/graph-wasm.js" onload="this.onload=null;this.setAttribute(&quot;loaded&quot;, &quot;true&quot;)"></script><script async="" id="graph-render-worker-script" src="site-lib/scripts/graph-render-worker.js" onload="this.onload=null;this.setAttribute(&quot;loaded&quot;, &quot;true&quot;)"></script><link rel="icon" href="site-lib/media/favicon.png"><link rel="stylesheet" href="site-lib/styles/obsidian.css"><link rel="preload" href="site-lib/styles/other-plugins.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/other-plugins.css"></noscript><link rel="stylesheet" href="site-lib/styles/theme.css"><link rel="preload" href="site-lib/styles/global-variable-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/global-variable-styles.css"></noscript><link rel="preload" href="site-lib/styles/supported-plugins.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/supported-plugins.css"></noscript><link rel="preload" href="site-lib/styles/main-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/main-styles.css"></noscript><style>body{--line-width:40em;--line-width-adaptive:40em;--file-line-width:40em;--sidebar-width:min(20em, 80vw);--collapse-arrow-size:11px;--tree-vertical-spacing:1.3em;--sidebar-margin:12px}:root{background-color:#202124}.sidebar{height:100%;font-size:14px;z-index:10;min-width:calc(var(--sidebar-width) + var(--divider-width-hover));max-width:calc(var(--sidebar-width) + var(--divider-width-hover));position:relative;overflow:hidden;overflow:clip;transition:min-width ease-in-out,max-width ease-in-out;transition-duration:.2s;contain:size}#left-sidebar{left:0}#right-sidebar{right:0}.sidebar.is-collapsed{min-width:0;max-width:0}.sidebar.floating{position:absolute}.sidebar .leaf-content{height:100%;min-width:calc(var(--sidebar-width) - var(--divider-width-hover));top:0;padding:var(--sidebar-margin);padding-top:4em;line-height:var(--line-height-tight);background-color:var(--background-secondary);transition:background-color,border-right,border-left,box-shadow;transition-duration:var(--color-fade-speed);transition-timing-function:ease-in-out;position:absolute;display:flex;flex-direction:column}.sidebar:not(.is-collapsed) .leaf-content{min-width:calc(max(100%,var(--sidebar-width)) - 3px);max-width:calc(max(100%,var(--sidebar-width)) - 3px)}#left-sidebar-content{left:0;border-top-right-radius:var(--radius-l);border-bottom-right-radius:var(--radius-l)}#right-sidebar-content{right:0;border-top-left-radius:var(--radius-l);border-bottom-left-radius:var(--radius-l)}.sidebar #left-sidebar-content,.sidebar #right-sidebar-content{contain:none!important;container-type:normal!important;animation:none!important}.sidebar:has(.leaf-content:empty):has(.topbar-content:empty){display:none}.sidebar-topbar{height:2em;width:var(--sidebar-width);top:var(--sidebar-margin);padding-inline:var(--sidebar-margin);z-index:1;position:fixed;display:flex;align-items:center;transition:width ease-in-out;transition-duration:inherit}.sidebar.is-collapsed .sidebar-topbar{width:calc(2.3em + var(--sidebar-margin) * 2)}.sidebar .sidebar-topbar.is-collapsed{width:0}#left-sidebar .sidebar-topbar{left:0;flex-direction:row}#right-sidebar .sidebar-topbar{right:0;flex-direction:row-reverse}#left-sidebar .topbar-content{margin-right:calc(2.3em + var(--sidebar-margin));flex-direction:row}#right-sidebar .topbar-content{margin-left:calc(2.3em + var(--sidebar-margin));flex-direction:row-reverse}.topbar-content{overflow:hidden visible;overflow:clip visible;width:100%;height:100%;display:flex;align-items:center;transition:inherit}.sidebar.is-collapsed .topbar-content{width:0;transition:inherit}.clickable-icon.sidebar-collapse-icon{background-color:transparent;color:var(--icon-color-focused);padding:2px!important;margin:0!important;height:100%!important;width:2.3em!important;margin-inline:0.14em!important;position:absolute}#left-sidebar .clickable-icon.sidebar-collapse-icon{transform:rotateY(180deg);right:var(--sidebar-margin)}#right-sidebar .clickable-icon.sidebar-collapse-icon{transform:rotateY(180deg);left:var(--sidebar-margin)}.clickable-icon.sidebar-collapse-icon svg.svg-icon{width:100%;height:100%}.feature-title{margin-left:4px;text-transform:uppercase;letter-spacing:.06em;margin-top:.75em;margin-bottom:.75em}.feature-header{display:flex;align-items:center;padding-top:0;font-size:1em;padding-left:0}body.floating-sidebars .sidebar{position:absolute}body{transition:background-color var(--color-fade-speed) ease-in-out}#layout{display:flex;flex-direction:row;height:100%;width:100%;align-items:stretch;justify-content:center}#center-content{flex-basis:100%;max-width:100%;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;transition:opacity .2s ease-in-out;contain:inline-size}.hide{opacity:0!important;transition:opacity .2s ease-in-out;pointer-events:none}#center-content>.obsidian-document{padding-left:2em;padding-right:1em;margin-bottom:0;width:100%;width:-webkit-fill-available;width:-moz-available;width:fill-available;transition:background-color var(--color-fade-speed) ease-in-out;border-top-right-radius:var(--window-radius,var(--radius-m));border-top-left-radius:var(--window-radius,var(--radius-m));overflow-x:hidden!important;overflow-y:auto!important;display:flex!important;flex-direction:column!important;align-items:center!important;contain:inline-size}body #center-content>.obsidian-document>.markdown-preview-sizer{padding-bottom:80vh;width:100%;max-width:var(--line-width);flex-basis:var(--line-width);transition:background-color var(--color-fade-speed) ease-in-out;contain:inline-size}#center-content>.obsidian-document>div{width:100%!important;transition:background-color var(--color-fade-speed) ease-in-out;contain:inline-size}#center-content>.obsidian-document:not([data-type=markdown]).embed{display:flex;padding:1em;height:100%;width:100%;align-items:center;justify-content:center}#center-content>.obsidian-document:not([data-type=markdown]).embed>*{max-width:100%;max-height:100%;object-fit:contain}:not(h1,h2,h3,h4,h5,h6):has(> :is(.math:not(.math-inline),table)){overflow-x:auto!important}#center-content>.obsidian-document:not([data-type=markdown]){overflow-x:auto;contain:content;padding:0;margin:0;height:100%}.obsidian-document[data-type=attachment]{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;width:100%}.obsidian-document[data-type=attachment]>*{outline:0;border:none;box-shadow:none}.obsidian-document[data-type=attachment] :is(img){max-width:90%;max-height:90%;object-fit:contain}.obsidian-document[data-type=attachment]>:is(audio){width:100%;max-width:min(90%,var(--line-width))}.obsidian-document[data-type=attachment]>:is(embed,iframe,video){width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain}.canvas-wrapper>:is(.header,.footer){z-index:100;position:absolute;display:flex;justify-content:center;flex-direction:column;width:100%;align-items:center}.scroll-highlight{position:absolute;width:100%;height:100%;pointer-events:none;z-index:1000;background-color:hsla(var(--color-accent-hsl),.25);opacity:0;padding:1em;inset:50%;translate:-50% -50%;border-radius:var(--radius-s)}</style><script defer="">async function loadIncludes(){let e=document.querySelectorAll("link[itemprop='include']");for(const t of e){let e=t.getAttribute("href");try{let o="";if(e.startsWith("https:")||e.startsWith("http:")||"file:"!=window.location.protocol){const l=await fetch(e);if(!l.ok){console.log("Could not include file: "+e),t?.remove();continue}o=await l.text()}else{const t=document.getElementById(btoa(encodeURI(e)));if(t){const e=JSON.parse(decodeURI(atob(t.getAttribute("value")??"")));o=e?.data??""}}let l=document.createRange().createContextualFragment(o),n=Array.from(l.children);for(let e of n)e?.classList?.add("hide"),e.style.transition="opacity 0.5s ease-in-out",setTimeout((()=>{e?.classList?.remove("hide")}),10);t.before(l),t.remove(),console.log("Included text: "+o),console.log("Included file: "+e)}catch(o){t?.remove(),console.log("Could not include file: "+e,o);continue}}}document.addEventListener("DOMContentLoaded",(()=>{loadIncludes()}));let isFileProtocol="file:"==location.protocol;function waitLoadScripts(e,t){let o=e.map((e=>document.getElementById(e+"-script")));!function e(l){let n=o[l],c=l+1;n?(n&&"true"!=n.getAttribute("loaded")||l<o.length&&e(c),l<o.length&&n.addEventListener("load",(()=>e(c)))):l<o.length?e(c):t()}(0)}</script></head><body class="publish css-settings-manager mod-macos is-hidden-frameless native-scrollbars show-inline-title show-ribbon show-view-header minimal-default-light minimal-default-dark minimal-readable colorful-headings links-int-on links-ext-on full-width-media trim-cols sidebar-tabs-default is-focused"><script defer="">let theme=localStorage.getItem("theme")||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");"dark"==theme?(document.body.classList.add("theme-dark"),document.body.classList.remove("theme-light")):(document.body.classList.add("theme-light"),document.body.classList.remove("theme-dark")),window.innerWidth<480?document.body.classList.add("is-phone"):window.innerWidth<768?document.body.classList.add("is-tablet"):window.innerWidth<1024?document.body.classList.add("is-small-screen"):document.body.classList.add("is-large-screen")</script><div class="parsed-feature-container" style="display: contents;"><link itemprop="include" href="site-lib/html/custom-head-content-content.html"></div><div id="layout"><div id="left-content" class="leaf" style="--sidebar-width: var(--sidebar-width-left);"><div id="left-sidebar" class="sidebar"><div class="sidebar-handle"></div><div class="sidebar-topbar"><div class="topbar-content"><div id="search-container"><div id="search-wrapper"><input enterkeyhint="search" type="search" spellcheck="false" placeholder="Search..."><div aria-label="Clear search" id="search-clear-button"></div></div></div></div><div class="clickable-icon sidebar-collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="svg-icon"><path d="M21 3H3C1.89543 3 1 3.89543 1 5V19C1 20.1046 1.89543 21 3 21H21C22.1046 21 23 20.1046 23 19V5C23 3.89543 22.1046 3 21 3Z"></path><path d="M10 4V20"></path><path d="M4 7H7"></path><path d="M4 10H7"></path><path d="M4 13H7"></path></svg></div></div><div class="sidebar-content-wrapper"><div id="left-sidebar-content" class="leaf-content"><link itemprop="include" href="site-lib/html/file-tree-content.html"></div></div><script defer="">let ls = document.querySelector("#left-sidebar"); ls.classList.toggle("is-collapsed", window.innerWidth < 768); ls.style.setProperty("--sidebar-width", localStorage.getItem("sidebar-left-width"));</script></div></div><div id="center-content" class="leaf"><div class="obsidian-document markdown-preview-view markdown-rendered node-insert-event is-readable-line-width allow-fold-headings show-indentation-guide allow-fold-lists show-properties" data-type="markdown"><style id="MJX-CHTML-styles">mjx-msub{display:inline-block;text-align:left}mjx-texatom{display:inline-block;text-align:left}mjx-c.mjx-c1D443.TEX-I::before{padding:.683em .751em 0 0;content:"P"}mjx-c.mjx-c1D445.TEX-I::before{padding:.683em .759em .021em 0;content:"R"}mjx-c.mjx-c1D43D.TEX-I::before{padding:.683em .633em .022em 0;content:"J"}mjx-c.mjx-c1D438.TEX-I::before{padding:.68em .764em 0 0;content:"E"}mjx-c.mjx-c1D436.TEX-I::before{padding:.705em .76em .022em 0;content:"C"}mjx-c.mjx-c1D447.TEX-I::before{padding:.677em .704em 0 0;content:"T"}mjx-c.mjx-c1D440.TEX-I::before{padding:.683em 1.051em 0 0;content:"M"}mjx-c.mjx-c2F::before{padding:.75em .5em .25em 0;content:"/"}mjx-c.mjx-c1D43A.TEX-I::before{padding:.705em .786em .022em 0;content:"G"}mjx-c.mjx-c1D452.TEX-I::before{padding:.442em .466em .011em 0;content:"e"}mjx-c.mjx-c1D45F.TEX-I::before{padding:.442em .451em .011em 0;content:"r"}mjx-c.mjx-c1D44E.TEX-I::before{padding:.441em .529em .01em 0;content:"a"}mjx-c.mjx-c1D461.TEX-I::before{padding:.626em .361em .011em 0;content:"t"}mjx-c.mjx-c1D451.TEX-I::before{padding:.694em .52em .01em 0;content:"d"}mjx-c.mjx-c1D45C.TEX-I::before{padding:.441em .485em .011em 0;content:"o"}mjx-c.mjx-c1D462.TEX-I::before{padding:.442em .572em .011em 0;content:"u"}mjx-c.mjx-c1D459.TEX-I::before{padding:.694em .298em .011em 0;content:"l"}mjx-c.mjx-c1D45D.TEX-I::before{padding:.442em .503em .194em 0;content:"p"}mjx-c.mjx-c1D460.TEX-I::before{padding:.442em .469em .01em 0;content:"s"}mjx-c.mjx-c2212::before{padding:.583em .778em .082em 0;content:"−"}mjx-c.mjx-c31::before{padding:.666em .5em 0 0;content:"1"}mjx-container[jax=CHTML]{line-height:0}mjx-container [space="1"]{margin-left:.111em}mjx-container [space="2"]{margin-left:.167em}mjx-container [space="3"]{margin-left:.222em}mjx-container [space="4"]{margin-left:.278em}mjx-container [space="5"]{margin-left:.333em}mjx-container [rspace="1"]{margin-right:.111em}mjx-container [rspace="2"]{margin-right:.167em}mjx-container [rspace="3"]{margin-right:.222em}mjx-container [rspace="4"]{margin-right:.278em}mjx-container [rspace="5"]{margin-right:.333em}mjx-container [size="s"]{font-size:70.7%}mjx-container [size=ss]{font-size:50%}mjx-container [size=Tn]{font-size:60%}mjx-container [size=sm]{font-size:85%}mjx-container [size=lg]{font-size:120%}mjx-container [size=Lg]{font-size:144%}mjx-container [size=LG]{font-size:173%}mjx-container [size=hg]{font-size:207%}mjx-container [size=HG]{font-size:249%}mjx-container [width=full]{width:100%}mjx-box{display:inline-block}mjx-block{display:block}mjx-itable{display:inline-table}mjx-row{display:table-row}mjx-row>*{display:table-cell}mjx-mtext{display:inline-block}mjx-mstyle{display:inline-block}mjx-merror{display:inline-block;color:red;background-color:#ff0}mjx-mphantom{visibility:hidden}mjx-assistive-mml{top:0;left:0;clip:rect(1px,1px,1px,1px);user-select:none;position:absolute!important;padding:1px 0 0!important;border:0!important;display:block!important;width:auto!important;overflow:hidden!important}mjx-assistive-mml[display=block]{width:100%!important}mjx-math{display:inline-block;text-align:left;line-height:0;text-indent:0;font-style:normal;font-weight:400;font-size:100%;letter-spacing:normal;border-collapse:collapse;overflow-wrap:normal;word-spacing:normal;white-space:nowrap;direction:ltr;padding:1px 0}mjx-container[jax=CHTML][display=true]{display:block;text-align:center;margin:1em 0}mjx-container[jax=CHTML][display=true][width=full]{display:flex}mjx-container[jax=CHTML][display=true] mjx-math{padding:0}mjx-container[jax=CHTML][justify=left]{text-align:left}mjx-container[jax=CHTML][justify=right]{text-align:right}mjx-mi{display:inline-block;text-align:left}mjx-c{display:inline-block}mjx-utext{display:inline-block;padding:.75em 0 .2em}mjx-mo{display:inline-block;text-align:left}mjx-stretchy-h{display:inline-table;width:100%}mjx-stretchy-h>*{display:table-cell;width:0}mjx-stretchy-h>*>mjx-c{display:inline-block;transform:scaleX(1)}mjx-stretchy-h>*>mjx-c::before{display:inline-block;width:initial}mjx-stretchy-h>mjx-ext{overflow:clip visible;width:100%}mjx-stretchy-h>mjx-ext>mjx-c::before{transform:scaleX(500)}mjx-stretchy-h>mjx-ext>mjx-c{width:0}mjx-stretchy-h>mjx-beg>mjx-c{margin-right:-.1em}mjx-stretchy-h>mjx-end>mjx-c{margin-left:-.1em}mjx-stretchy-v{display:inline-block}mjx-stretchy-v>*{display:block}mjx-stretchy-v>mjx-beg{height:0}mjx-stretchy-v>mjx-end>mjx-c{display:block}mjx-stretchy-v>*>mjx-c{transform:scaleY(1);transform-origin:left center;overflow:hidden}mjx-stretchy-v>mjx-ext{display:block;height:100%;box-sizing:border-box;border:0 solid transparent;overflow:visible clip}mjx-stretchy-v>mjx-ext>mjx-c::before{width:initial;box-sizing:border-box}mjx-stretchy-v>mjx-ext>mjx-c{transform:scaleY(500) translateY(.075em);overflow:visible}mjx-mark{display:inline-block;height:0}mjx-msup{display:inline-block;text-align:left}mjx-mn{display:inline-block;text-align:left}mjx-c::before{display:block;width:0}.MJX-TEX{font-family:MJXZERO,MJXTEX}.TEX-B{font-family:MJXZERO,MJXTEX-B}.TEX-I{font-family:MJXZERO,MJXTEX-I}.TEX-MI{font-family:MJXZERO,MJXTEX-MI}.TEX-BI{font-family:MJXZERO,MJXTEX-BI}.TEX-S1{font-family:MJXZERO,MJXTEX-S1}.TEX-S2{font-family:MJXZERO,MJXTEX-S2}.TEX-S3{font-family:MJXZERO,MJXTEX-S3}.TEX-S4{font-family:MJXZERO,MJXTEX-S4}.TEX-A{font-family:MJXZERO,MJXTEX-A}.TEX-C{font-family:MJXZERO,MJXTEX-C}.TEX-CB{font-family:MJXZERO,MJXTEX-CB}.TEX-FR{font-family:MJXZERO,MJXTEX-FR}.TEX-FRB{font-family:MJXZERO,MJXTEX-FRB}.TEX-SS{font-family:MJXZERO,MJXTEX-SS}.TEX-SSB{font-family:MJXZERO,MJXTEX-SSB}.TEX-SSI{font-family:MJXZERO,MJXTEX-SSI}.TEX-SC{font-family:MJXZERO,MJXTEX-SC}.TEX-T{font-family:MJXZERO,MJXTEX-T}.TEX-V{font-family:MJXZERO,MJXTEX-V}.TEX-VB{font-family:MJXZERO,MJXTEX-VB}mjx-stretchy-h mjx-c,mjx-stretchy-v mjx-c{font-family:MJXZERO,MJXTEX-S1,MJXTEX-S4,MJXTEX,MJXTEX-A!important}@font-face{font-family:MJXZERO;src:url("site-lib/fonts/mathjax_zero.woff") format("woff")}@font-face{font-family:MJXTEX;src:url("site-lib/fonts/mathjax_main-regular.woff") format("woff")}@font-face{font-family:MJXTEX-B;src:url("site-lib/fonts/mathjax_main-bold.woff") format("woff")}@font-face{font-family:MJXTEX-I;src:url("site-lib/fonts/mathjax_math-italic.woff") format("woff")}@font-face{font-family:MJXTEX-MI;src:url("site-lib/fonts/mathjax_main-italic.woff") format("woff")}@font-face{font-family:MJXTEX-BI;src:url("site-lib/fonts/mathjax_math-bolditalic.woff") format("woff")}@font-face{font-family:MJXTEX-S1;src:url("site-lib/fonts/mathjax_size1-regular.woff") format("woff")}@font-face{font-family:MJXTEX-S2;src:url("site-lib/fonts/mathjax_size2-regular.woff") format("woff")}@font-face{font-family:MJXTEX-S3;src:url("site-lib/fonts/mathjax_size3-regular.woff") format("woff")}@font-face{font-family:MJXTEX-S4;src:url("site-lib/fonts/mathjax_size4-regular.woff") format("woff")}@font-face{font-family:MJXTEX-A;src:url("site-lib/fonts/mathjax_ams-regular.woff") format("woff")}@font-face{font-family:MJXTEX-C;src:url("site-lib/fonts/mathjax_calligraphic-regular.woff") format("woff")}@font-face{font-family:MJXTEX-CB;src:url("site-lib/fonts/mathjax_calligraphic-bold.woff") format("woff")}@font-face{font-family:MJXTEX-FR;src:url("site-lib/fonts/mathjax_fraktur-regular.woff") format("woff")}@font-face{font-family:MJXTEX-FRB;src:url("site-lib/fonts/mathjax_fraktur-bold.woff") format("woff")}@font-face{font-family:MJXTEX-SS;src:url("site-lib/fonts/mathjax_sansserif-regular.woff") format("woff")}@font-face{font-family:MJXTEX-SSB;src:url("site-lib/fonts/mathjax_sansserif-bold.woff") format("woff")}@font-face{font-family:MJXTEX-SSI;src:url("site-lib/fonts/mathjax_sansserif-italic.woff") format("woff")}@font-face{font-family:MJXTEX-SC;src:url("site-lib/fonts/mathjax_script-regular.woff") format("woff")}@font-face{font-family:MJXTEX-T;src:url("site-lib/fonts/mathjax_typewriter-regular.woff") format("woff")}@font-face{font-family:MJXTEX-V;src:url("site-lib/fonts/mathjax_vector-regular.woff") format("woff")}@font-face{font-family:MJXTEX-VB;src:url("site-lib/fonts/mathjax_vector-bold.woff") format("woff")}mjx-c.mjx-c1D442.TEX-I::before{padding:.704em .763em .022em 0;content:"O"}mjx-c.mjx-c28::before{padding:.75em .389em .25em 0;content:"("}mjx-c.mjx-c1D45B.TEX-I::before{padding:.442em .6em .011em 0;content:"n"}mjx-c.mjx-c32::before{padding:.666em .5em 0 0;content:"2"}mjx-c.mjx-c29::before{padding:.75em .389em .25em 0;content:")"}mjx-c.mjx-c2217::before{padding:.465em .5em 0 0;content:"∗"}</style><div class="markdown-preview-sizer markdown-preview-section"><div class="header"><h1 class="page-title heading inline-title" id="Swift에서_다형성을_달성하는_방법_0">Swift에서 다형성을 달성하는 방법</h1><div class="data-bar"></div></div><div class="markdown-preview-pusher" style="width: 1px; height: 0.1px; margin-bottom: 0px;"></div><div class="el-p"><p dir="auto">이번 글은 WWDC 2022 Embrace Swift generics와 같은 년도인 Design Protocol interfaces in Swift를 보고 포스팅하게 되었습니다.</p></div><div class="el-p"><p dir="auto">이 포스팅에서 다음과 같은 내용을 다룹니다.</p></div><div class="el-ol"><ol>
+<li data-line="0" dir="auto">
+<p>Ad - Hoc 다형성과 Subtype 다형성을 설명하고 코드 구현, 그리고 이 구조들에서 발생하는 문제점</p>
+</li>
+<li data-line="2" dir="auto">
+<p>제네릭을 이용한 파라미터릭 다형성을 달성하는 법. 이 부분에서 some 키워드와 any 키워드를 설명하고 interface를 설계하고 코드를 작성하는 방법</p>
+</li>
+</ol></div><div class="el-hr"><hr></div><div class="el-h4"><h4 data-heading="다형성" dir="auto" class="heading" id="다형성_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>다형성</h4></div><div class="el-blockquote"><blockquote dir="auto">
+<p>다형성(多形性,&nbsp;polymorphism; 폴리모피즘)은 그 프로그래밍 언어의&nbsp;<a data-tooltip-position="top" aria-label="https://ko.wikipedia.org/wiki/%EC%9E%90%EB%A3%8C%ED%98%95_%EC%B2%B4%EA%B3%84" rel="noopener nofollow" class="external-link is-unresolved" href="https://ko.wikipedia.org/wiki/%EC%9E%90%EB%A3%8C%ED%98%95_%EC%B2%B4%EA%B3%84" target="_self">자료형 체계</a>의 성질을 나타내는 것으로, 프로그램 언어의 각 요소들(<a data-tooltip-position="top" aria-label="https://ko.wikipedia.org/wiki/%EC%83%81%EC%88%98" rel="noopener nofollow" class="external-link is-unresolved" href="https://ko.wikipedia.org/wiki/%EC%83%81%EC%88%98" target="_self">상수</a>,&nbsp;<a data-tooltip-position="top" aria-label="https://ko.wikipedia.org/wiki/%EB%B3%80%EC%88%98_(%EC%BB%B4%ED%93%A8%ED%84%B0_%EA%B3%BC%ED%95%99)" rel="noopener nofollow" class="external-link is-unresolved" href="https://ko.wikipedia.org/wiki/%EB%B3%80%EC%88%98_(%EC%BB%B4%ED%93%A8%ED%84%B0_%EA%B3%BC%ED%95%99)" target="_self">변수</a>,&nbsp;<a data-tooltip-position="top" aria-label="https://ko.wikipedia.org/wiki/%EC%8B%9D" rel="noopener nofollow" class="external-link is-unresolved" href="https://ko.wikipedia.org/wiki/%EC%8B%9D" target="_self">식</a>,&nbsp;<a data-tooltip-position="top" aria-label="https://ko.wikipedia.org/wiki/%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8" rel="noopener nofollow" class="external-link is-unresolved" href="https://ko.wikipedia.org/wiki/%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8" target="_self">오브젝트</a>,&nbsp;<a data-tooltip-position="top" aria-label="https://ko.wikipedia.org/wiki/%ED%95%A8%EC%88%98" rel="noopener nofollow" class="external-link is-unresolved" href="https://ko.wikipedia.org/wiki/%ED%95%A8%EC%88%98" target="_self">함수</a>,&nbsp;<a data-tooltip-position="top" aria-label="https://ko.wikipedia.org/wiki/%EB%A9%94%EC%86%8C%EB%93%9C" rel="noopener nofollow" class="external-link is-unresolved" href="https://ko.wikipedia.org/wiki/%EB%A9%94%EC%86%8C%EB%93%9C" target="_self">메소드</a>&nbsp;등)이 다양한 자료형(type)에 속하는 것이 허가되는 성질을 가리킨다.</p>
+</blockquote></div><div class="el-p"><p dir="auto">즉 하나의 코드로 여러 행동을 하게 해주는 것이 다형성이라고 생각하면 될 것 같아요. 다형성은 다양한 방식으로 달성할 수 있는데요.&nbsp;</p></div><div class="el-p"><p dir="auto">WWDC 2022에서는 3가지로 설명하고 있습니다.</p></div><div class="el-ol"><ol>
+<li data-line="0" dir="auto">
+<p>ad-hoc 다형성 - 오버로딩</p>
+</li>
+<li data-line="2" dir="auto">
+<p>Subtype 다형성 - 오버라이딩</p>
+</li>
+<li data-line="4" dir="auto">
+<p>파라미터릭 다형성 using Generic</p>
+</li>
+</ol></div><div class="el-p"><p dir="auto">그러면 하나씩 살펴보도록 하겠습니다.</p></div><div class="el-p"><p dir="auto">설명하기에 앞서 코딩을 해야 하기 때문에, 요구사항을 먼저 정하겠습니다. 다음과 같은 프로그램을 개발해야 합니다.</p></div><div class="el-blockquote"><blockquote dir="auto">
+<p>농장 시뮬레이팅 만들기!<br>
+Farm (농장)에는&nbsp;<strong>Cow</strong>(소),<strong>Horse</strong>(말),<strong>Chicken</strong>(닭)이 있습니다.<br>
+소는&nbsp;<strong>Hay</strong>(건초), 말은&nbsp;<strong>Carrot</strong>(당근), 닭은 Grain(사료)을 먹습니다.<br>
+농장은 동물들에게 밥을 줘야 하기 때문에, Hay, Carrot, Grain을 수확해야 함. Alfalfa가 자라서 Hay가 되고, Root는 Carrot,&nbsp;<strong>Wheat</strong>가 자라서 Grain이 됩니다.</p>
+</blockquote></div><div class="el-h4"><h4 data-heading="1. Adhoc 다형성" dir="auto" class="heading" id="1._Adhoc_다형성_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>1. Adhoc 다형성</h4></div><div class="el-pre"><pre><code data-line="0">// Animal.swift
+
+struct Cow {
+  func eat(_ food: Hay) {
+    print("\(Self.self) eat \(food)")
+  }
+}
+
+struct Horse {
+  func eat(_ food: Carrot) {
+    print("\(Self.self) eat \(food)")
+  }
+}
+
+struct Chicken {
+  func eat(_ food: Grain) {
+    print("\(Self.self) eat \(food)")
+  }
+}
+</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre></div><div class="el-pre"><pre><code data-line="0">// AnimalFeed.swift
+
+// 재료 -&gt; 음식
+// 소는 Alfalfa가 자라서 수확된 Hay를 먹음
+// 말은 Root가 자라서 수확된 Carrot을 먹음
+// 닭은 Wheat가 자라서 수확된 Grain을 먹음
+
+struct Hay {
+  static func grow() -&gt; Alfalfa {
+    return Alfalfa()
+  }
+}
+
+struct Alfalfa {
+  func harvest() -&gt; Hay {
+    return Hay()
+  }
+}
+
+struct Carrot {
+  static func grow() -&gt; Root {
+    return Root()
+  }
+}
+
+struct Root {
+  func harvest() -&gt; Carrot {
+    return Carrot()
+  }
+}
+
+struct Grain {
+  static func grow() -&gt; Wheat {
+    return Wheat()
+  }
+}
+
+struct Wheat {
+  func harvest() -&gt; Grain {
+    return Grain()
+  }
+}
+</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre></div><div class="el-pre"><pre><code data-line="0">// Farm.swift
+
+struct Farm {
+  func feed(_ animal: Cow) {
+    let alfalfa = Hay.grow()
+    let food = alfalfa.harvest()
+    animal.eat(food)
+  }
+
+  func feed(_ animal: Horse) {
+    let root = Carrot.grow()
+    let food = root.harvest()
+    animal.eat(food)
+  }
+
+  func feed(_ animal: Chicken) {
+    let wheat = Grain.grow()
+    let food = wheat.harvest()
+    animal.eat(food)
+  }
+}
+</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre></div><div class="el-pre"><pre><code data-line="0">// FarmSimulator.playgroud
+
+import Foundation
+
+let farm = Farm()
+
+let cow = Cow()
+let horse = Horse()
+let chicken = Chicken()
+
+
+
+farm.feed(cow) // Print: Cow eat Hay()
+farm.feed(horse) // Print: Horse eat Carrot()
+farm.feed(chicken) // Print: Chicken eat Grain()
+</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre></div><div class="el-p"><p dir="auto">Ad-Hoc 다형성을 이용해서 요구사항을 만족하는 코드를 작성했습니다. 코드를 보면 유형에 따라 구체적인 feed() 함수가 결정되고 실행되는 것을 볼 수 있습니다. 이것은 함수 오버로딩 (Function overloading)을 통해서 작동하고 있어요(파라미터의 타입을 다르게 동일한 함수를 작성하는 것)</p></div><div class="el-p"><p dir="auto"><img src="https://blog.kakaocdn.net/dn/bad809/btskUMGVFT1/3Wfq3cbT9hTwOGWwsvBIk0/img.png" referrerpolicy="no-referrer" target="_self" class="is-unresolved"></p></div><div class="el-p"><p dir="auto">이 방식의 문제점은 무엇일까요? 오버로딩은 반복적인 구현, 즉 보일러 플레이트를 유발합니다. 코드를 너무 많이 작성해야 한다는 것이죠. 그리고 요구사항 변경에 매우 취약합니다. 한 가지 예를 들어보도록 할게요.</p></div><div class="el-p"><p dir="auto">요구사항 변경</p></div><div class="el-blockquote"><blockquote dir="auto">
+<p>농장에 새로운 동물 돼지가 들어왔어요. 돼지는 GrainForPig를 먹습니다. 그리고 돼지가 먹는 GrainForPig는 옥수수 Corn으로 만들어집니다.</p>
+</blockquote></div><div class="el-pre"><pre><code data-line="0">// Animal.swift 에 추가해야함
+struct Pig {
+  func eat(_ food: GrainForPig) {
+    print("\(Self.self) eat \(food)")
+  }
+}
+
+// AnimalFeed.swift
+struct GrainForPig {
+  static func grow() -&gt; GrainForPig {
+    return GrainForPig()
+  }
+}
+
+struct Corn {
+  func harvest() -&gt; GrainForPig {
+    return GrainForPig()
+  }
+}
+
+// Farm.swift
+
+func feed(_ animal: Pig) {
+   let corn = GrainForPig.grow()
+   let food = corn.harvest()
+   animal.eat(food)
+}
+
+// FarmSimulator.playgroud
+
+let pig = Pig()
+farm.feed(pig) // Print: Chicken eat Grain()
+</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre></div><div class="el-p"><p dir="auto">변경된 요구사항을 만족하기 위해서 위의 코드를 추가로 작성해야 합니다. 새로운 기능이 추가된 것도 아닌데 작성할 코드가 너무 많아 보입니다. 그리고 더 중요한 건&nbsp;컴파일러는 이러한 요구사항에 일절 관여하지 않기 때문에&nbsp;코딩할 때 feed 함수를 오버로딩 해야 한다는 것을 깜빡해도 경고를 하지 않는다는 것입니다. 디버깅 비용이 높아지고 있어요. 딱 봐도 안 좋은 방식인 것 같습니다.</p></div><div class="el-h4"><h4 data-heading="2. Subtype 다형성" dir="auto" class="heading" id="2._Subtype_다형성_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>2. Subtype 다형성</h4></div><div class="el-p"><p dir="auto">Subtype 다형성이 작동하는 메커니즘은&nbsp;<strong>class</strong>를 이용한 상속입니다. 한 Super Class가 있고 이를&nbsp;<strong>상속해서</strong>&nbsp;관련 함수를&nbsp;<strong>오버라이딩(overriding)</strong>&nbsp;합니다. 여기에서는 Animal이라는 Super Class를 만들고, Cow, Horse, Chicken은 Animal을 상속하게 합니다.</p></div><div class="el-pre"><pre><code data-line="0">import Foundation
+
+// Animal.swift
+
+class Animal {
+  func eat(_ food: Any) { fatalError(" Subclass implements 'eat' ") }
+}
+
+
+class Cow: Animal {
+  override func eat(_ food: Any) {
+    guard let food = food as? Hay else { fatalError("소는 \(food) 를 먹을 수 없습니다.") }
+    print("\(Self.self) eat \(food)")
+  }
+}
+
+class Horse: Animal {
+  override func eat(_ food: Any) {
+    guard let food = food as? Carrot else { fatalError("말은 \(food) 를 먹을 수 없습니다.") }
+    print("\(Self.self) eat \(food)")
+  }
+
+}
+
+class Chicken: Animal {
+  override func eat(_ food: Any) {
+    guard let food = food as? Grain else { fatalError("닭은 \(food) 를 먹을 수 없습니다.") }
+    print("\(Self.self) eat \(food)")
+  }
+}
+
+// Farm.swift
+struct Farm {
+  func feed(_ animal: Animal) {
+
+    if animal is Cow {
+      let alfalfa = Hay.grow()
+      let food = alfalfa.harvest()
+      animal.eat(food)
+
+      return
+    }
+
+    if animal is Horse {
+      let root = Carrot.grow()
+      let food = root.harvest()
+      animal.eat(food)
+
+      return
+    }
+
+    if animal is Chicken {
+      let wheat = Grain.grow()
+      let food = wheat.harvest()
+      animal.eat(food)
+
+      return
+    }
+
+    fatalError("올바른 동물 타입이 아닙니다.")
+  }
+}
+
+// AnimalFeed.swift는 변경 안함
+// FarmSimulator.playground도 변경 안함
+</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre></div><div class="el-p"><p dir="auto">소, 닭, 말은 다른 먹이 타입을 먹기 때문에 eat()의 파라미터 food가 구체적일 수가 없습니다. 따라서 Animal 클래스에서의 eat의 파라미터인 food의 타입을 구체적인 타입이 아니라&nbsp;<strong>유연한 Any 타입</strong>으로 변경해야 합니다.</p></div><div class="el-p"><p dir="auto">이제 각각의 구체적인 동물 클래스(소, 닭, 말)에서 eat 메서드를 구현합시다. 이때 주의할 점이 있습니다. eat()을 구현할 때 guard let을 이용해서 타입 검사를 해야 합니다. 왜냐하면 eat의 파라미터가 Any이기 때문에 모든 타입이 전달인자(argument)로 들어올 수 있기 때문이에요.(예를 들면 Cow의 eat에 Hay 말고 다른 것이 들어오면 안 됨!)</p></div><div class="el-p"><p dir="auto">다음으로 Farm을 보면 feed() 구현현도 조금 바뀌었죠? 함수 오버로딩을 사용하지 않고 진정한 의미의 함수 하나가 되었습니다.</p></div><div class="el-p"><p dir="auto">동물에게 밥을 주기 위해서 인자로 받은 동물의 타입 검사를 하고 동물 타입에 맞게 밥을 주는 코드가 완성되었습니다.</p></div><div class="el-p"><p dir="auto">이제 실행을 해볼까요? FarmSimulator.playground 파일을 수정하지 않고도 잘 실행되는 것을 확인할 수 있습니다.</p></div><div class="el-p"><p dir="auto"><img src="https://blog.kakaocdn.net/dn/bTBLKV/btskSn2eIaz/N9VlHTbYzVAiKOu4p4qXVk/img.png" referrerpolicy="no-referrer" target="_self" class="is-unresolved"><img src="https://blog.kakaocdn.net/dn/vdJ0q/btskRekEX7G/RC4a2SzXov76lkcMoEtv9k/img.png" referrerpolicy="no-referrer" target="_self" class="is-unresolved"></p></div><div class="el-p"><p dir="auto">이제 하나의 코드로 여러 행동을 할 수 있게 되었습니다. 짝짝 😀</p></div><div class="el-p"><p dir="auto">좋습니다. 하지만 이 코드도 확실히 문제점이 존재합니다. 위처럼 새로운 동물 Pig가 추가될 때, Pig 내부에 eat을 구현하지 않으면 컴파일 타임에 에러 검출을 하지 못합니다. 앱이 실행되고 나서 런타임에 Pig가 eat을 구현하지 않았다는 에러를 발견할 수 있습니다.</p></div><div class="el-p"><p dir="auto">마찬가지로, eat 메서드에서 전달인자로 올바른 타입이 왔는지 검사하는 것도 모두 다 런타임에서 일어납니다.</p></div><div class="el-p"><p dir="auto">즉, 이 코드 역시 보일러플레이트를 생성할 뿐만 아니라, 에러 검출이 런타임에서 이뤄지기 때문에 디버깅 난이도가 올라갑니다. 그리고 Any 타입을 사용하기 때문에 코드 파악이 어려운 단점도 존재합니다.</p></div><div class="el-p"><p dir="auto">문제점을 정리해 볼게요.</p></div><div class="el-ol"><ol>
+<li data-line="0" dir="auto">런타임시에 에러 검출</li>
+<li data-line="1" dir="auto">구체적인 동물 타입 구현시에 파라미터 타입이 Any → 코드 파악 어려움</li>
+</ol></div><div class="el-p"><p dir="auto">여기서 새로운 개념을 하나만 더 도입하면 문제점 2번은 해결할 수 있을 것 같아요. 조금 더 나아가보도록 할게요.</p></div><div class="el-p"><p dir="auto">타입파라미터를 도입할게요!</p></div><div class="el-pre"><pre><code data-line="0">class Animal&lt;Food&gt; {
+  func eat(_ food: Food) { fatalError(" Subclass implements 'eat' ") }
+}
+
+
+class Cow: Animal&lt;Hay&gt; {
+  override func eat(_ food: Hay) {
+    print("\(Self.self) eat \(food)")
+  }
+}
+
+class Horse: Animal&lt;Carrot&gt; {
+  override func eat(_ food: Carrot) {
+    print("\(Self.self) eat \(food)")
+  }
+
+}
+
+class Chicken: Animal&lt;Grain&gt; {
+  override func eat(_ food: Grain) {
+    print("\(Self.self) eat \(food)")
+  }
+}
+
+// Farm.swift
+struct Farm {
+  func feed&lt;T&gt;(_ animal: Animal&lt;T&gt;) where T: Any {
+
+    if animal is Cow {
+      let alfalfa = Hay.grow()
+      let food = alfalfa.harvest()
+      animal.eat(food as! T)
+
+      return
+    }
+
+    if animal is Horse {
+      let root = Carrot.grow()
+      let food = root.harvest()
+      animal.eat(food as! T)
+
+      return
+    }
+
+    if animal is Chicken {
+      let wheat = Grain.grow()
+      let food = wheat.harvest()
+      animal.eat(food as! T)
+
+      return
+    }
+
+    fatalError("올바른 동물 타입이 아닙니다.")
+  }
+}
+</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre></div><div class="el-p"><p dir="auto">이 방법으로 2번의 문제를 조금 해결할 수 있네요. 하지만 근본적인 문제는 해결되지 않았습니다. Farm의 feed()에서, 각 동물들의 eat을 실행하기 위해서 역시 유연한 Any 타입을 사용해야 합니다. 그리고 실제 eat 코드를 실행할 때, T로 캐스팅을 해줘야 한다는 점이 불편해 보여요.</p></div><div class="el-p"><p dir="auto">즉, 코드 누락 시에 컴파일러는 알려주지 않고, 런타임 시에 에러가 검출되겠네요. 역시 1번 문제는 해결하지 못했습니다.</p></div><div class="el-p"><p dir="auto">문제가 이것뿐만이 아닙니다. 이 밖에도 다음과 같은 문제가 발생합니다!!</p></div><div class="el-p"><p dir="auto">동물의 주요 행위가 꼭 먹는 것이라고 할 수 없는데, class에 타입 파라미터를 지정해줘야 한다는 것입니다. 동물의 행위에는 여러 가지가 있고 eat은 그중 하나일 뿐인데요! (예를 들면 동물 메서드에 run(), sleep() 등등이 있는데 이것은 AnimalFeed와 무관합니다.)</p></div><div class="el-p"><p dir="auto">그리고 만약 Food 같이 다른 파라미터도 다형성을 구현하기 위해서 아래 코드처럼 보일러 플레이트를 생성하게 될 것입니다.</p></div><div class="el-pre"><pre><code data-line="0">class Animal&lt;Food, Habitat, Commodity&gt; {
+  func eat(_ food: Food) { fatalError(" Subclass implements 'eat' ") }
+}
+
+
+class Cow: Animal&lt;Hay, Barn, Milk&gt; {
+  override func eat(_ food: Hay) { }
+}
+
+// 말 같은 경우에 얻을 Commodity가 없는데, 상위 클래스인 Animal에 타입파라미터로
+// Commodity가 있기 때문에 Never 같은 보일러 플레이트가 발생함
+class Horse: Animal&lt;Carrot, Stable, Never&gt; {
+  override func eat(_ food: Carrot) { }
+
+}
+
+class Chicken: Animal&lt;Grain, Coop, Egg&gt; {
+  override func eat(_ food: Grain) { }
+}
+</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre></div><div class="el-p"><p dir="auto">Subtype 다형성에서 가장 큰 문제점은 바로 Super Type이 Data Type이라는 겁니다.</p></div><div class="el-h4"><h4 data-heading="3. 파라미터릭 다형성" dir="auto" class="heading" id="3._파라미터릭_다형성_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>3. 파라미터릭 다형성</h4></div><div class="el-p"><p dir="auto">지금까지 다형성을 달성하는 방법 2가지를 찾아봤는데 단점이 너무 명백해 보입니다. 이제 우리가 원하는 것을 생각해 보고 새로운 단계로 나아가봅시다!!</p></div><div class="el-p"><p dir="auto">우리가 원하는 것은 다음과 같아요.</p></div><div class="el-ol"><ol>
+<li data-line="0" dir="auto">기능이 작동하는 방식에 대한 세부 정보 없이 유형의 기능을 나타내길 원함</li>
+<li data-line="1" dir="auto">컴파일러가 좀 더 엄격하게 버그를 찾아줬으면 좋겠음(누락된 코드나 잘못 작성하면 컴파일 타임에 알려줘!)</li>
+</ol></div><div class="el-p"><p dir="auto">이때 우리에게 한 줄기의 빛이 되는 것이 바로 interface입니다. 현대 언어에서는 위에서 살펴본 문제들을 interface를 통해 해결하고 있어요. swift에서는 protocol로 선언할 수 있습니다.</p></div><div class="el-pre"><pre><code data-line="0">// 구현체 Animal.swift
+// Interface
+protocol Animal {
+   func eat(_ food: AnimalFeed)
+}
+
+struct Cow: Animal {
+  func eat(_ food: AnimalFeed) {
+    print("\(Self.self) eats \(food)")
+  }
+}
+
+struct Horse: Animal {
+  func eat(_ food: AnimalFeed) {
+    print("\(Self.self) eats \(food)")
+  }
+}
+
+
+struct Chicken: Animal {
+  func eat(_ food: AnimalFeed) {
+    print("\(Self.self) eats \(food)")
+  }
+}
+
+
+// AnimalFeed.swift
+// interface
+protocol AnimalFeed {
+
+}
+struct Hay: AnimalFeed {
+  static func grow() -&gt; Alfalfa {
+    return Alfalfa()
+  }
+}
+
+struct Alfalfa {
+  func harvest() -&gt; Hay {
+    return Hay()
+  }
+}
+
+struct Carrot: AnimalFeed {
+  static func grow() -&gt; Root {
+    return Root()
+  }
+}
+
+struct Root {
+  func harvest() -&gt; Carrot {
+    return Carrot()
+  }
+}
+
+
+struct Grain: AnimalFeed {
+  static func grow() -&gt; Wheat {
+    return Wheat()
+  }
+}
+
+struct Wheat {
+  func harvest() -&gt; Grain {
+    return Grain()
+  }
+}
+
+
+// Farm.swift
+struct Farm {
+  func feed(_ animal: Animal) {
+
+    if animal is Cow {
+      let alfalfa = Hay.grow()
+      let food = alfalfa.harvest()
+      animal.eat(food)
+
+      return
+    }
+
+    if animal is Horse {
+      let root = Carrot.grow()
+      let food = root.harvest()
+      animal.eat(food)
+
+      return
+    }
+
+    if animal is Chicken {
+      let wheat = Grain.grow()
+      let food = wheat.harvest()
+      animal.eat(food)
+
+      return
+    }
+  }
+}
+</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre></div><div class="el-p"><p dir="auto">만약 여기에서 Pig가 추가되었다는 기획의 요청을 받으면, Pig 구현체를 만들 때 Animal을 컨펌하면 되겠습니다. 그러면 eat 메서드를 누락하면 컴파일러가 이를 알아채고 고치라고 합니다!&nbsp;<del>아무래도 컴파일러가 알려주니 좀 뇌를 빼고 개발해도 되겠죠?</del></p></div><div class="el-p"><p dir="auto">좋습니다. 좋아요. 하지만 위의 코드에도 문제점을 그만 찾고 싶은데 당연히 문제점이 있습니다. Cow, Horse, Chicken과 같은 구현체에서 eat 메서드의 파라미터를 보니 AnimalFeed입니다. 타입이 인터페이스죠? 말은 Hay를 먹고, Horse는 Carrot, Chicken은 Grain을 먹는다는 사실은 자명합니다. 이 구현체에서 매개변수를&nbsp;<strong>인터페이스로 은닉할 필요가 없다는 뜻</strong>입니다! 이때&nbsp;<strong>associatedtype</strong>&nbsp;(연관타입)</p></div><div class="el-p"><p dir="auto">을 사용하면 됩니다. Animal에&nbsp;&nbsp;<strong>associatedtype을</strong>&nbsp;추가합시다.</p></div><div class="el-pre"><pre><code data-line="0">protocol Animal {
+   associatedtype Feed: AnimalFeed
+   func eat(_ food: Feed)
+}
+</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre></div><div class="el-p"><p dir="auto"><img src="https://blog.kakaocdn.net/dn/ldB46/btskRomUwNB/4Kays19TdOCR4Qcgd1cgnk/img.png" referrerpolicy="no-referrer" target="_self" class="is-unresolved"></p></div><div class="el-p"><p dir="auto">그러면 위처럼 각 동물을 구현할 때 Animal을 컨펌하라고 컴파일러가 알려줍니다. 이제 _ food: AnimalFeed를 구체적인 타입으로 변경합시다.</p></div><div class="el-pre"><pre><code data-line="0">struct Cow: Animal {
+  func eat(_ food: Hay) {
+    print("\(Self.self) eats \(food)")
+  }
+}
+
+struct Horse: Animal {
+  func eat(_ food: Carrot) {
+    print("\(Self.self) eats \(food)")
+  }
+}
+
+
+struct Chicken: Animal {
+  func eat(_ food: Grain) {
+    print("\(Self.self) eats \(food)")
+  }
+}
+</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre></div><div class="el-p"><p dir="auto">Farm의 feed() 메서드를 봤을 때, 조금 복잡해 보입니다. if 문으로 분기처리를 하지 않고, 조금 명료한 하나의 동작을 코드로 작성하고 싶습니다. 타입 파라미터를 이용해 제네릭 코드를 작성해 봅시다. feed 메서드를 작성할 때, animal의 타입을 지정해줘야 합니다. 매개변수의 타입은 Concrete 타입이어야 합니다. (소, 닭, 말 같은 구현체) 그렇기 때문에 매개변수는 직접적인 protocol이 아니라 아래처럼 제네릭을 이용해서 작성해야 합니다.(두 함수는 표현만 다를 뿐 같은 함수입니다.)</p></div><div class="el-pre"><pre><code data-line="0">struct Farm {
+  func feed&lt;A: Animal&gt;(_ animal: A) {  
+  }
+  func feed&lt;A&gt;(_ animal: A) where A: animal {
+  }
+}
+</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre></div><div class="el-p"><p dir="auto">이 제네릭 코드를 이해해 볼까요?</p></div><div class="el-p"><p dir="auto">A에는 특정한 Concrete 타입이 들어가고, 이 Concrete 타입은 Animal Protocol을 컨펌한다는 뜻입니다.</p></div><div class="el-p"><p dir="auto">위의 두 메서드와 같은 함수를 하나 더 작성해 보겠습니다. 바로&nbsp;<strong>some</strong>&nbsp;키워드를 이용하는 것입니다. some 이용하면 좀 더 의미 있게 표현이 되는 것 같습니다. some 키워드에 대해 알아봅시다.</p></div><div class="el-h4"><h4 data-heading="some 키워드" dir="auto" class="heading" id="some_키워드_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>some 키워드</h4></div><div class="el-pre"><pre><code data-line="0">struct Farm {
+  func feed(_ animal: some Animal) { }
+}
+</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre></div><div class="el-p"><p dir="auto">some 키워드를 이해하기 전에 약간의 개념 정립과 용어 정리가 필요한 것 같습니다.</p></div><div class="el-p"><p dir="auto">메서드의 매개변수에 specific concrete 타입이 와야 한다고 말했습니다. some 키워드가 붙은 것도 역시 specific concrete 타입일 것입니다. 하지만 정말 명료한 concrete 타입은 아닐 겁니다. 왜냐하면 프로토콜을 컨펌하는 어떤 구현체가 들어가도 되니깐요. 맞나요? 맞습니다. 하나가 딱 정확히 정해져있지 않다는 뜻입니다. 이러한 것을&nbsp;<strong>opaque</strong>&nbsp;타입이라고 합니다.(some 단어로 유추할 수 있죠) 즉 특정한 concrete 타입에 대한 추상적인 placeholder를 opaque 타입이라고 부르는 것입니다. 그래서 애플 문서나 WWDC에서 some 키워드가 붙으면 opaque 타입이라고 부릅니다. 좋아요. 이 opaque 타입은 컴파일 타임에 실제 완전 명료한 concrete type으로 대체가 될 것입니다. 이것을 기저에 깔려있는 즉 underlying 타입이라고 합니다. 이제 의미에 대해 생각해 볼게요. 제네릭 코드를 이용하거나 파라미터 변수에 some을 붙인 것은 어떤 의미가 있을까요? 이러한 코드들이 의미하는 바는 컴파일러에게 이 메서드는&nbsp;<strong>‘specific concrete 타입으로</strong>&nbsp;작업할 거야’라고 알리는 것과 마찬가지입니다. 즉 컴파일 시점에 이 opaque 타입의 underlying 타입은 고정되어야만 한다는 것을 의미합니다. 그렇기 때문에 재할당도 불가능합니다. 코드를 보면 알 수 있습니다.</p></div><div class="el-pre"><pre><code data-line="0">// 컴파일 성공
+let animals: [some Animal] = [
+    Cow(),
+    Cow(),
+    Cow(),
+]
+
+// Print: Compile error: Cannot convert value of type 'Horse' to expected element type 'Cow'
+let vehicles: [some Animal] = [
+    Cow(),
+    Cow(),
+    Horse(),
+]
+
+// 컴파일 성공
+func createCow() -&gt; some Animal {
+    return Cow()
+}
+
+// Print: Compile error: Function declares an opaque return type 'some Animal', but the return statements in its body do not have matching underlying types
+func createSomeAnimal(number: Int) -&gt; some Animal {
+    if number == 0 {
+        return Cow()
+    } else if number == 1{
+        return Horse()
+    } else {
+    	return Chicken()
+    }
+}
+
+
+
+var animal: some Animal = Cow()
+animal = Horse() // 불가능
+animal = Cow() // 이것도 불가능
+</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre></div><div class="el-h4"><h4 data-heading="some 키워드와 where 절을 통해 feed 메서드 다형성 달성하기" dir="auto" class="heading" id="some_키워드와_where_절을_통해_feed_메서드_다형성_달성하기_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>some 키워드와 where 절을 통해 feed 메서드 다형성 달성하기</h4></div><div class="el-p"><p dir="auto">이제 다시 돌아와서 Farm의 feed 메서드를 작성해 볼까요? some 키워드에 대해 알아보느라 우리의 목표를 잠깐 까먹었을 수도 있기 때문에 리마인드 하겠습니다.</p></div><div class="el-p"><p dir="auto"><strong>feed 메서드를 여러 유형에게 공통으로 작동하는 코드로 작성하는 것</strong></p></div><div class="el-p"><p dir="auto">어떻게 작성하면 될까요? 설계를 해봅시다.</p></div><div class="el-pre"><pre><code data-line="0">protocol Animal {
+  associatedtype Feed: AnimalFeed
+  func eat(_ food: Feed)
+}
+</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre></div><div class="el-p"><p dir="auto">Animal은 연관타입으로 Feed (AnimalFeed)을 가지고 있습니다. 자동완성으로 확인해 볼게요.</p></div><div class="el-p"><p dir="auto"><img src="https://blog.kakaocdn.net/dn/m1JBl/btsk4N6CzrV/s9MFR67PU2a2lF9B77xs11/img.png" referrerpolicy="no-referrer" target="_self" class="is-unresolved"></p></div><div class="el-p"><p dir="auto">AnimalFeed는 프로토콜이고, concrete 타입으로는 동물들이 먹는 Hay, Carrot, Grain입니다.</p></div><div class="el-p"><p dir="auto">위에서 이것을 만들기 위해서 어떻게 했나요? Hay 안에 static 메서드 grow()를 사용했습니다.</p></div><div class="el-p"><p dir="auto">간단하게 리뷰를 하면 아래와 같습니다. (소를 예로 들게요.)</p></div><div class="el-p"><p dir="auto">let crop = Hay.grow() (crop의 타입은 Alfalfa) → let food = crop.harvest() (food의 타입은 Hay)</p></div><div class="el-p"><p dir="auto">opaque 타입은 concrete한 타입이기 때문에, type 메서드를 사용할 수 있어요. type을 이용해 코드를 작성해 볼게요. 그러면, 위의 코드를 type(of: animal). Feed.grow()라고 하면 될 것 같아요.</p></div><div class="el-p"><p dir="auto"><img src="https://blog.kakaocdn.net/dn/bbkEzr/btsk1clWC60/jg1GIMpA2zttu9aXmggnh0/img.png" referrerpolicy="no-referrer" target="_self" class="is-unresolved"></p></div><div class="el-p"><p dir="auto">당연히 뜨지 않겠죠. 왜냐하면 grow() 메서드는 concrete 타입(Hay, Carrot, Grain)에 직접 구현했으니깐요. 따라서 자연스럽게 AnimalFeed 프로토콜에 에 static grow()가 추가되어야 합니다. grow()는 Alfalfa, Root, Wheat 같은 작물을 리턴해야 하기 때문에 이와 관련된 인터페이스(Crop)를 만들고 연관타입으로 가지고 있어야 합니다. 그리고 Crop 프로토콜에는 당연히 harvest()가 있어야 하겠죠? 이 메서드의 리턴은 역시 연관 타입으로 AnimalFeed를 가지고 있어야 할 겁니다.</p></div><div class="el-p"><p dir="auto">코드 작성을 해볼게요.</p></div><div class="el-pre"><pre><code data-line="0">protocol AnimalFeed {
+  associatedtype CropType: Crop
+  static func grow() -&gt; CropType
+}
+
+protocol Crop {
+  associatedtype Feed: AnimalFeed
+  func harvest() -&gt; Feed
+}
+
+struct Hay: AnimalFeed {
+  static func grow() -&gt; Alfalfa {
+    return Alfalfa()
+  }
+}
+
+struct Alfalfa: Crop {
+  func harvest() -&gt; Hay {
+    return Hay()
+  }
+}
+
+struct Carrot: AnimalFeed {
+  static func grow() -&gt; Root {
+    return Root()
+  }
+}
+
+struct Root: Crop {
+  func harvest() -&gt; Carrot {
+    return Carrot()
+  }
+}
+
+
+struct Grain: AnimalFeed {
+  static func grow() -&gt; Wheat {
+    return Wheat()
+  }
+}
+
+struct Wheat: Crop {
+  func harvest() -&gt; Grain {
+    return Grain()
+  }
+}
+</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre></div><div class="el-pre"><pre><code data-line="0">struct Farm {
+  func feed(_ animal: some Animal) {
+    let crop = type(of: animal).Feed.grow()
+    let food = crop.harvest()
+    animal.eat(food)
+  }
+}
+</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre></div><div class="el-p"><p dir="auto">정말 깔끔한 코드가 작성되었습니다. 다형성을 구현했습니다. 하지만 이 코드는 아래처럼 빌드에 실패할 거예요ㅠ</p></div><div class="el-p"><p dir="auto"><img src="https://blog.kakaocdn.net/dn/ds9HYU/btsk1Bsk9Wf/lL1qYwrMh7YhkKAwAETPL1/img.png" referrerpolicy="no-referrer" target="_self" class="is-unresolved"></p></div><div class="el-p"><p dir="auto">왜냐하면 프로토콜 관계에&nbsp;<strong>꼬리에 꼬리를 무는 관계</strong>가 있기 때문이에요. (back - and - forth) AnimalFeed 프로토콜을 한번 봐볼까요.</p></div><div class="el-p"><p dir="auto">모든 프로토콜은 Self 타입을 가지고 있습니다.</p></div><div class="el-p"><p dir="auto">AnimalFeed는 concrete conforming type인 CropType을 가지고 있습니다.</p></div><div class="el-p"><p dir="auto">Crop 역시 concrete conforming type인 FeedType을 가지고 있습니다.</p></div><div class="el-p"><p dir="auto"><strong>Self: AnimalFeed → Self.CropType: Crop → Self.CropType.FeedType: AnimalFeed → …</strong></p></div><div class="el-p"><p dir="auto">위와 같이 무한반복이 될 거예요.</p></div><div class="el-p"><p dir="auto">Crop 프로토콜도 이와 마찬가지고요. 따라서 이 (back - and - forth)를 끊어주면 되겠습니다. AnimalFeed 프로토콜에서 CropType이 가지고 있는 Feed는 바로 자신이라고 알려주고, 마찬가지로 Crop 프로토콜에서 FeedType이 가지고 있는 Crop은 자기 자신이라는 것을 알려주면 됩니다. 어떻게? where을 이용해서!</p></div><div class="el-pre"><pre><code data-line="0">protocol AnimalFeed {
+  associatedtype CropType: Crop where CropType.Feed == Self
+  static func grow() -&gt; CropType
+}
+
+protocol Crop {
+  associatedtype Feed: AnimalFeed where Feed.CropType == Self
+  func harvest() -&gt; Feed
+}
+</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre></div><div class="el-p"><p dir="auto">여기까지 작성하면, feed에서 나는 에러가 사라지게 됩니다. FarmSimulating.playground로 돌아가서 실행을 하면 잘 작동합니다.</p></div><div class="el-p"><p dir="auto">지금까지 .playground을 단 한 번도 수정한 적이 없습니다. 그럼에도 불구하고 같은 결과를 보여주는 게 정말 멋지네요.</p></div><div class="el-h4"><h4 data-heading="Type Erasure" dir="auto" class="heading" id="Type_Erasure_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>Type Erasure</h4></div><div class="el-p"><p dir="auto">FarmSimulating.playground에서 각 동물 인스턴스와 농장 인스턴스를 만들어서 작업을 하고 있어요. 여기에 요구사항을 약간 변경해 보도록 할게요. 그리고 요구사항에 맞게 코드를 변경해 봅시다.</p></div><div class="el-blockquote"><blockquote dir="auto">
+<p>농장은 배고픈 동물들에게 밥을 줄 책임이 있습니다. 배고픈 동물들에게 밥을 주는 기능을 추가하세요.</p>
+</blockquote></div><div class="el-p"><p dir="auto">요구사항을 읽었을 때, 바뀌거나 추가되어야 할 부분들은 다음과 같습니다.</p></div><div class="el-ol"><ol>
+<li data-line="0" dir="auto">동물은 자기가 배고픈지 아닌지를 알 수 있어야 합니다. → 동물은 배고픔을 나타내는 프로퍼티를 가지고 있어야 함</li>
+<li data-line="1" dir="auto">농장은 배고픈 동물들을 판별할 수 있어야 함 → Farm 구현체에 프로퍼티로 동물들을 가지고 있어야 함</li>
+</ol></div><div class="el-pre"><pre><code data-line="0">// 1번 요구사항 충족
+// Animal 인터페이스에 isHungry를 프로퍼티를 추가하고
+// 동물 인터페이스를 컨펌하는 concrete 객체에 isHungry를 추가함.
+protocol Animal {
+  associatedtype Feed: AnimalFeed
+  func eat(_ food: Feed)
+  var isHungry: Bool { get }
+}
+
+struct Cow: Animal {
+  var isHungry: Bool
+
+  func eat(_ food: Hay) {
+    print("\(Self.self) eats \(food)")
+  }
+}
+ // ...
+</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre></div><div class="el-p"><p dir="auto">1번 요구사항을 충족시키는 것은 매우 쉽습니다! 2번도 만족시켜볼까요?</p></div><div class="el-pre"><pre><code data-line="0">struct Farm {
+
+  var animals: [some Animal]
+
+  func feed(_ animal: some Animal) {
+    let crop = type(of: animal).Feed.grow()
+    let food = crop.harvest()
+    animal.eat(food)
+  }
+}
+</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre></div><div class="el-p"><p dir="auto"><img src="https://blog.kakaocdn.net/dn/kxFNx/btskZsJ6zyL/xKuqodcdpKxuO4oxPn3P60/img.png" referrerpolicy="no-referrer" target="_self" class="is-unresolved"></p></div><div class="el-p"><p dir="auto">빌드할 수가 없습니다. 왜 그럴까요? some에서 봤듯이, 컴파일 타임에 opaque type의 underlying type을 유추할 수 있어야 하기 때문입니다. 그러면 다음 코드들은 어떨까요?</p></div><div class="el-pre"><pre><code data-line="0">// case 1 (성공) // underlying type이 고정되어 있음
+var animals: [some Animal] = [Cow(isHungry: false), Cow(isHungry: false)]
+
+//case 2 (실패) - underlying type이 고정되어 있지 않음
+var animals: [some Animal] = [Horse(isHungry: false), Cow(isHungry: false)]
+</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre></div><div class="el-p"><p dir="auto">농장에는 다른 유형의 동물들이 있어야 합니다. 우리가 원하는 건 case 2입니다. 컴파일러는 고정된 underlying type을 요구합니다. 우리는 이걸 좀 유연하게 가져가고 싶어요. [Cow(), Horse(), Chicken() … ] 이런 식으로요</p></div><div class="el-p"><p dir="auto">어떻게 타입을 지우는 법이 없을까요? 이때 필요한 키워드가 바로&nbsp;<strong>any입니다.</strong></p></div><div class="el-h4"><h4 data-heading="any 키워드" dir="auto" class="heading" id="any_키워드_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>any 키워드</h4></div><div class="el-p"><p dir="auto">any 키워드는&nbsp;<strong>existential type를</strong>&nbsp;생성하기 위해 도입되었어요. 사실 existential type는 새로운 게 아닙니다. 그냥 프로토콜을 타입으로 사용할 때, 존재 유형으로 부릅니다.</p></div><div class="el-pre"><pre><code data-line="0">var cow: Animal = Cow() // 이 코드에서 Animal이 존재 유형임.
+// Swift 5.7에서는 위 코드는 
+var cow: any Animal = Cow() 가 되어야만 함.
+</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre></div><div class="el-p"><p dir="auto">any 키워드를 사용한다는 것은 Apple은 concrete 타입을 박스로 싸는 것에 비유합니다. ㅎ</p></div><div class="el-p"><p dir="auto"><img src="https://blog.kakaocdn.net/dn/1tIyb/btsk2fP5Zek/tlhdodbWyyLohnGMOAQkHk/img.png" referrerpolicy="no-referrer" target="_self" class="is-unresolved"></p></div><div class="el-p"><p dir="auto">즉 박스에 특정한 프로토콜을 준수하는 concrete 타입을 넣는 겁니다. 그렇다면 concrete 타입( Cow, Chicken, Horse)은 숨겨집니다. 그래서 이것을 type erasure라고 합니다! 즉 upper bound로 퉁치는 거입니다. (수학 공부할 때 정말 많이 나오는 그 upper bound 맞아요) 그래서 any를 사용하게 되면 heterogeneous한 컬렉션([Cow(), Horse()] 같은 컬렉션들)을 만들 수 있게 되는 것입니다. 이해하고 나니까 별로 어려운 것이 아니네요.^^</p></div><div class="el-p"><p dir="auto">any 키워드에 주의점을 마지막으로 any에 대한 설명을 끝내겠습니다. ‘Donny Wals라는 개발자는&nbsp;<a data-tooltip-position="top" aria-label="https://www.donnywals.com/what-is-the-any-keyword-in-swift/" rel="noopener nofollow" class="external-link is-unresolved" href="https://www.donnywals.com/what-is-the-any-keyword-in-swift/" target="_self">‘*<strong>*What is the “any” keyword in Swift?**</strong></a>’라는 아티클에서 any 키워드는 some보다 덜 효율적이고 비용을 더 많이 초래하기 때문에 기본적으로 some을 사용하고 필요할 때, any 키워드를 사용하라고 권고합니다. 그리고 역시 WWDC 2022에서도 some을 디폴트로 사용하라고 언급해요.</p></div><div class="el-p"><p dir="auto">이제 any에 대한 이해가 끝났으니 코드 작성을 해봅시다.</p></div><div class="el-pre"><pre><code data-line="0">struct Farm {
+
+  var animals: [any Animal]
+
+  func feedAnimals() {
+    animals.filter(\.isHungry).map { animal in
+      animal.eat(???)
+    }
+  }
+}
+
+// FarmSimulating.playground
+
+import Foundation
+
+let farm = Farm(animals: [
+  Cow(isHungry: true),
+  Cow(isHungry: false),
+  Chicken(isHungry: true),
+  Horse(isHungry: true)
+])
+
+farm.feedAnimals()
+</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre></div><div class="el-p"><p dir="auto">위의 코드는 작동하지 않을 것입니다. 왜일까요? 답은 간단합니다. 닭은 Grain을 먹어야 하고, 소는 Hay를 먹어야 합니다. 이때 animal.eat()에서 어떠한 방식으로 Parameter를 넘겨야 할지 문제가 생깁니다. Animal 프로토콜과 관련된 FeedTye의 upper bound는 'any AnimalFeed'입니다. any AnimalFeed가 닭인 경우에 Grain, 소인 경우에 Hay를 정적으로 보장할 방법이 없습니다. 따라서 위 코드처럼 Type erasure를 허용해서는 안됩니다. 즉 정적으로 보장하기 위해서 existential 타입을 언박싱해야 합니다. 언박싱하는 방법은 opaque 타입인 some 키워드를 매개변수로 하는 함수를 호출하면 됩니다. 바로 아래처럼요!</p></div><div class="el-pre"><pre><code data-line="0">struct Farm {
+
+  var animals: [any Animal]
+
+  private func feed(_ animal: some Animal) {
+    let crop = type(of: animal).Feed.grow()
+    let food = crop.harvest()
+    animal.eat(food)
+  }
+
+  func feedAnimals() {
+    animals.filter(\.isHungry).map { animal in
+      feed(animal)
+    }
+  }
+}
+
+// FarmSimulating.playground
+
+import Foundation
+
+let farm = Farm(animals: [
+  Cow(isHungry: true),
+  Cow(isHungry: false),
+  Chicken(isHungry: true),
+  Horse(isHungry: true)
+])
+
+farm.feedAnimals()
+</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre></div><div class="el-p"><p dir="auto">드디어 모든 코드 구현이 완료되었습니다. some과 any 키워드를 사용하고 인터페이스를 잘 설계함으로써 제네릭을 이용한 파라미터릭 다형성을 달성했습니다.</p></div><div class="el-hr"><hr></div><div class="el-p"><p dir="auto">&nbsp;제가 이해한 것을 바탕으로 최대한 이해하기 쉽게 풀어쓰려고 노력했는데 잘 와닿을까 모르겠네요. 제네릭은 참 어려운 것 같습니다.</p></div><div class="el-p"><p dir="auto">상당히 긴 호흡의 글을 읽어주셔서 감사합니다.</p></div><div class="el-h3"><h3 data-heading="전체 Source Code" dir="auto" class="heading" id="전체_Source_Code_0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>전체 Source Code</h3></div><div class="el-p"><p dir="auto"><a rel="noopener nofollow" class="external-link is-unresolved" href="https://github.com/psychehose/FarmSimulating" target="_self">https://github.com/psychehose/FarmSimulating</a></p></div><div class="el-h4"><h4 data-heading="Ref." dir="auto" class="heading" id="Ref._0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>Ref.</h4></div><div class="el-p"><p dir="auto"><a rel="noopener nofollow" class="external-link is-unresolved" href="https://swiftsenpai.com/swift/understanding-some-and-any/" target="_self">https://swiftsenpai.com/swift/understanding-some-and-any/</a><br>
+<a rel="noopener nofollow" class="external-link is-unresolved" href="https://www.donnywals.com/what-is-the-any-keyword-in-swift/" target="_self">https://www.donnywals.com/what-is-the-any-keyword-in-swift/</a><br>
+<a rel="noopener nofollow" class="external-link is-unresolved" href="https://developer.apple.com/videos/play/wwdc2022/110352/" target="_self">https://developer.apple.com/videos/play/wwdc2022/110352/</a><br>
+<a rel="noopener nofollow" class="external-link is-unresolved" href="https://developer.apple.com/videos/play/wwdc2022/110353/" target="_self">https://developer.apple.com/videos/play/wwdc2022/110353/</a></p></div><div class="footer"><div class="data-bar"></div></div></div></div></div><div id="right-content" class="leaf" style="--sidebar-width: var(--sidebar-width-right);"><div id="right-sidebar" class="sidebar"><div class="sidebar-handle"></div><div class="sidebar-topbar"><div class="topbar-content"><label class="theme-toggle-container" for="theme-toggle-input" id=""><input class="theme-toggle-input" type="checkbox" id="theme-toggle-input"><div class="toggle-background"></div></label></div><div class="clickable-icon sidebar-collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="svg-icon"><path d="M21 3H3C1.89543 3 1 3.89543 1 5V19C1 20.1046 1.89543 21 3 21H21C22.1046 21 23 20.1046 23 19V5C23 3.89543 22.1046 3 21 3Z"></path><path d="M10 4V20"></path><path d="M4 7H7"></path><path d="M4 10H7"></path><path d="M4 13H7"></path></svg></div></div><div class="sidebar-content-wrapper"><div id="right-sidebar-content" class="leaf-content"><div class="graph-view-wrapper"><div class="feature-header"><div class="feature-title">Interactive Graph</div></div><div class="graph-view-placeholder">
+		<div class="graph-view-container">
+			<div class="graph-icon graph-expand" role="button" aria-label="Expand" data-tooltip-position="top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
+			<div class="graph-icon graph-global" role="button" aria-label="Global Graph" data-tooltip-position="top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-git-fork"><circle cx="12" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"></path><path d="M12 12v3"></path></svg></div>
+			<canvas id="graph-canvas" class="hide" width="512px" height="512px"></canvas>
+		</div>
+		</div></div><div id="outline" class=" tree-container"><div class="feature-header"><div class="feature-title">Table Of Contents</div><button class="clickable-icon nav-action-button tree-collapse-all" aria-label="Collapse All"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg></button></div><div class="tree-item mod-collapsible" data-depth="1"><a class="tree-item-self is-clickable mod-collapsible" href="ios/swift에서-다형성을-달성하는-방법.html#Swift에서_다형성을_달성하는_방법_0" data-path="#Swift에서_다형성을_달성하는_방법_0"><div class="tree-item-icon collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></div><div class="tree-item-inner heading-link" heading-name="Swift에서 다형성을 달성하는 방법">Swift에서 다형성을 달성하는 방법</div></a><div class="tree-item-children"><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="ios/swift에서-다형성을-달성하는-방법.html#다형성_0" data-path="#다형성_0"><div class="tree-item-inner heading-link" heading-name="다형성">다형성</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="ios/swift에서-다형성을-달성하는-방법.html#1._Adhoc_다형성_0" data-path="#1._Adhoc_다형성_0"><div class="tree-item-inner heading-link" heading-name="1. Adhoc 다형성">1. Adhoc 다형성</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="ios/swift에서-다형성을-달성하는-방법.html#2._Subtype_다형성_0" data-path="#2._Subtype_다형성_0"><div class="tree-item-inner heading-link" heading-name="2. Subtype 다형성">2. Subtype 다형성</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="ios/swift에서-다형성을-달성하는-방법.html#3._파라미터릭_다형성_0" data-path="#3._파라미터릭_다형성_0"><div class="tree-item-inner heading-link" heading-name="3. 파라미터릭 다형성">3. 파라미터릭 다형성</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="ios/swift에서-다형성을-달성하는-방법.html#some_키워드_0" data-path="#some_키워드_0"><div class="tree-item-inner heading-link" heading-name="some 키워드">some 키워드</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="ios/swift에서-다형성을-달성하는-방법.html#some_키워드와_where_절을_통해_feed_메서드_다형성_달성하기_0" data-path="#some_키워드와_where_절을_통해_feed_메서드_다형성_달성하기_0"><div class="tree-item-inner heading-link" heading-name="some 키워드와 where 절을 통해 feed 메서드 다형성 달성하기">some 키워드와 where 절을 통해 feed 메서드 다형성 달성하기</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="ios/swift에서-다형성을-달성하는-방법.html#Type_Erasure_0" data-path="#Type_Erasure_0"><div class="tree-item-inner heading-link" heading-name="Type Erasure">Type Erasure</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="ios/swift에서-다형성을-달성하는-방법.html#any_키워드_0" data-path="#any_키워드_0"><div class="tree-item-inner heading-link" heading-name="any 키워드">any 키워드</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="3"><a class="tree-item-self is-clickable" href="ios/swift에서-다형성을-달성하는-방법.html#전체_Source_Code_0" data-path="#전체_Source_Code_0"><div class="tree-item-inner heading-link" heading-name="전체 Source Code">전체 Source Code</div></a><div class="tree-item-children"></div></div><div class="tree-item" data-depth="4"><a class="tree-item-self is-clickable" href="ios/swift에서-다형성을-달성하는-방법.html#Ref._0" data-path="#Ref._0"><div class="tree-item-inner heading-link" heading-name="Ref.">Ref.</div></a><div class="tree-item-children"></div></div></div></div></div></div></div><script defer="">let rs = document.querySelector("#right-sidebar"); rs.classList.toggle("is-collapsed", window.innerWidth < 768); rs.style.setProperty("--sidebar-width", localStorage.getItem("sidebar-right-width"));</script></div></div></div></body></html>
