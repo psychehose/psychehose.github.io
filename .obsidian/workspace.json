@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Infra/Swarm Teams.md",
+                "file": "BLE/1. BLE 개요.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Swarm Teams"
+              "title": "1. BLE 개요"
             }
           }
         ]
@@ -178,27 +178,9 @@
   },
   "active": "cf85eaff13e0717f",
   "lastOpenFiles": [
-    "docs/site-lib/styles/theme.css",
-    "docs/site-lib/styles/supported-plugins.css",
-    "docs/site-lib/styles/other-plugins.css",
-    "docs/site-lib/styles/obsidian.css",
-    "docs/site-lib/styles/main-styles.css",
-    "docs/site-lib/styles/global-variable-styles.css",
-    "docs/site-lib/scripts/webpage.js",
-    "docs/site-lib/scripts/graph-wasm.wasm",
-    "docs/site-lib/scripts/graph-wasm.js",
-    "docs/site-lib/scripts/graph-render-worker.js",
-    "docs/site-lib/media/favicon.png",
-    "docs/site-lib/media/874d8b8e340f75575caa.svg",
-    "docs/site-lib/html/file-tree-content.html",
-    "docs/images/whoami.png",
-    "docs/images/wbp_ui_transition.png",
-    "docs/images/vertext_shader_parallel.png",
-    "docs/images/vertex_shader.png",
-    "docs/images/var_error.jpg",
-    "docs/images/using_uniform.png",
-    "docs/images/usermode_kernalmode.png",
-    "docs/images/use_vertex_attirbute_arrays.png",
+    "docs/site-lib/search-index.json",
+    "docs/site-lib/metadata.json",
+    "docs/images/initializer_list_char.png",
     "UE/Build System.md",
     "UE/아틀라스.md",
     "UE/Unreal Engine만의 기본 타입이 있는 이유와 문자열.md",
@@ -216,7 +198,6 @@
     "UE/bool vs uint8.md",
     "CMake/CMake 사용법.md",
     "UE/Invalidation Box.md",
-    "CPP/Basic/5. 다중 상속.md",
     "Algorithm/Study/누적합 알고리즘.md",
     "Algorithm/Study/이분탐색 & 파라메트릭 서치.md",
     "UE/UI 애니메이션.md",
@@ -224,7 +205,26 @@
     "Network/06. TCP IP 송수신 구조.md",
     "Network/05. 계층별 데이터 단위.md",
     "Network/04. 패킷의 생성과 전달.md",
+    "Network/03. L3.md",
     "Hose/Resume/Resume.canvas",
+    "docs/cpp/lib/google-test.html",
+    "docs/cpp/lib/fmt.html",
+    "docs/cpp/lib",
+    "docs/images/initializer_list_char.html",
+    "docs/cpp/modern/6.-uniform-initializer.html",
+    "docs/cpp/modern/7.-random,-chrono-library.html",
+    "images/initializer_list_char.png",
+    "images/Screenshot 2025-02-02 at 1.16.00 PM.png",
+    "images/Screenshot 2025-02-02 at 1.16.11 PM.png",
+    "CPP/Lib",
+    "docs/site-lib/styles/theme.css",
+    "docs/site-lib/styles/supported-plugins.css",
+    "docs/site-lib/media/favicon.png",
+    "docs/site-lib/media/874d8b8e340f75575caa.svg",
+    "docs/images/whoami.png",
+    "docs/images/wbp_ui_transition.png",
+    "docs/images/vertext_shader_parallel.png",
+    "docs/images/vertex_shader.png",
     "Untitled.canvas"
   ]
 }
