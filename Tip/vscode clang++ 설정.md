@@ -41,8 +41,6 @@
   "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
   "editor.formatOnSave": true,
   "C_Cpp.intelliSenseEngine": "disabled",
-  "editor.tabSize": 2,
-  "editor.insertSpaces": true,
   "clangd.fallbackFlags": [
     "--std=c++17",
     "-I//Users/psychehose/.asdf/installs/java/zulu-17.42.19/zulu-17.jdk/Contents/Home/include",
