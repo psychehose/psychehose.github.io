@@ -21,6 +21,16 @@ $ 5dd #현재위치부터 5줄 삭제
 ```
 
 
+#### vim 라인 주석 / 해제
+
+1. v 눌러서 visual mode 진입
+2. 주석할 라인 선택
+3. norm i# (normal mode에서 i -> edit 모드 -> # 삽입) 입력 
+---
+1. v 눌러서 visual mode 진입
+2. 주석 해제할 라인 선택
+3. norm 1x (맨 앞에서 한글자 지우기) 입력
+
 #### 로그 보는 방법
 
 ```bash
@@ -49,6 +59,33 @@ $ ps aux | grep p4d
 * kill -20 (SIGTSTP): Ctrl+Z와 동일, 일시 중지
 
 권장 사용 순서:
-1. kill -15 (SIGTERM) 시도
-2. kill -2 (SIGINT) 시도
-3. 마지막 수단으로 kill -9 (SIGKILL) 사용
+4. kill -15 (SIGTERM) 시도
+5. kill -2 (SIGINT) 시도
+6. 마지막 수단으로 kill -9 (SIGKILL) 사용
+
+
+#### sed
+
+1. sed 's/^... test'//' 
+	* 시작부터 ... test" 문자열을 찾음 -> 빈문자열로 치환(//)
+	* ^ = 라인의 시작
+	  
+2. sed `"s|$|@$changelist_number|"`
+	- `s|pattern|replacement|`: 여기서는 구분자로 `/` 대신 `|` 사용 (경로에 `/`가 있어서)
+	- `$`: 라인의 끝을 의미
+	- `@$changelist_number`: 라인 끝에 "@"와 changelist 번호를 추가
+
+
+3. sed 's/.$//'
+	- `.`: 아무 문자 하나를 의미
+	- `$`: 문자열의 끝을 의미
+	- 따라서 `.$`는 문자열의 마지막 문자 하나를 의미
+	- `s/pattern//`: pattern과 매칭되는 부분을 빈 문자열로 치환 (= 삭제)
+
+4. sed 's/..$//'
+	* 맨 마지막 문자 2개를 삭제
+
+
+
+
+
