@@ -12,8 +12,6 @@
 
 [https://tuist.io/](https://tuist.io/)
 
- [Xcode on steroids | Tuist
-
 Tuist is a tool that helps developers manage large Xcode projects by leveraging project generation. Moreover, it provides some tools to automate most common tasks, allowing developers to focus on building apps.
 
 tuist.io](https://tuist.io/)
