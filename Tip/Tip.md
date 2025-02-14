@@ -13,4 +13,3 @@ UnrealPak.exe {추출할 pak 파일 경로} -Extract {추출 되는 경로}
 ```
 Get-ChildItem -Recurse | Where-Object { !$_.PSIsContainer -and !$_.Attributes.HasFlag([System.IO.FileAttributes]::ReadOnly) } | Select-Object FullName
 ```
-

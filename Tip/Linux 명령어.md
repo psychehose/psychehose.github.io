@@ -86,6 +86,15 @@ $ ps aux | grep p4d
 	* 맨 마지막 문자 2개를 삭제
 
 
+#### tee
 
+터미널과 출력과 파일에 입력을 동시에 할 수 있는 명령어.
+
+```shell
+$ echo test | tee tee-test-file.txt
+test
+$ cat tee-test-file.txt
+test
+```
 
 
