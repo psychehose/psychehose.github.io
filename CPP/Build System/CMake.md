@@ -24,14 +24,6 @@ $ mkdir build && cd build
 $ cmake .. # root CMakeList.txt 경로를 지정해야함
 ```
 
-
-
-
-
-
-
-
-
 #### Ninja 설치
 
 ```zsh
