@@ -5,3 +5,9 @@
 #### rpg_graph 열기
 
 ros2 run rqt_grqph rqt_graph
+
+
+```
+$ ros2 node list # 현재 실행중인 노드
+$ ros2 node info {/turtlesim} # 노드 정보 확인
+```
