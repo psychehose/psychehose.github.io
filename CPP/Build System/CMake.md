@@ -38,3 +38,23 @@ $ brew install ninja
 $ cmake .. -G Ninja
 $ cmake --build .
 ```
+
+
+#### visual studio code에서 clangd와 cmake 컴파일 설정 맞추기
+
+`.vscode/settings.json`
+
+```json
+{
+	// 이거는 직접 라이브러리 include path 추가
+   //"clangd.fallbackFlags": [
+    //"-I/opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4",
+    //"-I/opt/homebrew/Cellar/opencv/4.11.0_1/include"
+  //],
+  "clangd.arguments": [
+    "--compile-commands-dir=${workspaceFolder}",
+    "--background-index",
+    "--clang-tidy"
+  ]
+}
+```
