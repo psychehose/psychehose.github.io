@@ -1,6 +1,33 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><parsererror xmlns="http://www.w3.org/1999/xhtml" style="display: block; white-space: pre; border: 2px solid #c77; padding: 0 1em 0 1em; margin: 1em; background-color: #fdd; color: black"><h3>This page contains the following errors:</h3><div style="font-family:monospace;font-size:12px">error on line 54 at column 239: Input is not proper UTF-8, indicate encoding !
-Bytes: 0x08 0x70 0x5F 0x63
-</div><h3>Below is a rendering of the page up to the first error.</h3></parsererror><channel><title><![CDATA[psychehose.github.io]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>site-lib/media/favicon.png</url><title>psychehose.github.io</title><link/></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Sun, 02 Feb 2025 06:13:50 GMT</lastBuildDate><atom:link href="site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Sun, 02 Feb 2025 06:11:32 GMT</pubDate><ttl>60</ttl><dc:creator/><item><title><![CDATA[152. Maximum Product Subarray]]></title><description><![CDATA[<a href=".?query=tag:algo" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#algo">#algo</a> <a href=".?query=tag:medium" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#medium">#medium</a> <a href=".?query=tag:blind75" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#blind75">#blind75</a> Given an integer array&nbsp;nums, find a&nbsp;subarray&nbsp;that has the largest product, and return&nbsp;the product.The test cases are generated so that the answer will fit in a&nbsp;32-bit&nbsp;integer.Example 1:Input: nums = [2,3,-2,4]
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><parsererror xmlns="http://www.w3.org/1999/xhtml" style="display: block; white-space: pre; border: 2px solid #c77; padding: 0 1em 0 1em; margin: 1em; background-color: #fdd; color: black"><h3>This page contains the following errors:</h3><div style="font-family:monospace;font-size:12px">error on line 29 at column 197: Invalid bytes in character encoding
+</div><h3>Below is a rendering of the page up to the first error.</h3></parsererror><channel><title><![CDATA[psychehose.github.io]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>site-lib/media/favicon.png</url><title>psychehose.github.io</title><link/></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Sun, 16 Mar 2025 13:48:53 GMT</lastBuildDate><atom:link href="site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Sun, 16 Mar 2025 13:46:29 GMT</pubDate><ttl>60</ttl><dc:creator/><item><title><![CDATA[ Home]]></title><description><![CDATA[ 금융공학과 소프트웨어공학을 전공하며 쌓은 수학적, 논리적 사고를 바탕으로 iOS 개발을 시작했습니다. 현재는 Android / iOS SDK 개발과 언리얼엔진 플러그인을 개발을 하고 있습니다.
+시스템 설계와 구현에 강점이 있으며 모던 C++을 이용해서 크로스 플랫폼을 타겟으로 하는 물리 라이브러리를 개발하고 있습니다.
+Swift Objective C RxSwift
+Java Android
+C++ CMake
+Unreal Engine
+Git Perforce Helix Core Game Engine
+Graphics
+OpenCV
+Robotics 안드로이드 / iOS 네이티브 라이브러리를 개발하고 이를 언리얼엔진에서 사용할 수 있도록 C++ 플러그인을 제작하여 제공 물리 라이브러리 크로스플랫폼 지원 및 C++ 현대화 UDN과 Github을 이용한 모바일 플랫폼 한정 엔진 이슈 트러블 슈팅 담당 언리얼엔진 클라이언트 개발 및 언리얼 인사이트를 활용한 게임 최적화 경험 브랜치 머지 전략 수립과 코드 리뷰 문화 도입 등을 통해 개발 문화를 정착 핀테크 기업에서 iOS 개발자로 근무하며 블록딜 및 비상장주식 플랫폼 개발을 주도 펀드고 앱 : 기획/디자인 단계부터 참여하며 모든 피쳐 개발을 담당 제이스톡 앱 : Modular Architecture를 바탕으로 비상장주식 거래 플랫폼을 개발 회사 내 프로젝트를 위한 인앱결제, 네트워크, 유저 정보, OAuth 모듈을 개발 및 CI/CD 배포 환경을 구축 Role - iOS Developer lead
+20th SOPT 앱잼(3주 장기 해커톤) Project Init ~ AppStore 배포 종료 (22.11 ~ 24.07)
+MVVM, RxSwift, ReactorKit, xcframework, fastlane
+SPM을 이용한 일부 부분 모듈화
+iOS 4명 - 기획 1명 - 디자인 1명 - 서버 2명 - 안드로이드 4명 Role - iOS Developer
+무중력지대 씨앗프로젝트
+Project Init ~ AppStore 배포 종료(20.09 ~ 22.08)
+MVVM, RxSwift, Moya, `Socket' iOS 3명 - 기획 2명 - 디자인 1명 - 서버 2명
+<a data-tooltip-position="top" aria-label="https://github.com/bookmaru/MARU-iOS" rel="noopener nofollow" class="external-link is-unresolved" href="https://github.com/bookmaru/MARU-iOS" target="_self">GitHub</a> 16th SOPT 앱잼 (3주 장기 해커톤) Project Init ~ AppStore 배포 종료 (20.08 ~ 23.04)
+MVC , YPImagePicker …
+iOS 5명 - 기획 2명 - 디자인 1명 - 서버 1명 - 안드로이드 3명
+MAU: 225명
+전체 유저: 1,295명 / 고양이: 1,523마리 / 리뷰: 11,169개
+아주대학교 금융공학과 전공, 소프트웨어학과 복수전공
+SOPT 창업동아리 26th iOS 파트 수료2023 let us: Go! Summer 찍먹톤 최우수상 (2023.06)
+SOPT 창업동아리 20th 앱잼 대상 (2022.08)
+SOPT 창업동아리 16th 앱잼 최우수상 (2020.08)Glitch Hackathon - Near Rust SDK 사용 Project (2023.05)
+<br>Email: <a data-tooltip-position="top" aria-label="mailto:psychehose@gmail.com" rel="noopener nofollow" class="external-link" href=".html" target="_self">psychehose@gmail.com</a>
+<br>GitHub: <a data-tooltip-position="top" aria-label="https://github.com/psychehose" rel="noopener nofollow" class="external-link is-unresolved" href="https://github.com/psychehose" target="_self">psychehose</a>
+]]></description><link>index.html</link><guid isPermaLink="false">index.md</guid><pubDate>Sun, 16 Mar 2025 13:41:10 GMT</pubDate></item><item><title><![CDATA[CMake]]></title><description/></item><item><title><![CDATA[152. Maximum Product Subarray]]></title><description><![CDATA[<a href=".?query=tag:algo" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#algo">#algo</a> <a href=".?query=tag:medium" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#medium">#medium</a> <a href=".?query=tag:blind75" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#blind75">#blind75</a> Given an integer array&nbsp;nums, find a&nbsp;subarray&nbsp;that has the largest product, and return&nbsp;the product.The test cases are generated so that the answer will fit in a&nbsp;32-bit&nbsp;integer.Example 1:Input: nums = [2,3,-2,4]
 Output: 6
 Explanation: [2,3] has the largest product 6.Example 2:Input: nums = [-2,0,-1]
 Output: 0
@@ -53,7 +80,7 @@ Complex operator/(const char* str) const; Complex Complex::operator+(const char*
 }; class B { public: void b() { A a; // 비록 private 함수의 필드들이지만 친구이기 때문에 접근 가능하다. a.private_func(); a.private_num = 2; }
 }; void func() { A a; // 비록 private 함수의 필드들이지만 위와 마찬가지로 친구이기 때문에 접근 // 가능하다. a.private_func(); a.private_num = 2;
 } int main() {} <a rel="noopener nofollow" class="external-link is-unresolved" href="https://modoocode.com/135" target="_self">https://modoocode.com/135</a>
-]]></description><link>cpp/basic/3.-overloading.html</link><guid isPermaLink="false">CPP/Basic/3. Overloading.md</guid><pubDate>Sun, 02 Feb 2025 04:26:35 GMT</pubDate></item><item><title><![CDATA[4. 상속]]></title><description/></item><item><title><![CDATA[Helix core,  Helix Swarm 구성]]></title><description><![CDATA[
+]]></description><link>cpp/basic/3.-overloading.html</link><guid isPermaLink="false">CPP/Basic/3. Overloading.md</guid><pubDate>Sun, 02 Feb 2025 04:26:35 GMT</pubDate></item><item><title><![CDATA[Helix core,  Helix Swarm 구성]]></title><description><![CDATA[
 저장소 설정
 sudo tee /etc/yum.repos.d/perforce.repo &lt;&lt; 'EOF'
 [perforce]
