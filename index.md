@@ -49,7 +49,7 @@ title: " Home"
 
 
 
-## Side Tema Project
+## Side Team Project
 ---
 ### Hous
 #### 공동생활 규칙 체크 어플리케이션
@@ -60,7 +60,6 @@ title: " Home"
 - `SPM`을 이용한 일부 부분 `모듈화`
 - iOS 4명 - 기획 1명 - 디자인 1명 - 서버 2명 - 안드로이드 4명
 
-
 ### 마루
 #### 온라인 독서 토론 어플리케이션
 * Role - iOS Developer
@@ -68,7 +67,6 @@ title: " Home"
 * Project Init ~ AppStore 배포 종료(20.09 ~ 22.08)
 * `MVVM`, `RxSwift`, `Moya`, `Socket'
 - iOS 3명 - 기획 2명 - 디자인 1명 - 서버 2명
-- [GitHub](https://github.com/bookmaru/MARU-iOS)
 
 ### Ounce
 #### 고양이 사료 기록 어플리케이션
