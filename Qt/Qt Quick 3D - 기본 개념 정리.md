@@ -1,9 +1,7 @@
 
-
 ## 1. View3D의 이해
 
 View3D는 Qt Quick 애플리케이션에서 3D 콘텐츠를 표시하는 핵심 컴포넌트입니다.
-
 ### 기본 구조
 ```qml
 View3D {
@@ -16,16 +14,18 @@ View3D {
         antialiasingQuality: SceneEnvironment.Medium
     }
     
-    // 여기에 카메라, 조명, 모델 등이 배치됩니다
+    // 여기에 카메라, 조명, 모델 등이 배치
 }
 ```
 
 ### View3D의 주요 속성
+
 - **environment**: 3D 장면의 환경 설정 (배경색, 안티얼라이징 등)
 - **renderMode**: 렌더링 방식 설정
 - **camera**: 활성 카메라 지정
 
 ### SceneEnvironment 설정
+
 - **clearColor**: 배경색 설정
 - **antialiasingMode**: 계단 현상 방지 모드 (MSAA, SSAA 등)
 - **antialiasingQuality**: 안티얼라이징 품질 (Low, Medium, High, VeryHigh)
@@ -36,6 +36,7 @@ View3D {
 카메라는 3D 공간을 어떤 시점에서 볼지 결정합니다.
 
 ### 기본 구조
+
 ```qml
 PerspectiveCamera {
     id: camera
@@ -50,18 +51,20 @@ PerspectiveCamera {
 ```
 
 ### 카메라 위치 설정 (position)
+
 - **x**: 좌/우 위치 (양수: 오른쪽, 음수: 왼쪽)
 - **y**: 높이 (양수: 위쪽, 음수: 아래쪽)
 - **z**: 앞/뒤 위치 (양수: 뒤쪽, 음수: 앞쪽)
 
 ### 카메라 회전 (eulerRotation)
-- **x축 회전**: 위/아래 시선 조절 (고개 끄덕이기, '-'값은 아래 보기)
-- **y축 회전**: 좌/우 시선 조절 (고개 좌우로 돌리기)
-- **z축 회전**: 카메라 기울기 (머리 기울이기)
+
+- **x축 회전**: 위/아래 시선 조절 (고개 끄덕이기, '-'값은 아래 보기) - pitch
+- **y축 회전**: 좌/우 시선 조절 (고개 좌우로 돌리기)- yaw
+- **z축 회전**: 카메라 기울기 (머리 기울이기) - roll
 
 ### lookAt 함수
 - **targetPosition**: 바라볼 대상의 위치
-- **upVector**: 카메라의 "위쪽" 방향 (보통 Qt.vector3d(0, 1, 0))
+- **upVector**: 카메라의 "위쪽" 방향 (보통 Qt.vector3d(0, 1, 0)), 법선벡터
 
 ### 카메라 종류
 - **PerspectiveCamera**: 원근감 있는 일반적인 3D 시점
@@ -72,6 +75,7 @@ PerspectiveCamera {
 조명은 3D 객체를 비추어 보이게 하는 광원입니다.
 
 ### DirectionalLight (방향성 광원)
+
 ```qml
 DirectionalLight {
     eulerRotation: Qt.vector3d(-30, 30, 0)  // 빛의 방향
@@ -86,6 +90,7 @@ DirectionalLight {
 - **ambientColor**: 주변광의 색상과 강도
 
 ### PointLight (점광원)
+
 ```qml
 PointLight {
     position: Qt.vector3d(0, 100, 0)  // 광원 위치
@@ -102,6 +107,7 @@ PointLight {
 - **색상 및 감쇠**: 거리에 따른 빛의 감소 설정
 
 ### SpotLight (스포트라이트)
+
 ```qml
 SpotLight {
     position: Qt.vector3d(0, 100, 0)
@@ -176,49 +182,18 @@ View3D {
         }
     }
     
-    // 5. 골프공 모델
+    // 5. 구
     Model {
-        id: golfBall
+        id: ball
         source: "#Sphere"  // 내장 구체 모델
         scale: Qt.vector3d(0.3, 0.3, 0.3)  // 크기 조정
         position: Qt.vector3d(0, 5.0, 0)  // 초기 위치
         materials: DefaultMaterial {
-            diffuseColor: "white"  // 흰색 공
+            diffuseColor: "white"  // 흰색
             specularAmount: 0.9  // 반사도
         }
     }
 }
 ```
 
-## 6. 디버깅 팁
 
-### 위치와 회전 확인
-```qml
-console.log("카메라 위치: x=" + camera.position.x.toFixed(2) + 
-            ", y=" + camera.position.y.toFixed(2) + 
-            ", z=" + camera.position.z.toFixed(2));
-```
-
-### 가시성 문제 해결
-1. **카메라 위치 확인**: 대상을 볼 수 있는 위치인지 확인
-2. **조명 설정 확인**: 충분한 밝기와 적절한 방향인지 확인
-3. **스케일 검토**: 너무 크거나 작지 않은지 확인
-
-## 7. 성능 최적화
-
-### 안티얼라이징 조정
-- 높은 품질: `SceneEnvironment.High` - 선명하지만 성능 저하
-- 중간 품질: `SceneEnvironment.Medium` - 적절한 균형
-- 낮은 품질: `SceneEnvironment.Low` - 성능 우선
-
-### 모델 복잡도
-- 내장 모델(`#Cube`, `#Sphere` 등)은 성능에 유리
-- 복잡한 외부 모델은 LOD(Level of Detail) 고려
-
-### 조명 최적화
-- 필요한 만큼만 조명 사용
-- 그림자 품질 조절: `shadowMapQuality`
-
-## 8. 참고 자료
-- [Qt Quick 3D 공식 문서](https://doc.qt.io/qt-6/qtquick3d-index.html)
-- [Qt Quick 3D 예제](https://doc.qt.io/qt-6/qtquick3d-examples.html)

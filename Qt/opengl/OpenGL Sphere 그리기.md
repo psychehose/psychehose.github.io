@@ -1,10 +1,7 @@
-# OpenGL 골프공(구) 지오메트리 생성 코드 분석
-
-이 문서는 OpenGL에서 구(sphere) 지오메트리를 생성하는 코드를 분석합니다. 특히 3D 공간에서 골프공을 표현하기 위한 구를 생성하는 과정을 자세히 살펴봅니다.
 
 ## 1. 전체 기능 개요
 
-`createBall()` 함수는 3D 공간에서 골프공을 표현하기 위한 구(sphere) 지오메트리를 생성합니다. 코드는 다음과 같은 단계로 진행됩니다:
+3D 공간에서 골프공을 표현하기 위한 구(sphere) 지오메트리를 생성하는 방법
 
 1. 구의 파라미터 설정 (반지름, 분할 수)
 2. 정점(vertex) 데이터 생성
@@ -16,37 +13,34 @@
 ### 2.1 구의 수학적 표현
 
 3D 공간에서 구는 다음과 같은 매개변수 방정식으로 표현됩니다:
-- x = r × cos(φ) × cos(θ)
-- y = r × cos(φ) × sin(θ)
-- z = r × sin(φ)
+- x = r × cos(theta) × cos(phi)
+- y = r × cos(theta) × sin(phi)
+- z = r × sin(theta)
 
-여기서:
 - r은 반지름
-- φ(phi)는 수직각(latitude): -π/2(하단) ~ π/2(상단)
-- θ(theta)는 수평각(longitude): 0 ~ 2π
+- theta는 수직각(latitude): -π/2(하단) ~ π/2(상단)
+- phi는 수평각(longitude): 0 ~ 2π
 
-코드에서는 이를 다음처럼 구현했습니다:
 ```cpp
-float stackAngle = PI / 2 - i * stackStep; // φ 계산
-float xy = radius * cosf(stackAngle);      // r × cos(φ) 계산
-float z = radius * sinf(stackAngle);       // r × sin(φ) 계산
+float stackAngle = PI / 2 - i * stackStep; // theta 계산
+float xy = radius * cosf(stackAngle);      // r × cos(theta) 계산
+float z = radius * sinf(stackAngle);       // r × sin(theta) 계산
 
 float sectorAngle = j * sectorStep;        // θ 계산
-float x = xy * cosf(sectorAngle);          // r × cos(φ) × cos(θ)
-float y = xy * sinf(sectorAngle);          // r × cos(φ) × sin(θ)
+float x = xy * cosf(sectorAngle);          // r × cos(theta) × cos(phi)
+float y = xy * sinf(sectorAngle);          // r × cos(theta) × sin(phi)
 ```
 
 ### 2.2 구의 분할 방법
 
-구는 두 가지 방향으로 분할됩니다:
+구는 두 가지 방향으로 분할
 - stackCount: 위에서 아래로 분할 (위도 분할)
 - sectorCount: 수평 방향 분할 (경도 분할)
-
-이 분할은 지구본을 상상하면 이해하기 쉽습니다. stackCount는 적도에서 북극/남극까지 몇 단계로 나눌지를, sectorCount는 경도선을 몇 개 사용할지 결정합니다.
 
 ## 3. 코드 분석
 
 ### 3.1 구 파라미터 설정
+
 ```cpp
 const float radius = 0.3f;      // 골프공 반지름
 const int sectorCount = 36;     // 수평 분할 수 (경도)
@@ -55,6 +49,7 @@ const QVector3D ballColor(1.0f, 1.0f, 1.0f); // 흰색 설정
 ```
 
 ### 3.2 정점 데이터 생성
+
 ```cpp
 const float PI = M_PI;
 const float sectorStep = 2.0f * PI / sectorCount; // 각 섹터(경도) 사이의 각도
@@ -70,15 +65,16 @@ for (int i = 0; i <= stackCount; ++i) {
 }
 ```
 
-이 중첩 루프는 구의 모든 정점을 생성합니다:
-- 외부 루프(i)는 위에서 아래로 각 스택(위도)을 순회
-- 내부 루프(j)는 각 스택에서 수평 방향(경도)으로 순회
+이 중첩 루프는 구의 모든 정점을 생성
+- i 는 위에서 아래로 각 스택(위도)을 순회
+- j 는 각 스택에서 수평 방향(경도)으로 순회
 
 각 정점에 대해:
 1. 위치(x, y, z) 계산
 2. 색상(r, g, b) 설정 (모든 정점은 흰색)
 
 ### 3.3 인덱스 생성
+
 ```cpp
 for (int i = 0; i < stackCount; ++i) {
   int k1 = i * (sectorCount + 1);     // 현재 스택의 시작 인덱스
@@ -101,7 +97,7 @@ for (int i = 0; i < stackCount; ++i) {
 }
 ```
 
-인덱스 생성은 구를 삼각형 메쉬로 변환하는 중요한 과정입니다:
+인덱스 생성은 구를 삼각형 메쉬로 변환하는 과정
 
 1. 각 스택과 섹터의 교차점마다 사각형 영역이 생성됨
 2. 각 사각형은 두 개의 삼각형으로 분할됨
@@ -109,7 +105,7 @@ for (int i = 0; i < stackCount; ++i) {
    - 첫 번째 스택(i=0): 상단 극점만 처리
    - 마지막 스택(i=stackCount-1): 하단 극점만 처리
 
-각 삼각형은 세 개의 인덱스로 구성되며, 이 인덱스는 먼저 정의된 정점 배열을 참조합니다.
+각 삼각형은 세 개의 인덱스로 구성되며, 이 인덱스는 먼저 정의된 정점 배열을 참조한다.
 
 ### 3.4 OpenGL 버퍼 설정
 
@@ -129,7 +125,7 @@ m_ballEBO.bind();
 m_ballEBO.allocate(indices.constData(), indices.size() * sizeof(GLuint));
 ```
 
-이 부분은 OpenGL의 핵심 개념인 버퍼 객체를 설정합니다:
+이 부분은 OpenGL의 핵심 개념인 버퍼 객체를 설정
 
 1. **VAO(Vertex Array Object)**: 정점 속성 포인터의 상태를 저장하는 컨테이너
 2. **VBO(Vertex Buffer Object)**: 정점 데이터(위치, 색상 등)를 저장하는 버퍼
@@ -151,7 +147,7 @@ m_program->enableAttributeArray(colorAttr);
 m_program->setAttributeBuffer(colorAttr, GL_FLOAT, 3 * sizeof(float), 3, 6 * sizeof(float));
 ```
 
-이 부분은 셰이더 프로그램에 전달할 정점 속성을 설정합니다:
+이 부분은 셰이더 프로그램에 전달할 정점 속성을 설정
 
 1. **위치 속성(aPos)**: 
    - 시작 오프셋: 0 (정점 데이터의 시작)
@@ -185,8 +181,6 @@ m_program->setAttributeBuffer(colorAttr, GL_FLOAT, 3 * sizeof(float), 3, 6 * siz
 ![구(Sphere)의 인덱스 생성 시각화](sphere-indexing-screenshot.png)
 
 ### 5.1 인덱스 생성 알고리즘 분석
-
-인덱스 생성 코드의 핵심 부분을 자세히 살펴보겠습니다:
 
 ```cpp
 for (int i = 0; i < stackCount; ++i) {
@@ -228,7 +222,7 @@ k2 = k1 + sectorCount + 1;
 
 ### 5.3 사각형을 삼각형으로 분할
 
-각 스택과 섹터 사이의 사각형 영역을 두 개의 삼각형으로 분할합니다:
+각 스택과 섹터 사이의 사각형 영역을 두 개의 삼각형으로 분할한다.
 
 1. **상단 삼각형** (i != 0일 때만):
    ```cpp
@@ -256,24 +250,11 @@ k2 = k1 + sectorCount + 1;
    - 여기서는 상단 삼각형만 생성 (하단 삼각형 생략)
    - `if (i != (stackCount - 1))` 조건으로 처리
 
-### 5.5 실제 구의 형태에 적용
-
-이 평면 격자 구조가 실제 3D 구에 어떻게 매핑되는지:
-
-1. 격자의 왼쪽/오른쪽 가장자리를 서로 연결하면 원통이 됩니다.
-2. 그 다음 원통의 상단과 하단을 각각 한 점으로 압축하면 구가 됩니다.
-3. 첫 번째 행(i=0)의 모든 정점은 실제로 구의 북극점에 해당합니다.
-4. 마지막 행(i=stackCount)의 모든 정점은 실제로 구의 남극점에 해당합니다.
-
-이러한 구조는 지구본의 경위도 체계와 유사합니다.
-
 ## 6. 요약
-
-이 코드는 OpenGL에서 파라메트릭 방정식을 사용하여 구 지오메트리를 생성하는 방법을 보여줍니다. 핵심 단계는:
 
 1. 구의 수학적 방정식을 사용하여 정점 위치 계산
 2. 정점 간 관계를 정의하는 인덱스 데이터 생성
 3. OpenGL 버퍼 객체 설정(VAO, VBO, EBO)
 4. 셰이더 프로그램에 정점 속성 전달
 
-이 방식으로 그래픽스 파이프라인이 효율적으로 3D 구 객체를 렌더링할 수 있습니다.
+
