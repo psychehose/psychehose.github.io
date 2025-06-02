@@ -1,33 +1,583 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><parsererror xmlns="http://www.w3.org/1999/xhtml" style="display: block; white-space: pre; border: 2px solid #c77; padding: 0 1em 0 1em; margin: 1em; background-color: #fdd; color: black"><h3>This page contains the following errors:</h3><div style="font-family:monospace;font-size:12px">error on line 29 at column 197: Invalid bytes in character encoding
-</div><h3>Below is a rendering of the page up to the first error.</h3></parsererror><channel><title><![CDATA[psychehose.github.io]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>site-lib/media/favicon.png</url><title>psychehose.github.io</title><link/></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Sun, 16 Mar 2025 13:48:53 GMT</lastBuildDate><atom:link href="site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Sun, 16 Mar 2025 13:46:29 GMT</pubDate><ttl>60</ttl><dc:creator/><item><title><![CDATA[ Home]]></title><description><![CDATA[ 금융공학과 소프트웨어공학을 전공하며 쌓은 수학적, 논리적 사고를 바탕으로 iOS 개발을 시작했습니다. 현재는 Android / iOS SDK 개발과 언리얼엔진 플러그인을 개발을 하고 있습니다.
-시스템 설계와 구현에 강점이 있으며 모던 C++을 이용해서 크로스 플랫폼을 타겟으로 하는 물리 라이브러리를 개발하고 있습니다.
-Swift Objective C RxSwift
-Java Android
-C++ CMake
-Unreal Engine
-Git Perforce Helix Core Game Engine
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><parsererror xmlns="http://www.w3.org/1999/xhtml" style="display: block; white-space: pre; border: 2px solid #c77; padding: 0 1em 0 1em; margin: 1em; background-color: #fdd; color: black"><h3>This page contains the following errors:</h3><div style="font-family:monospace;font-size:12px">error on line 579 at column 803: Invalid bytes in character encoding
+</div><h3>Below is a rendering of the page up to the first error.</h3></parsererror><channel><title><![CDATA[psychehose.github.io]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>site-lib/media/favicon.png</url><title>psychehose.github.io</title><link/></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Mon, 02 Jun 2025 09:28:12 GMT</lastBuildDate><atom:link href="site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Mon, 02 Jun 2025 09:25:48 GMT</pubDate><ttl>60</ttl><dc:creator/><item><title><![CDATA[ Home]]></title><description><![CDATA[ 금융공학과 소프트웨어공학을 전공하며 쌓은 수학적, 논리적 사고를 바탕으로 iOS 개발을 시작했습니다. 저는 시스템 설계와 구현에 강점이 있으며, 새로운 기술 도입에 적극적입니다. iOS 개발과 Android / iOS SDK - 언리얼엔진 플러그인 개발을 해왔습니다. 현재는 크로스플랫폼 (Windows, Android, iOS)을 타겟으로 하는 골프공 물리 시뮬레이터 개발과 스윙 모션 영상 처리를 개발 하고 있습니다.
+C++ CMake - ⭐⭐⭐
+OpenCV - ⭐⭐⭐ Swift Objective C RxSwift - ⭐⭐⭐⭐
+Java Android - ⭐⭐
+Unreal Engine - ⭐⭐
+Git Perforce Helix Core -⭐⭐⭐
+⭐⭐⭐⭐: 전문적 활용 - 심화 문제 해결 및 최적화 가능
+⭐⭐⭐ : 실무 활용 - 일상적 개발 업무 수행 가능
+⭐⭐: 기본 활용 - 이해 및 참고 자료를 통한 구현 가능
 Graphics
-OpenCV
-Robotics 안드로이드 / iOS 네이티브 라이브러리를 개발하고 이를 언리얼엔진에서 사용할 수 있도록 C++ 플러그인을 제작하여 제공 물리 라이브러리 크로스플랫폼 지원 및 C++ 현대화 UDN과 Github을 이용한 모바일 플랫폼 한정 엔진 이슈 트러블 슈팅 담당 언리얼엔진 클라이언트 개발 및 언리얼 인사이트를 활용한 게임 최적화 경험 브랜치 머지 전략 수립과 코드 리뷰 문화 도입 등을 통해 개발 문화를 정착 핀테크 기업에서 iOS 개발자로 근무하며 블록딜 및 비상장주식 플랫폼 개발을 주도 펀드고 앱 : 기획/디자인 단계부터 참여하며 모든 피쳐 개발을 담당 제이스톡 앱 : Modular Architecture를 바탕으로 비상장주식 거래 플랫폼을 개발 회사 내 프로젝트를 위한 인앱결제, 네트워크, 유저 정보, OAuth 모듈을 개발 및 CI/CD 배포 환경을 구축 Role - iOS Developer lead
+Robotics
+Computer Vision C++ 골프공 물리 Simulator 개발 (C++, Qt, OpenGL, Metal) 비디오 캡쳐 라이브러리 개발 (OpenCV) 안드로이드 / iOS 네이티브 라이브러리 개발 및 언리얼엔진 통합 언리얼엔진 클라이언트 개발 및 언리얼 인사이트를 활용한 게임 최적화 경험 브랜치 머지 전략 수립과 코드 리뷰 문화 도입 등을 통해 개발 문화를 정착 핀테크 기업에서 iOS 개발자로 근무하며 블록딜 및 비상장주식 플랫폼 개발을 주도 펀드고 앱 : 기획/디자인 단계부터 참여하며 모든 피쳐 개발을 담당 제이스톡 앱 : Modular Architecture를 바탕으로 비상장주식 거래 플랫폼을 개발 회사 내 프로젝트를 위한 인앱결제, 네트워크, 유저 정보, OAuth 모듈을 개발 및 CI/CD 배포 환경을 구축 Role - iOS Developer lead
 20th SOPT 앱잼(3주 장기 해커톤) Project Init ~ AppStore 배포 종료 (22.11 ~ 24.07)
 MVVM, RxSwift, ReactorKit, xcframework, fastlane
 SPM을 이용한 일부 부분 모듈화
 iOS 4명 - 기획 1명 - 디자인 1명 - 서버 2명 - 안드로이드 4명 Role - iOS Developer
 무중력지대 씨앗프로젝트
 Project Init ~ AppStore 배포 종료(20.09 ~ 22.08)
-MVVM, RxSwift, Moya, `Socket' iOS 3명 - 기획 2명 - 디자인 1명 - 서버 2명
-<a data-tooltip-position="top" aria-label="https://github.com/bookmaru/MARU-iOS" rel="noopener nofollow" class="external-link is-unresolved" href="https://github.com/bookmaru/MARU-iOS" target="_self">GitHub</a> 16th SOPT 앱잼 (3주 장기 해커톤) Project Init ~ AppStore 배포 종료 (20.08 ~ 23.04)
+MVVM, RxSwift, Moya, `Socket' iOS 3명 - 기획 2명 - 디자인 1명 - 서버 2명 16th SOPT 앱잼 (3주 장기 해커톤) Project Init ~ AppStore 배포 종료 (20.08 ~ 23.04)
 MVC , YPImagePicker …
 iOS 5명 - 기획 2명 - 디자인 1명 - 서버 1명 - 안드로이드 3명
 MAU: 225명
 전체 유저: 1,295명 / 고양이: 1,523마리 / 리뷰: 11,169개
 아주대학교 금융공학과 전공, 소프트웨어학과 복수전공
+딥러닝 컴퓨터 비전 완벽 가이드 - 인프런
+Qt 프로그래밍 1편 - 인프런
 SOPT 창업동아리 26th iOS 파트 수료2023 let us: Go! Summer 찍먹톤 최우수상 (2023.06)
 SOPT 창업동아리 20th 앱잼 대상 (2022.08)
 SOPT 창업동아리 16th 앱잼 최우수상 (2020.08)Glitch Hackathon - Near Rust SDK 사용 Project (2023.05)
-<br>Email: <a data-tooltip-position="top" aria-label="mailto:psychehose@gmail.com" rel="noopener nofollow" class="external-link" href=".html" target="_self">psychehose@gmail.com</a>
+Email: <a data-tooltip-position="top" aria-label="mailto:psychehose@gmail.com" rel="noopener nofollow" class="external-link" href=".html" target="_self">psychehose@gmail.com</a>
 <br>GitHub: <a data-tooltip-position="top" aria-label="https://github.com/psychehose" rel="noopener nofollow" class="external-link is-unresolved" href="https://github.com/psychehose" target="_self">psychehose</a>
-]]></description><link>index.html</link><guid isPermaLink="false">index.md</guid><pubDate>Sun, 16 Mar 2025 13:41:10 GMT</pubDate></item><item><title><![CDATA[CMake]]></title><description/></item><item><title><![CDATA[152. Maximum Product Subarray]]></title><description><![CDATA[<a href=".?query=tag:algo" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#algo">#algo</a> <a href=".?query=tag:medium" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#medium">#medium</a> <a href=".?query=tag:blind75" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#blind75">#blind75</a> Given an integer array&nbsp;nums, find a&nbsp;subarray&nbsp;that has the largest product, and return&nbsp;the product.The test cases are generated so that the answer will fit in a&nbsp;32-bit&nbsp;integer.Example 1:Input: nums = [2,3,-2,4]
+]]></description><link>index.html</link><guid isPermaLink="false">index.md</guid><pubDate>Mon, 02 Jun 2025 09:23:22 GMT</pubDate></item><item><title><![CDATA[Develop]]></title><link>hose/develop.html</link><guid isPermaLink="false">Hose/Develop.md</guid><pubDate>Sat, 31 May 2025 10:51:08 GMT</pubDate></item><item><title><![CDATA[ROS 2 핵심 통신 개념]]></title><description><![CDATA[ROS 2(Robot Operating System 2)는 로봇 소프트웨어 개발을 위한 프레임워크로, 분산 시스템을 효율적으로 구축할 수 있게 해준다. ROS 2 Humble의 핵심 통신 개념과 관련 명령어를 정리한다.노드는 ROS의 기본 실행 단위이다. 각 노드는 특정 기능을 수행하는 독립적인 프로세스로, 다른 노드들과 통신하며 전체 시스템을 구성한다.
+독립적으로 실행되는 프로세스임
+단일 목적을 가지는 모듈화된 코드임
+다른 노드와 토픽, 서비스, 액션을 통해 통신함
+rclcpp(C++) 또는 rclpy(Python) 라이브러리로 구현함
+# 실행 중인 모든 노드 목록 표시
+ros2 node list # 특정 노드에 대한 정보 표시
+ros2 node info /노드_이름 # 노드 실행
+ros2 run 패키지_이름 실행_파일
+토픽은 노드 간 비동기식 단방향 통신을 위한 메커니즘이다. 발행자(Publisher)와 구독자(Subscriber) 모델을 사용한다.
+지속적인 데이터 스트림에 적합함
+일대다(one-to-many) 통신 지원함
+비동기적으로 작동하여 발행자는 구독자의 존재 여부에 관계없이 메시지를 보낼 수 있음
+센서 데이터, 로봇 상태 등 지속적인 정보 공유에 주로 사용함
+# 모든 토픽 목록 표시
+ros2 topic list # 토픽과 그 메시지 타입 함께 표시
+ros2 topic list -t # 특정 토픽에 대한 정보 표시
+ros2 topic info /토픽_이름 # 토픽에 발행되는 메시지 실시간 출력
+ros2 topic echo /토픽_이름 # 토픽에 메시지 발행
+ros2 topic pub /토픽_이름 메시지_타입 메시지_내용 # 토픽의 발행 주기 측정
+ros2 topic hz /토픽_이름
+서비스는 동기식 요청-응답 통신 방식이다. 클라이언트-서버 모델을 사용하며, 클라이언트가 요청하면 서버가 응답한다.
+일회성 작업에 적합함
+요청이 완료될 때까지 클라이언트는 대기함
+동기적으로 작동하여 응답을 받을 때까지 블로킹됨
+상태 쿼리, 파라미터 설정, 간단한 계산 등에 사용함
+# 사용 가능한 모든 서비스 목록 표시
+ros2 service list # 서비스와 타입 함께 표시
+ros2 service list -t # 서비스의 타입 표시
+ros2 service type /서비스_이름 # 특정 타입의 서비스 찾기
+ros2 service find 서비스_타입 # 서비스 호출
+ros2 service call /서비스_이름 서비스_타입 요청_내용
+액션은 장기 실행 작업을 위한 고수준 통신 방식이다. 목표(Goal), 피드백(Feedback), 결과(Result)의 세 가지 통신 채널을 사용한다.
+취소 가능한 장기 실행 작업에 적합함
+실행 중 상태 피드백을 제공할 수 있음
+비동기적으로 작동하여 클라이언트가 다른 작업을 계속할 수 있음
+로봇 내비게이션, 물체 조작 등 복잡한 작업에 사용함
+# 모든 액션 목록 표시
+ros2 action list # 액션과 타입 함께 표시
+ros2 action list -t # 특정 액션에 대한 정보 표시
+ros2 action info /액션_이름 # 액션 목표 전송
+ros2 action send_goal /액션_이름 액션_타입 목표_내용
+ROS 2의 통신 메커니즘은 각기 다른 용도에 최적화되어 있다.
+노드: 모듈화된 기능 단위
+토픽: 지속적인 데이터 스트림에 적합한 비동기 통신
+서비스: 일회성 요청-응답에 적합한 동기 통신
+액션: 피드백이 필요한 장기 실행 작업에 적합한 비동기 통신
+]]></description><link>robotics/ros-2-핵심-통신-개념.html</link><guid isPermaLink="false">robotics/ROS 2 핵심 통신 개념.md</guid><pubDate>Thu, 29 May 2025 14:56:18 GMT</pubDate></item><item><title><![CDATA[1. 기본]]></title><description><![CDATA[ 초기화 Device 생성
+CommandQueue 생성 자원 생성 Vertex Buffer 생성
+Texture Descriptor 생성 파이프라인 상태 객체 생성 셰이더 함수 로드
+렌더 파이프라인 상태 생성 (RenderPipelineState) 명령 인코딩 CommandBuffer 생성
+RednerPassDescriptor 생성
+렌더 인코더 생성
+파이프라인 상태 설정
+자원 설정
+그리기 명령
+인코딩 종료 실행 및 표시 명령 버퍼 커밋 앱 초기화 (단 한번 수행) MTLDevice 생성
+MTLCommandQueue 생성
+셰이더 컴파일 및 MTLRenderPipelineState 생성
+정적 자원 (버퍼, 텍스쳐) 생성 프레임 마다 수행 MTLCommandBuffer 생성
+MTLRenderPassDescriptor 설정
+MTLRenderCommandEncoder 생성
+렌더링 상태 및 자원 설정
+그리기 명령 인코딩
+인코딩 종료
+명령 버퍼 커밋 및 실행 ]]></description><link>graphics/metal/1.-기본.html</link><guid isPermaLink="false">graphics/metal/1. 기본.md</guid><pubDate>Thu, 29 May 2025 14:56:18 GMT</pubDate></item><item><title><![CDATA[자주 사용하는 단축키]]></title><link>qt/자주-사용하는-단축키.html</link><guid isPermaLink="false">Qt/자주 사용하는 단축키.md</guid><pubDate>Thu, 29 May 2025 14:56:18 GMT</pubDate></item><item><title><![CDATA[리소스 임베딩 by compile]]></title><description><![CDATA[크로스플랫폼을 타겟으로 하는 C++ 라이브러리를 개발하면서 리소스를 포함해야 하는 경우가 있다.PC 기반의 환경 (macOS, Windows, Linux 등등)에서 파일 경로를 이용해서 fopen() 으로 리소스에 접근할 수 있다. 그러나 샌드박스 환경 (Android, iOS 등)에서는 파일 시스템 접근이 제한된다. 그래서 각 플랫폼 API를 이용하는 방법으로 리소스에 접근하거나 이미지, 오디오, 텍스트 파일등의 바이너리 리소스를 C / C++ 소스코드 배열로 변환하는 리소스 임베딩 방식을 사용한다.
+리소스 파일을 바이트 배열로 변환한다.
+바이트 배열을 C++ 소스 코드 파일에 포함시킨다.
+컴파일을 할 때 이 배열이 프로그램의 바이너리에 포함된다.
+런타임에 이 배열에 접근해서 리소스를 사용한다.
+리소스 파일을 바이트 배열로 변환할 때 Python 스크립트나 bin2c, CMake의 configure_file을 사용한다.]]></description><link>cpp/etc/리소스-임베딩-by-compile.html</link><guid isPermaLink="false">CPP/etc/리소스 임베딩 by compile.md</guid><pubDate>Thu, 29 May 2025 14:56:18 GMT</pubDate></item><item><title><![CDATA[09. GLSL 디버그 함수들]]></title><description><![CDATA[
+GLSL 디버그 함수들
+OpenGL 함수의 디버깅
+OpenGL debug output
+#version 330 core in vec3 vColor; // LINK ERROR: type mismatch ! out vec4 FragColor; // fragment color: framebuffer void main(void) { FragColor = vColor; // ERROR: type mismatch!
+}
+위의 코드는 error 가 있는 frag 파일임. 이를 컴파일 했을 때 문제가 생김. 그러나 프로그램은 실행이 됨. - 회색 화면이 출력됨.디버그를 하기 위해서는 아래의 GLSL 함수를 이용 해야함.void glGetShaderiv(GLuint shader, GLenum pname, GLint* params); pname: 어떤 값을 전달 받을 것인가에 대한 정의임. GL_COMPILE_STATUS, GL_INFO_LOG_LENGTH, GL_SHADER_SOURCE_LENGTH ... params: pname에 대한 결과 GL_COMPILE_STATUS을 지정했다면, 성공: true(1) 실패: false(0) void glGetShaderInfoLog(GLuint shader, GLsizei maxLen, GLsizei* length, GLchar* infoLog); maxLen: infoLog array의 최대 길이
+length: infoLog array의 길이
+infoLog: 로그 정보 (버퍼에 담겨서 옴)
+prog에서 디버깅 하기 (링킹, 실행)<img alt="prog_debugging.png" src="images/prog_debugging.png" target="_self">실제 사용 vert, frag에서<br>
+<img alt="glsl_debugging_1.png" src="images/glsl_debugging_1.png" target="_self"> prog에서<br>
+<img alt="glsl_debugging2.png" src="images/glsl_debugging2.png" target="_self"> 디버깅 결과 정상<br>
+<img alt="debugging_success.png" src="images/debugging_success.png" target="_self"> 에러 발생<br>
+<img alt="debugging_failure.png" src="images/debugging_failure.png" target="_self"> OpenGL 드라이버 내부에 error flag 변수를 이용
+GLenum glGetError(); 함수를 이용.
+GLenum glGetError(); returns: errorFlag
+리턴 되고나면 error flag 변수를 GL_NO_ERROR로 초기화
+<br><img alt="gl_error_flag.png" src="images/gl_error_flag.png" target="_self">
+OpenGL debug extension - 크로노스 그룹에서 만들었음.
+OpenGL 4.3에서 core feature가 되었음.
+new 이벤트 드라이븐 모델임 OpenGL Error는 event임.
+event handler는 callback function임 debug event 원인: API, WINDOW_SYSTEM, SHADER_COMPILER, …
+종류: ERROR, UNDEFINED_BEHAVIOR, PERFORMANCE, MARKER (사용자가 표시한것), …
+심각성의 정도: severe levels, HIGH, MEDIUM, LOW, NOTIFICATION 그 중 DONT_CARE는 everything임 glEnable(GL_DEBUG_OUTPUT); // 디버그 사용 활성화
+glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS); // 결과 즉시 출력
+glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0 ,NULL, GL_TRUE); // -&gt; 모든 디버그 메세지 받음
+glDebugMessageCallback(DebugLog, NULL); // DebugLog라는 함수를 콜백으로 등록함.
+void glEnable(GLenum cap);
+void glDisable(Glenum cap);
+OpenGL 내부의 특정 기능을 on/off함void glDebugMessageControl(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint* ids, GLboolean enabled); debug 이벤트 설정 - source, type, severity
+enabled: 기능을 끌 것인지 켤 것인지.
+ids: 에러 id 넘버에 따라서 기능을 끌 것인지 켤 것인지 - ids다보니까 배열임
+count: ids는 포인터 타입이라 길이가 없음. 길이를 여기에 넣으면 됨
+콜백함수 등록에 관하여.typedef void (*DEBUGPROC)(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, const void* userParam); userParam: 사용자가 특정한 파라미터를 넣을 수 있음 -&gt; 추가적인 컨텍스트나 데이터 전달 가능
+void APIENTRY debugCallback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, const void* userParam) { MyLogger* logger = (MyLogger*)userParam; logger-&gt;log(message);
+} // 콜백 설정 시
+MyLogger myLogger;
+glDebugMessageCallback(debugCallback, &amp;myLogger); MyLogger 객체의 포인터가 userParam으로 전달되어, 콜백 함수 내에서 로깅에 사용
+userParam은 const void* 타입이므로, 사용 시 적절한 타입으로 캐스팅해야 함
+전달된 객체나 데이터의 생명주기 관리해야함
+]]></description><link>graphics/opengl/02.응용/09.-glsl-디버그-함수들.html</link><guid isPermaLink="false">graphics/opengl/02.응용/09. GLSL 디버그 함수들.md</guid><pubDate>Thu, 03 Apr 2025 14:40:06 GMT</pubDate><enclosure url="images/prog_debugging.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="images/prog_debugging.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[10. OpenGL 깊이 버퍼와 렌더링 순서]]></title><description><![CDATA[깊이 버퍼는 3D 그래픽스에서 어떤 물체가 다른 물체를 가리는지 결정하는 핵심 메커니즘이다.
+작동 원리: 각 픽셀마다 카메라로부터의 거리(Z값)를 저장
+범위: 일반적으로 [0.0, 1.0] (0.0은 near plane, 1.0은 far plane)
+정밀도: 일반적으로 16비트, 24비트 또는 32비트 (24비트가 가장 일반적)
+분포: 비선형적 분포 - 가까운 거리에서 정밀도가 높고, 먼 거리에서는 정밀도가 낮음
+// 깊이 테스트 활성화
+glEnable(GL_DEPTH_TEST); // 깊이 테스트 비교 함수 설정 (기본값은 GL_LESS)
+glDepthFunc(GL_LESS); // 새 픽셀의 깊이 값이 작을 때(더 가까울 때) 통과
+// 렌더링 루프에서 매 프레임마다 색상 버퍼와 깊이 버퍼를 함께 초기화
+glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+// 깊이 버퍼 쓰기 활성화 (기본값)
+glDepthMask(GL_TRUE); // 깊이 버퍼 쓰기 비활성화 (투명 오브젝트 그릴 때 유용)
+glDepthMask(GL_FALSE); GL_LESS: 새 값이 작을 때 통과 (기본값)
+GL_LEQUAL: 새 값이 작거나 같을 때 통과
+GL_GREATER: 새 값이 클 때 통과
+GL_GEQUAL: 새 값이 크거나 같을 때 통과
+GL_EQUAL: 새 값이 같을 때만 통과
+GL_NOTEQUAL: 새 값이 다를 때 통과
+GL_ALWAYS: 항상 통과
+GL_NEVER: 절대 통과하지 않음
+Z-fighting은 두 물체가 거의 같은 깊이에 있을 때 깜빡이는 현상입니다.
+깊이 버퍼의 제한된 정밀도
+near plane과 far plane 사이의 거리가 너무 큰 경우
+특히 먼 거리에서 정밀도가 낮아지는 비선형 분포로 인해 발생 near/far plane 비율 줄이기: 시야 범위를 필요한 만큼만 설정
+glm::mat4 projection = glm::perspective(glm::radians(45.0f), aspect_ratio, 0.1f, 100.0f); 높은 정밀도의 깊이 버퍼 사용: 24비트 또는 32비트 깊이 버퍼 사용
+물체 배치 조정: 서로 다른 물체가 완전히 같은 깊이에 있지 않도록 약간 간격 두기
+]]></description><link>graphics/opengl/02.응용/10.-opengl-깊이-버퍼와-렌더링-순서.html</link><guid isPermaLink="false">graphics/opengl/02.응용/10. OpenGL 깊이 버퍼와 렌더링 순서.md</guid><pubDate>Thu, 03 Apr 2025 14:40:06 GMT</pubDate></item><item><title><![CDATA[03. GPU 내부 구조]]></title><description><![CDATA[<img alt="gpu_structure.png" src="images/gpu_structure.png" target="_self">기본 구조는 인풋 레지스터가 있고, 프로세서가 처리한 후 아웃풋 레지스터로 넘겨주는 형식.
+vertext shader와 fragment shader는 GPU Core임
+버텍스 쉐이더와 프래그먼트 쉐이더는 독립적이며 그 사이에 fixed hardware가 있음.
+각각 쉐이더 프로세서는 임시 변수를 저장할 레지스터를 가지고 있음. (tempory variable)
+글로벌 변수가 필요할 수도 있기 때문에 글로벌 레지스터도 있음 (uniform register)
+버텍스 쉐이더 프로세서 처리 값인 varying 레지스터의 값과 rasterization을 거친 varying 레지스터의 값은 다름.
+레지스터는 하나는 내부적으로 4차원 좌표 (x,y,z,w)로 처리하고 타입은 float.
+primitive assembly 단계에서 적용 가능
+꼭지점이 2개가 주어지면, 나머지 좌표가 결정됨 (보간법)
+컬러도 보간할 수 있음
+<br><img alt="linear_interpolation.png" src="images/linear_interpolation.png" target="_self"><br><img alt="bi_linear_interpolation.png" src="images/bi_linear_interpolation.png" target="_self">
+rasterization의 핵심 기능
+처음에 선분으로 연결하고 보간함
+선분끼리 보간함
+두번 보간해서 이중 선형 보간
+<br><img alt="vertex_shader.png" src="images/vertex_shader.png" target="_self">
+vertex processor가 a vertex data -&gt; normalized vertex data로 변환함
+각각의 버텍스에 적용
+gl_Position, gl_PointSize 같은 pre - defined 되어 있는 레지스터에 값을 넣으면 후처리 단계에서 바로 사용 가능
+<br><img alt="primitive_assembly_rasterization.png" src="images/primitive_assembly_rasterization.png" target="_self">
+3개의 버텍스 정보가 병렬처리를 거쳐서 3개의 버텍스 위치를 gl_Position 레지스터에 동시에 넣어줌
+primitive assembly로 오면서 3개의 정보가 결합해 삼각형인지 판단
+3개의 버텍스로 시작했지만, 수천개 수만개의 프래그먼트가 생성됨
+이 삼각형 내부에 있는 픽셀을 선택하고 각 픽셀마다 프레그먼트 쉐이더를 진행함.
+<br> <img alt="fragment_shader.png" src="images/fragment_shader.png" target="_self">이중선형보간을 통해 삼각형 내부에 속한 픽셀 하나하나 대응되는 데이터를 가지고 있음.
+이 프래그먼트마다 Fragment Shader를 돌리면 픽셀의 최종값을 결정함. output이 나오고 이는 곧 framebuffer에 업데이트 되는 값임.]]></description><link>graphics/opengl/02.응용/03.-gpu-내부-구조.html</link><guid isPermaLink="false">graphics/opengl/02.응용/03. GPU 내부 구조.md</guid><pubDate>Thu, 03 Apr 2025 14:40:06 GMT</pubDate><enclosure url="images/gpu_structure.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="images/gpu_structure.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[04. GLSL]]></title><description><![CDATA[
+C style
+새로운 자료형 도입, 연산 추가 vector, matrix
+벡터, 행렬 연산
+샘플러 for 텍스쳐 맵핑
+GL Master Library GLM으로 발전
+C++ style <img alt="opengl_shader_program_process.png" src="images/opengl_shader_program_process.png" target="_self">
+OpenGL 소스코드를 컴파일 .exe 프로그램을 실행 (OpenGL 프로그램)
+OpenGL 프로그램 내에서 vertext shader, fragment shader를 위한 소스코드를 내부에서 컴파일함.
+GPU는 shader 프로그램 동시 실행
+OpenGL 프로그램에서 user data를 vertex input으로 보냄
+그래픽스 파이프라인 통과 -&gt; 화면 출력
+<br><img alt="shader_program_structure.png" src="images/shader_program_structure.png" target="_self">
+OpenGL은 내부적으로 컴파일러와 실행환경을 가지고 있음
+Vertext Shader Object, Fragment Shader
+glCreateShader -&gt; Shader object를 만듦
+glShaderSource -&gt; 소스코드 내보내기
+glCompileShader -&gt; vertex shader 를 위한 소스코드가 컴파일
+내부적으로 obj 파일을 저장하게 됨
+Shader 프로그램이 두 obj 파일을 묶어서 다운로드 함 (glAttachProgram)
+glLinkProgram: GPU 쉐이더 Processor에서 실행 가능한 형태로 결합
+glUseProgram: 최종적으로 그래픽 카드에서 실행 #version // 3.3 버전 코어 피쳐 사용
+in vec4 vertexPos; // in은 input 레지스터 사용, x,y,z,w 사용 void main(void)
+{ gl_Polsition = vertexPos
+} <br><img alt="vertext_shader_parallel.png" src="images/vertext_shader_parallel.png" target="_self"><br><img alt="rasterization_mean.png" src="images/rasterization_mean.png" target="_self">#version 330 core out vec4 FragColor; // 프레임버퍼 업데이트. void main()
+{ FragColor = vec4(1.0, 0.0, 0.0, 1.0); // red color
+} <br><img alt="fragment_shader_execute.png" src="images/fragment_shader_execute.png" target="_self">]]></description><link>graphics/opengl/02.응용/04.-glsl.html</link><guid isPermaLink="false">graphics/opengl/02.응용/04. GLSL.md</guid><pubDate>Thu, 03 Apr 2025 14:40:06 GMT</pubDate><enclosure url="images/opengl_shader_program_process.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="images/opengl_shader_program_process.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[05. Shader Programming 코드 분석]]></title><description><![CDATA[
+shader program 컴파일 방법
+const char* vertSource = "#version 330 core \n\
+in vec4 vertexPos; \n\
+void main(void) { \n\ gl_Position = vertexPos; \n\
+}"; const char* fragSource = "#version 330 core \n\
+out vec4 FragColor; \n\
+void main(void) { \n\ FragColor = vec4(1.0, 0.0, 0.0, 1.0); \n\
+}"; GLuint vert = 0; // vertex shader ID number
+GLuint frag = 0; // fragment shader ID number
+GLuint prog = 0; // shader program ID number
+C 프로그램 내에 gl 소스코드를 작성해야해서 스트링 형태로 저장void initFunc(void) { // vert: vertex shader vert = glCreateShader(GL_VERTEX_SHADER); glShaderSource(vert, 1, &amp;vertSource, NULL); glCompileShader(vert); // compile to get .OBJ // frag: fragment shader frag = glCreateShader(GL_FRAGMENT_SHADER); glShaderSource(frag, 1, &amp;fragSource, NULL); glCompileShader(frag); // compile to get .OBJ // prog: program prog = glCreateProgram(); glAttachShader(prog, vert); glAttachShader(prog, frag); glLinkProgram(prog); // link to get .EXE // execute it! glUseProgram(prog); // 그래픽 카드에 exe 파일을 실행시키라는 명령어
+} 컴파일 해서 최종적으로 executable 형태로 만들어서 그래픽 카드에 전송하는 것 GLunit glCreateShader(GLenum shaderType); shaderType: GL_VERTEX_SHADER, GL_FRAGMENT_SHADER 버텍스 쉐이더인지, 프래그먼트 쉐이더인지 shaderID를 return 함 void glShaderSource(GLunit shaderID, Glsizei count, const GLChar* string, const GLint length); 소스 전달 함수
+GLSizei - 문자열 개수가 몇개냐
+GLChar** string - 각 문자열 시작주소
+GLint* 각 문자열의 길이 void glCompileShader(GLuint shaderID); 소스를 컴파일 하고 obj 파일을 생성 GLuint glCreateProgram(); shader program을 생성
+programID을 리턴함 void glAttachShader(GLuint programID, GLuint shaderID); 쉐이더를 프로그램에 어태치함
+두번 불려야함 (vertex shader, fragment shader) void glLinkProgram(GLuint programID); 쉐이더 obj를 링크하고 executable을 만듦 void glUseProgram(GLuint programID); 프로그램을 GPU에 설치함 void drawFunc(void) { // clear in gray color glClear(GL_COLOR_BUFFER_BIT); // provide the vertex attributes GLuint loc = glGetAttribLocation(prog, "vertexPos"); glEnableVertexAttribArray(loc); glVertexAttribPointer(loc, 4, GL_FLOAT, GL_FALSE, 0, vertPos); // draw a triangle glDrawArrays(GL_TRIANGLES, 0, 3); // done glFinish();
+} <img alt="use_vertex_attirbute_arrays.png" src="images/use_vertex_attirbute_arrays.png" target="_self"> GLint glGetAttribLocation(GLuint programID, const GLchar* name); 입력값: 프로그램 ID와, 대응되는 인풋 레지스터 이름
+인풋 레지스터 인덱스가 리턴됨 void glEnableVertexAttribArray(GLuint index); 인풋 레지스터를 enable void glDisableVertexAttribArray(GLuint index); 인풋 레지스터를 Disable void glFinish(void); OpenGL 명령어 큐에 있는 모든 명령을 Finish 시키는 함수 void glVertexAttribPointer(GLuint index, GLint size, gLenum type, GLboolean normalized, GLsizei stride, const GLvoid* pointer); <br><img alt="glVertexAttribPointer.png" src="images/glvertexattribpointer.png" target="_self">
+void glDrawArrays(GLenum mode, GLint first, Glsizei count); Vertex 데이터를 Primitive Assembly 단계에서 어떻게 해석할 지를 결정
+mode: 하나씩 사용할건지, 2개식 사용할건지, 3개씩 묶어서 사용할건지
+first: 어디서부터 사용할건지 보통 0
+count: 갯수 ]]></description><link>graphics/opengl/02.응용/05.-shader-programming-코드-분석.html</link><guid isPermaLink="false">graphics/opengl/02.응용/05. Shader Programming 코드 분석.md</guid><pubDate>Thu, 03 Apr 2025 14:40:06 GMT</pubDate><enclosure url="images/use_vertex_attirbute_arrays.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="images/use_vertex_attirbute_arrays.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[06. 재사용가능한 코드]]></title><description><![CDATA[const char* vertSource = "#version 330 core \n\
+in vec4 vertexPos; \n\
+void main(void) { \n\ gl_Position = vertexPos; \n\
+}"; const char* fragSource = "#version 330 core \n\
+out vec4 FragColor; \n\
+void main(void) { \n\ FragColor = vec4(1.0, 0.0, 0.0, 1.0); \n\
+}"; vertex / fragment shader source code는 const char* 임
+별도의 파일로 저장하고, 읽어오는 함수를 사용하는 것이 편함.
+const char* loadFile( const char* filename ) { FILE* fp = fopen( filename, "r" ); if (fp == NULL) { fprintf(stderr, "Error: cannot open \"%s\"\n", filename); return NULL; } // get file size to allocate a buffer fseek(fp, 0, SEEK_END); size_t len = ftell(fp); rewind(fp); char* buf = (char*)malloc(sizeof(char) * (len + 4)); // read in the whole contents: (ASSUMPTION: small file size) size_t size = fread(buf, sizeof(char), len, fp); fclose(fp); buf[size] = '\0'; // done return (const char*)buf;
+}
+<img alt="export_shader_code.png" src="images/export_shader_code.png" target="_self">loadFile에서 malloc을 사용 했기 때문에 free 꼭 해줘야함 (InitFunc에서 free 시키기)const char* vertSource = loadFile( vertFileName );
+const char* fragSource = loadFile( fragFileName );
+free( (void*)vertSource );
+free( (void*)fragSource ); 현재 = Old
+input attribute = attribute
+output varying register = varying
+FragColor = gl_FragColor GLSL 변수-&gt; Register 사용 어느 Register를 사용할것인가? GLSL 컴파일러가 할당
+프로그래머가 강제로 할당 가능 -&gt; layout 키워드 n번째 register 할당<br>
+<img alt="layout_qualifier.png" src="images/layout_qualifier.png" target="_self"> GLuint loc = glGetAttribLocation(prog, "vertexPos");
+vertexPos가 저장된 레지스터 번호 가져 오는 방법 prog는 뭐지? - glProgram같은 layout에 할당할 시 컴파일러가 화냄 (에러 발생)OpenGL은 오래되어서 컴파일 안되는 레거시 코드가 많음.Example.
+glBegin / glEnd
+glVertex3f, 4f, 3fv, 4fv
+glColor3f, 4f, 3fv, 4fv
+glNormal3f, 3fv
+GLUT function 사용 -&gt; 현재 GLUT 사용자 없음.
+]]></description><link>graphics/opengl/02.응용/06.-재사용가능한-코드.html</link><guid isPermaLink="false">graphics/opengl/02.응용/06. 재사용가능한 코드.md</guid><pubDate>Thu, 03 Apr 2025 14:40:06 GMT</pubDate><enclosure url="images/export_shader_code.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="images/export_shader_code.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[07. GLSL 자료형]]></title><description><![CDATA[
+GLSL 자료형 Vector GLSL Matrix GLSL 언어적 특징
+GLSL Qualifiers varying colors 프로그램
+<img alt="type_structure.png" src="images/type_structure.png" target="_self">
+basic type int, uint, float, double, bool 주로 float을 사용함<br>
+<img alt="register_vec.png" src="images/register_vec.png" target="_self"> vectors float형: vec2, vec3, vec4
+int형: ivecn
+boolean형: bvecn Matrices float형: mat2, mat3, mat4
+주의: 열 우선임<br>
+<img alt="matrix_row_prior.png" src="images/matrix_row_prior.png" target="_self"> 기본적으로 attribute는 4개의 float을 담음.vec4를 주로 이용하는데 attribute의 멤버에 따라 어떻게 해석할 지 달라짐.
+단순 value
+배열로 나타내기
+xyzw -&gt; 좌표
+stpq -&gt; 텍스처 좌표
+rgba -&gt; rgba 색상 a.xyzw = v.xyzw; // default
+a = v.wzyx; // shuffled
+단! 서로 다른 도메인끼리는 불가
+xyzw, rgba, stpq 혼용불가 -&gt; .xgt 불가능
+2차원 배열
+float 형만 있음
+열 우선임 -&gt; mat (n x m)일 때 n이 열, m이 행
+레지스터에서 Matrix -&gt; mat4인 경우 -&gt; 4개의 register 포인터 자료형 없음
+vector, matrix가 기본 자료형
+c++스타일 구조체 사용가능
+<br><img alt="func_1.png" src="images/func_1.png" target="_self">
+파라미터에 in, out, inout을 넣을 수 있음기본적으로 안붙이면 in (call by value)고
+out을 붙이면 y에 대한 call by ref임<br><img alt="math_func.png" src="images/math_func.png" target="_self">]]></description><link>graphics/opengl/02.응용/07.-glsl-자료형.html</link><guid isPermaLink="false">graphics/opengl/02.응용/07. GLSL 자료형.md</guid><pubDate>Thu, 03 Apr 2025 14:40:06 GMT</pubDate><enclosure url="images/type_structure.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="images/type_structure.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[08. Uniform Variable]]></title><description><![CDATA[N개의 삼각형을 그린다고 가정하면, 각 삼각형은 각각의 3개의 Vertex Pos를 가질 거임.GLfloat vertPosFirst[] = { -0.5F, -0.5F, 0.0F, 1.0F, +0.0F, -0.5F, 0.0F, 1.0F, -0.5F, +0.0F, 0.0F, 1.0F,
+}; GLfloat vertPosSecond[] = { 0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 0.0F, 0.0F, 1.0F, 0.0F, 0.5F, 0.0F, 1.0F,
+}; ... n개가 필요함. 이렇게 n개의 삼각형 vertPos를 가지기 보다는 잘 정의된 vertex pos를 가지고 값을 더해서 새로운 삼각형을 표현할 수가 있음. -&gt; uniform variable을 사용하자.Uniform Variable은 일종의 전역변수임<img alt="using_uniform.png" src="images/using_uniform.png" target="_self">uniform variable은 uniform vec4로 선언함.#version 330 core in vec4 aPos; // vertex position: attribute
+in vec4 aColor; // vertex color: attribute
+out vec4 vColor; // varying color: varying
+uniform vec4 uMove; // movement vector: uniform void main(void) { gl_Position = aPos + uMove; vColor = aColor;
+} void drawFunc(void) { // clear in gray color glClear(GL_COLOR_BUFFER_BIT); // provide the vertex attributes GLuint locPos = glGetAttribLocation(prog, "aPos"); glEnableVertexAttribArray(locPos); glVertexAttribPointer(locPos, 4, GL_FLOAT, GL_FALSE, 0, vertPos); // provide the color attributes GLuint locColor = glGetAttribLocation(prog, "aColor"); glEnableVertexAttribArray(locColor); glVertexAttribPointer(locColor, 4, GL_FLOAT, GL_FALSE, 0, vertColor); // draw the first triangle GLuint locMove = glGetUniformLocation(prog, "uMove"); glUniform4f(locMove, -0.5F, -0.5F, 0.0F, 0.0F); glDrawArrays(GL_TRIANGLES, 0, 3); // draw the second triangle glUniform4f(locMove, 0.0F, 0.0F, 0.0F, 0.0F); glDrawArrays(GL_TRIANGLES, 0, 3); // done glFinish();
+} // prog: Program
+// name: string for uniform variable name
+// return: location index of the specified uniform variable GLint glGetUniformLocation(GLuint prog, const GLchar* name); // 아래 함수는 값을 넣을 수 있음
+void glUniform1f(GLint loc, Glfloat v0);
+void glUniform2f(GLint loc, Glfloat v0 ...v1);
+void glUniform3f(GLint loc, Glfloat v0 ... v1 ... v2);
+void glUniform4f(GLint loc, Glfloat v0 ... v1 ... v2 ... v3); // 벡터도 넣을 수 있음. 예시 const GLfloat uMoveValue[] = {0.5f, 0.5f 0.5f, 0.5f }; void glUniform1fv(GLint loc, GLsizei count, const GLfloat* value);
+void glUniform2fv(GLint loc, GLsizei count, const GLfloat* value);
+void glUniform3fv(GLint loc, GLsizei count, const GLfloat* value);
+void glUniform4fv(GLint loc, GLsizei count, const GLfloat* value); // transpose 전치 되어 있는 지?
+void glUniformMatrix4fv(GLint loc, GLsizei count, GLbooleadn transpose,const GLfloat* value); count는 몇개를 보낼건지에 대한 거임. 예시를 보면 이해감// 단일 float 값 설정
+GLfloat brightness = 0.8f;
+glUniform1fv(brightnessLocation, 1, &amp;brightness); // 3D 벡터 (색상) 설정
+GLfloat color[] = {1.0f, 0.0f, 0.0f}; // 빨간색
+glUniform3fv(colorLocation, 1, color); // 여러 개의 2D 벡터 설정
+GLfloat positions[] = {1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f}; // 3개의 2D 위치
+glUniform2fv(positionsLocation, 3, positions);
+]]></description><link>graphics/opengl/02.응용/08.-uniform-variable.html</link><guid isPermaLink="false">graphics/opengl/02.응용/08. Uniform Variable.md</guid><pubDate>Thu, 03 Apr 2025 14:40:06 GMT</pubDate><enclosure url="images/using_uniform.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="images/using_uniform.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[01. 그래픽스 파이프라인]]></title><description><![CDATA[vertex input -&gt; vertex processing -&gt; primitive assembly -&gt; rasterization -&gt; fragment processing -&gt; blend -&gt; framebuffer<img alt="graphic_pipeline.png" src="images/graphic_pipeline.png" target="_self">
+Vertex: 꼭지점
+fragment = pixel + 색상, 깊이 ... 사용자의 vertex data -&gt; 좌표 변환
+카메라 효과 vertex 결합 -&gt; graphics primitive
+1 vertex -&gt; 점
+2 vertices -&gt; 선분
+3 vertices -&gt; 삼각형 primitive에 포함되는 pixel 선정
+프레임 버퍼에서 출력될 pixel들이 선택됨 각 픽셀이 어떤 색을 가져야할 지 계산됨. fragment 단위 처리로 다양한 효과
+후처리 단계 프레임 버퍼에 하나의 primitive로 저장됨
+그래픽 파이프라인이란 vertex input이 각 단계를 거쳐 프레임버퍼에 하나의 primitive로 저장되는 과정이다.]]></description><link>graphics/opengl/02.응용/01.-그래픽스-파이프라인.html</link><guid isPermaLink="false">graphics/opengl/02.응용/01. 그래픽스 파이프라인.md</guid><pubDate>Thu, 03 Apr 2025 14:40:06 GMT</pubDate><enclosure url="images/graphic_pipeline.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="images/graphic_pipeline.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[02. 프로그래머블 그래픽스 파이프라인]]></title><description><![CDATA[<img alt="paralle_processing.png" src="images/paralle_processing.png" target="_self">그래픽스 파이프라인이 병렬화되면서, 병렬 처리를 고려한 small size 프로그램이 필요해짐.
+-&gt; Shader의 등장shader = small, special - purpose program
+small size
+병렬 처리
+<br><img alt="programmable_pipeline.png" src="images/programmable_pipeline.png" target="_self"> 그래픽스가 fixed VLSI 칩으로 구현 -&gt; fixed pipeline 병렬처리 도입, 일부는 shader로 구현 -&gt; programmable pipeline vertex shader: vertex processing을 대체
+fragment shader: fragment processing을 대체 shader 용어는 모호할 때가 많음 -&gt; 문맥으로 파악하자 vertex processing에 대응되는 프로세싱에 사용되는 코어를 의미하는 경우
+실제 GPU에서 수행되고 있는 프로그램을 의미하는 경우 DirectX HLSL(high-level shader language)
+OpenGL SL(OpenGL shader language)
+]]></description><link>graphics/opengl/02.응용/02.-프로그래머블-그래픽스-파이프라인.html</link><guid isPermaLink="false">graphics/opengl/02.응용/02. 프로그래머블 그래픽스 파이프라인.md</guid><pubDate>Thu, 03 Apr 2025 14:40:06 GMT</pubDate><enclosure url="images/paralle_processing.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="images/paralle_processing.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[OpenGL 인덱스 순서와 면 컬링 관계]]></title><description><![CDATA[그라운드를 생성했는데, 렌더링이 되지 않아서 볼 수 없는 문제가 발생했었다. 삼각형의 인덱스 순서를 변경하니 해결되었는데 그 이유를 자세히 알아보도록 한다.삼각형의 Winding Order이란 삼각형의 정점들이 어떤 순서로 연결되는지를 의미한다. 3D 그래픽스에서는 이 순서를 통해 삼각형의 앞면과 뒷면을 구분합니다.
+반시계 방향(Counter-Clockwise, CCW): 삼각형의 정점들이 반시계 방향으로 연결될 때
+시계 방향(Clockwise, CW): 삼각형의 정점들이 시계 방향으로 연결될 때
+OpenGL의 기본 설정에서는 반시계 방향으로 정의된 삼각형을 앞면으로 간주한다.그라운드(바닥 평면)는 보통 사각형으로 구현되며, 두 개의 삼각형으로 나뉘어 렌더링된다. 이 과정에서 인덱스 순서가 중요하다.// 원래 인덱스 (시계 방향)
+const GLuint indices[] = { 0, 1, 2, // 첫 번째 삼각형 0, 2, 3 // 두 번째 삼각형
+};
+0 --- 1
+| / |
+| / |
+3 --- 2
+이 인덱스 배열은 두 개의 삼각형을 시계 방향(CW)으로 정의합니다:
+첫 번째 삼각형: 정점 0 → 1 → 2 (시계 방향)
+두 번째 삼각형: 정점 0 → 2 → 3 (시계 방향)
+OpenGL의 기본 설정에서는 시계 방향으로 정의된 삼각형은 뒷면으로 간주되고,glEnable(GL_CULL_FACE)를 사용하면 뒷면은 렌더링되지 않는다. 따라서 보이지 않는다.// 수정된 인덱스 (반시계 방향)
+const GLuint indices[] = { 0, 2, 1, // 첫 번째 삼각형 (방향 변경) 0, 3, 2 // 두 번째 삼각형 (방향 변경)
+};
+0 --- 1
+| / |
+| / |
+3 --- 2
+이렇게 변경된 인덱스 배열은:
+첫 번째 삼각형: 정점 0 → 2 → 1 (반시계 방향)
+두 번째 삼각형: 정점 0 → 3 → 2 (반시계 방향)
+반시계 방향으로 정의된 삼각형들은 OpenGL에 의해 앞면으로 간주되어 면 컬링이 활성화되어도 정상적으로 렌더링된다.법선 벡터가 관찰자를 향하면 삼각형은 반시계 방향, 반대 방향이면 시계 방향이다.인덱스 순서를 변경하는 것 외에도 다음 방법으로 문제를 해결할 수 있음.
+앞면 정의 변경
+glFrontFace(GL_CW); // 시계 방향을 앞면으로 정의 컬링 모드 변경
+glCullFace(GL_FRONT); // 앞면을 컬링하고 뒷면을 렌더링 면 컬링 비활성화 (최적화 포기):
+glDisable(GL_CULL_FACE);
+하지만 인덱스 순서를 변경하는 것이 가장 표준적인 방법이며, OpenGL의 기본 설정(반시계 방향)을 준수하는 것이 좋음.면 컬링은 중요한 성능 최적화 기법이다. 면 컬링 활성화는 보이지 않는 면을 렌더링을 건너 뛰어서 렌더링 시간을 줄일 수 있고 프래그먼트 쉐이더 연산과 래스터화를 더 효율적으로 수행할 수 있다.]]></description><link>qt/opengl/opengl-인덱스-순서와-면-컬링-관계.html</link><guid isPermaLink="false">Qt/opengl/OpenGL 인덱스 순서와 면 컬링 관계.md</guid><pubDate>Thu, 03 Apr 2025 14:40:06 GMT</pubDate></item><item><title><![CDATA[Qt OpenGL in macOS]]></title><description><![CDATA[Qt에서 OpenGL을 사용할 때 QSurfaceFormat을 통해 버전을 설정 해야 한다.// main.cpp
+QSurfaceFormat format;
+format.setVersion(3, 3); // OpenGL 3.3 사용
+format.setProfile(QSurfaceFormat::CoreProfile); // Core 프로파일 사용
+format.setDepthBufferSize(24);
+format.setStencilBufferSize(8);
+format.setSamples(4); // 멀티샘플링 설정
+QSurfaceFormat::setDefaultFormat(format); // 중요: 전역 설정으로 지정 기본 지원: macOS는 기본적으로 OpenGL 2.1(레거시 프로파일)을 지원함.
+확장 지원: macOS 10.9 (Mavericks) 이상에서는 OpenGL 3.3 Core 프로파일 및 최대 4.1까지 지원
+QOpenGLContext context;
+if (context.create()) { qDebug() &lt;&lt; "OpenGL Version:" &lt;&lt; context.format().majorVersion() &lt;&lt; "." &lt;&lt; context.format().minorVersion(); qDebug() &lt;&lt; "Profile:" &lt;&lt; (context.format().profile() == QSurfaceFormat::CoreProfile ? "Core" : "Compatibility");
+}
+macOS에서 OpenGL 3.3으로 설정했는데 실제로는 4.1이 표시되는 현상이 있을 수 있다. 왜냐하면 OpenGL은 하위 호환성이 있는 API로, 요청한 버전보다 높은 버전이 지원된다면 드라이버는 보통 지원되는 가장 높은 버전을 선택한다. 하위 호환성을 거의 보장하므로 3.3 코드는 4.1에서도 문제없이 작동한다.]]></description><link>qt/opengl/qt-opengl-in-macos.html</link><guid isPermaLink="false">Qt/opengl/Qt OpenGL in macOS.md</guid><pubDate>Thu, 03 Apr 2025 14:40:06 GMT</pubDate></item><item><title><![CDATA[Qt OpenGL 코드]]></title><description><![CDATA[Qt 프레임워크와 OpenGL을 사용하여 기본 그라운드를 렌더링하는 코드에 대한 설명이다.OpenGL 그래픽 파이프라인은 3D 객체를 2D 화면에 표시하기 위한 일련의 단계를 말함
+정점 데이터 준비: 3D 공간에서의 점(정점)들을 정의
+정점 쉐이더(Vertex Shader): 각 정점의 위치 변환 처리
+프리미티브 조립(Primitive Assembly): 정점들을 삼각형 등의 기본 도형으로 조립
+래스터화(Rasterization): 3D 기본 도형을 2D 픽셀로 변환
+프래그먼트 쉐이더(Fragment Shader): 각 픽셀의 최종 색상 계산
+프레임 버퍼에 출력: 계산된 픽셀을 화면에 표시
+바닥(그라운드)을 표현하기 위한 데이터를 준비한다.void GLWidget::createGeometry()
+{ // 그라운드 크기 설정 constexpr float size = 10.0f; // 기본 색상 설정 (그린) const QVector3D green(0.0f, 0.5f, 0.1f); // 정점 데이터 (위치와 색상 정보) const float vertices[] = { // 위치(x, y, z) // 색상(r, g, b) -size, 0.0f, -size, green.x(), green.y(), green.z(), // 좌상단 size, 0.0f, -size, green.x(), green.y(), green.z(), // 우상단 size, 0.0f, size, green.x(), green.y(), green.z(), // 우하단 -size, 0.0f, size, green.x(), green.y(), green.z() // 좌하단 }; 정점 데이터 정의 4개의 정점으로 이루어진 평면(사각형)을 생성한다.
+각 정점은 위치(x,y,z)와 색상(r,g,b) 정보를 가진다. // 인덱스 데이터 (삼각형 정의) const unsigned int indices[] = { 0, 1, 2, // 첫 번째 삼각형 0, 3, 2 // 두 번째 삼각형 - 면 컬링 고려 }; 인덱스 데이터 정의 사각형을 2개의 삼각형으로 나누어 표현한다.
+첫 번째 삼각형: 정점 0, 1, 2를 연결
+두 번째 삼각형: 정점 0, 3, 2을 연결 // VAO 생성 및 바인딩 m_groundVAO.create(); m_groundVAO.bind(); // VBO(정점 버퍼) 생성 및 데이터 할당 m_groundVBO.create(); m_groundVBO.bind(); m_groundVBO.allocate(vertices, sizeof(vertices)); // EBO(인덱스 버퍼) 생성 및 데이터 할당 m_groundEBO.create(); m_groundEBO.bind(); m_groundEBO.allocate(indices, sizeof(indices)); OpenGL 버퍼 생성 VAO(Vertex Array Object): 정점 데이터의 구성 방식을 저장하는 객체
+VBO(Vertex Buffer Object): 실제 정점 데이터를 GPU 메모리에 저장
+EBO(Element Buffer Object): 인덱스 데이터를 GPU 메모리에 저장 // 위치 속성 설정 (attribute 0) m_program-&gt;enableAttributeArray(0); // aPos 속성 활성화 m_program-&gt;setAttributeBuffer(0, GL_FLOAT, 0, 3, 6 * sizeof(float)); // 색상 속성 설정 (attribute 1) m_program-&gt;enableAttributeArray(1); // aColor 속성 활성화 m_program-&gt;setAttributeBuffer(1, GL_FLOAT, 3 * sizeof(float), 3, 6 * sizeof(float)); 속성 포인터 설정 쉐이더 프로그램에 정점 데이터의 구조를 알려줍니다
+첫 번째 속성(0): 위치 데이터 (x,y,z - 3개 float)
+두 번째 속성(1): 색상 데이터 (r,g,b - 3개 float)
+매개변수 설명: 첫 번째: 속성 인덱스
+두 번째: 데이터 타입 (GL_FLOAT)
+세 번째: 데이터 시작 오프셋 (바이트 단위)
+네 번째: 구성요소 개수 (위치: 3, 색상: 3)
+다섯 번째: 다음 정점까지의 간격 (stride) (6개 float) 이 함수는 실제로 그라운드를 화면에 그려주는 역할을 합니다:void GLWidget::drawGround()
+{ // 그라운드 VAO 바인딩 m_groundVAO.bind(); // 모델 행렬 설정 (단위 행렬 - 원점에 위치) QMatrix4x4 model; m_program-&gt;setUniformValue("model", model); // 그라운드 그리기 (EBO 사용) glDrawElements(GL_TRIANGLES, m_groundIndices, GL_UNSIGNED_INT, nullptr); // VAO 해제 m_groundVAO.release();
+} VAO 바인딩: 이전에 설정한 정점 데이터 구성을 활성
+모델 행렬 설정: 객체의 위치, 회전, 크기를 정의
+그리기 명령 실행: 인덱스를 이용해 삼각형을 그림 GL_TRIANGLES: 삼각형 모드로 그리기
+m_groundIndices: 인덱스 개수 (6개)
+GL_UNSIGNED_INT: 인덱스 데이터 타입
+nullptr: 인덱스 데이터가 이미 바인딩된 EBO에 있음 이 함수는 Qt의 QOpenGLWidget 클래스의 가상 함수로, 화면을 그리는 메인 렌더링 함수입니다:void GLWidget::paintGL()
+{ glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // 쉐이더 프로그램 활성화 m_program-&gt;bind(); // 카메라 뷰 설정 QMatrix4x4 view; view.lookAt( QVector3D(0.0f, 5.0f, 5.0f), // 카메라 위치 QVector3D(0.0f, 0.0f, 0.0f), // 바라보는 지점 QVector3D(0.0f, 1.0f, 0.0f) // 상향 벡터 ); 화면 초기화: 색상 버퍼와 깊이 버퍼를 지움
+쉐이더 프로그램 활성화: 그리기에 사용할 쉐이더를 활성화
+카메라 뷰 설정 // 투영 행렬 설정 QMatrix4x4 projection; float aspectRatio = width() / static_cast&lt;float&gt;(height()); projection.perspective(45.0f, aspectRatio, 0.1f, 100.0f); // 쉐이더에 행렬 전달 m_program-&gt;setUniformValue("view", view); m_program-&gt;setUniformValue("projection", projection); // 그라운드 그리기 drawGround(); // 쉐이더 프로그램 비활성화 m_program-&gt;release();
+} 투영 행렬 설정: 3D 장면을 2D 화면에 투영하는 방법을 정의 45도 시야각(FOV)
+화면 비율(aspect ratio)에 맞게 조정
+근거리 절단면(near plane): 0.1
+원거리 절단면(far plane): 100.0 행렬 전달: 뷰 행렬과 투영 행렬을 쉐이더에 전달 그라운드 그리기: 앞서 정의한 drawGround() 함수 호출 쉐이더 해제: 사용 완료 후 쉐이더를 비활성화 코드에서 사용된 세 가지 주요 변환 행렬 모델 행렬(Model Matrix) 객체의 로컬 공간에서 월드 공간으로 변환
+객체의 위치, 회전, 크기를 정의
+코드에서는 기본 단위 행렬 사용(원점에 위치) 뷰 행렬(View Matrix) 월드 공간에서 카메라 공간으로 변환
+카메라의 위치와 방향을 정의
+lookAt 함수로 생성 투영 행렬(Projection Matrix) 카메라 공간에서 클립 공간으로 변환
+원근감 적용 (멀리 있는 물체는 작게 보임)
+perspective 함수로 생성 ]]></description><link>qt/opengl/qt-opengl-코드.html</link><guid isPermaLink="false">Qt/opengl/Qt OpenGL 코드.md</guid><pubDate>Thu, 03 Apr 2025 14:40:06 GMT</pubDate></item><item><title><![CDATA[MCP Setting]]></title><description><![CDATA[
+Filesystem MCP Server Node.js server implementing Model Context Protocol (MCP) for filesystem operations
+<a rel="noopener nofollow" class="external-link is-unresolved" href="https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem" target="_self">https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem</a> Memory A basic implementation of persistent memory using a local knowledge graph. This lets Claude remember information about the user across chats.
+<br><a rel="noopener nofollow" class="external-link is-unresolved" href="https://github.com/modelcontextprotocol/servers/tree/main/src/memory" target="_self">https://github.com/modelcontextprotocol/servers/tree/main/src/memory</a> obsidian-mcp An&nbsp;MCP server that enables AI assistants to interact with Obsidian vaults, providing tools for reading, creating, editing and managing notes and tags.
+<br><a rel="noopener nofollow" class="external-link is-unresolved" href="https://github.com/modelcontextprotocol/servers?tab=readme-ov-file" target="_self">https://github.com/modelcontextprotocol/servers?tab=readme-ov-file</a> sequential-thinking An MCP server implementation that provides a tool for dynamic and reflective problem-solving through a structured thinking process.
+<br><a rel="noopener nofollow" class="external-link is-unresolved" href="https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking" target="_self">https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking</a> brave-search An MCP server implementation that integrates the Brave Search API, providing both web and local search capabilities.
+<br><a rel="noopener nofollow" class="external-link is-unresolved" href="https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search" target="_self">https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search</a> { "mcpServers": { "filesystem": { "command": "npx", "args": [ "-y", "@modelcontextprotocol/server-filesystem", "{path1}", "{path2}" ] }, "memory": { "command": "npx", "args": [ "-y", "@modelcontextprotocol/server-memory" ] }, "obsidian-mcp": { "command": "npx", "args": [ "-y", "obsidian-mcp", "{path}" ] }, "sequential-thinking": { "command": "npx", "args": [ "-y", "@modelcontextprotocol/server-sequential-thinking" ] }, "brave-search": { "command": "npx", "args": [ "-y", "@smithery/cli@latest", "run", "@smithery-ai/brave-search", "--key", "{key}" ] } }
+}
+]]></description><link>tip/mcp-setting.html</link><guid isPermaLink="false">Tip/MCP Setting.md</guid><pubDate>Thu, 03 Apr 2025 14:40:06 GMT</pubDate></item><item><title><![CDATA[OpenGL Sphere 그리기]]></title><description><![CDATA[3D 공간에서 골프공을 표현하기 위한 구(sphere) 지오메트리를 생성하는 방법
+구의 파라미터 설정 (반지름, 분할 수)
+정점(vertex) 데이터 생성
+인덱스(index) 데이터 생성
+OpenGL 버퍼 객체 설정 (VAO, VBO, EBO)
+3D 공간에서 구는 다음과 같은 매개변수 방정식으로 표현됩니다: x = r × cos(theta) × cos(phi) y = r × cos(theta) × sin(phi) z = r × sin(theta) r은 반지름 theta는 수직각(latitude): -π/2(하단) ~ π/2(상단) phi는 수평각(longitude): 0 ~ 2π float stackAngle = PI / 2 - i * stackStep; // theta 계산
+float xy = radius * cosf(stackAngle); // r × cos(theta) 계산
+float z = radius * sinf(stackAngle); // r × sin(theta) 계산 float sectorAngle = j * sectorStep; // θ 계산
+float x = xy * cosf(sectorAngle); // r × cos(theta) × cos(phi)
+float y = xy * sinf(sectorAngle); // r × cos(theta) × sin(phi)
+구는 두 가지 방향으로 분할
+stackCount: 위에서 아래로 분할 (위도 분할)
+sectorCount: 수평 방향 분할 (경도 분할)
+const float radius = 0.3f; // 골프공 반지름
+const int sectorCount = 36; // 수평 분할 수 (경도)
+const int stackCount = 18; // 수직 분할 수 (위도)
+const QVector3D ballColor(1.0f, 1.0f, 1.0f); // 흰색 설정
+const float PI = M_PI;
+const float sectorStep = 2.0f * PI / sectorCount; // 각 섹터(경도) 사이의 각도
+const float stackStep = PI / stackCount; // 각 스택(위도) 사이의 각도 for (int i = 0; i &lt;= stackCount; ++i) { float stackAngle = PI / 2 - i * stackStep; // 시작: π/2(상단), 끝: -π/2(하단) // ... for (int j = 0; j &lt;= sectorCount; ++j) { // ... }
+}
+이 중첩 루프는 구의 모든 정점을 생성
+i 는 위에서 아래로 각 스택(위도)을 순회
+j 는 각 스택에서 수평 방향(경도)으로 순회
+각 정점에 대해:
+위치(x, y, z) 계산
+색상(r, g, b) 설정 (모든 정점은 흰색)
+for (int i = 0; i &lt; stackCount; ++i) { int k1 = i * (sectorCount + 1); // 현재 스택의 시작 인덱스 int k2 = k1 + sectorCount + 1; // 다음 스택의 시작 인덱스 for (int j = 0; j &lt; sectorCount; ++j, ++k1, ++k2) { // 각 섹터에 2개의 삼각형 추가 if (i != 0) { // 첫 번째 스택이 아닐 경우 indices.append(k1); indices.append(k2); indices.append(k1 + 1); } if (i != (stackCount - 1)) { // 마지막 스택이 아닐 경우 indices.append(k1 + 1); indices.append(k2); indices.append(k2 + 1); } }
+}
+인덱스 생성은 구를 삼각형 메쉬로 변환하는 과정
+각 스택과 섹터의 교차점마다 사각형 영역이 생성됨
+각 사각형은 두 개의 삼각형으로 분할됨
+특별 케이스 처리: 첫 번째 스택(i=0): 상단 극점만 처리
+마지막 스택(i=stackCount-1): 하단 극점만 처리 각 삼각형은 세 개의 인덱스로 구성되며, 이 인덱스는 먼저 정의된 정점 배열을 참조한다.// VAO(Vertex Array Object) 생성 및 바인딩
+m_ballVAO.create();
+m_ballVAO.bind(); // VBO(Vertex Buffer Object) 생성 및 데이터 할당
+m_ballVBO.create();
+m_ballVBO.bind();
+m_ballVBO.allocate(vertices.constData(), vertices.size() * sizeof(float)); // EBO(Element Buffer Object) 생성 및 데이터 할당
+m_ballEBO.create();
+m_ballEBO.bind();
+m_ballEBO.allocate(indices.constData(), indices.size() * sizeof(GLuint));
+이 부분은 OpenGL의 핵심 개념인 버퍼 객체를 설정
+VAO(Vertex Array Object): 정점 속성 포인터의 상태를 저장하는 컨테이너
+VBO(Vertex Buffer Object): 정점 데이터(위치, 색상 등)를 저장하는 버퍼
+EBO(Element Buffer Object): 인덱스 데이터를 저장하는 버퍼
+// 속성 설정 - 셰이더의 aPos 및 aColor 속성과 연결
+int posAttr = m_program-&gt;attributeLocation("aPos");
+int colorAttr = m_program-&gt;attributeLocation("aColor"); // 위치 속성 설정
+m_program-&gt;enableAttributeArray(posAttr);
+m_program-&gt;setAttributeBuffer(posAttr, GL_FLOAT, 0, 3, 6 * sizeof(float)); // 색상 속성 설정
+m_program-&gt;enableAttributeArray(colorAttr);
+m_program-&gt;setAttributeBuffer(colorAttr, GL_FLOAT, 3 * sizeof(float), 3, 6 * sizeof(float));
+이 부분은 셰이더 프로그램에 전달할 정점 속성을 설정 위치 속성(aPos): 시작 오프셋: 0 (정점 데이터의 시작)
+요소 개수: 3 (x, y, z)
+스트라이드: 6 * sizeof(float) (한 정점의 전체 크기) 색상 속성(aColor): 시작 오프셋: 3 * sizeof(float) (위치 다음)
+요소 개수: 3 (r, g, b)
+스트라이드: 6 * sizeof(float) (한 정점의 전체 크기) 각 정점은 다음과 같은 형식으로 저장됩니다:[x, y, z, r, g, b] 처음 3개 값(x, y, z)은 정점의 위치
+다음 3개 값(r, g, b)은 정점의 색상
+인덱스를 사용하는 이유:
+메모리 효율성: 같은 정점을 여러 삼각형에서 재사용할 수 있어 메모리 사용량 감소
+성능 향상: 중복된 정점 처리를 줄여 GPU 효율 증가
+<img alt="구(Sphere)의 인덱스 생성 시각화" src="images/sphere-indexing-screenshot.png" target="_self">for (int i = 0; i &lt; stackCount; ++i) { int k1 = i * (sectorCount + 1); // 현재 스택의 시작 인덱스 int k2 = k1 + sectorCount + 1; // 다음 스택의 시작 인덱스 for (int j = 0; j &lt; sectorCount; ++j, ++k1, ++k2) { // 각 섹터에 2개의 삼각형 추가 if (i != 0) { // 첫 번째 스택이 아닐 경우 indices.append(k1); indices.append(k2); indices.append(k1 + 1); } if (i != (stackCount - 1)) { // 마지막 스택이 아닐 경우 indices.append(k1 + 1); indices.append(k2); indices.append(k2 + 1); } }
+} k1: 현재 스택(i)의 시작 인덱스
+k2: 다음 스택(i+1)의 시작 인덱스
+이 값들은 다음과 같이 계산됩니다:k1 = i * (sectorCount + 1);
+k2 = k1 + sectorCount + 1;
+예를 들어, sectorCount가 36인 경우:
+i=0일 때: k1=0, k2=37
+i=1일 때: k1=37, k2=74
+i=2일 때: k1=74, k2=111
+각 스택과 섹터 사이의 사각형 영역을 두 개의 삼각형으로 분할한다. 상단 삼각형 (i != 0일 때만):
+indices.append(k1); // 현재 스택, 현재 섹터
+indices.append(k2); // 다음 스택, 현재 섹터
+indices.append(k1 + 1); // 현재 스택, 다음 섹터 하단 삼각형 (i != stackCount-1일 때만):
+indices.append(k1 + 1); // 현재 스택, 다음 섹터
+indices.append(k2); // 다음 스택, 현재 섹터
+indices.append(k2 + 1); // 다음 스택, 다음 섹터 첫 번째 스택 (i=0): 상단 극점에 해당
+여기서는 하단 삼각형만 생성 (상단 삼각형 생략)
+if (i != 0) 조건으로 처리 마지막 스택 (i=stackCount-1): 하단 극점에 해당
+여기서는 상단 삼각형만 생성 (하단 삼각형 생략)
+if (i != (stackCount - 1)) 조건으로 처리 구의 수학적 방정식을 사용하여 정점 위치 계산
+정점 간 관계를 정의하는 인덱스 데이터 생성
+OpenGL 버퍼 객체 설정(VAO, VBO, EBO)
+셰이더 프로그램에 정점 속성 전달
+]]></description><link>qt/opengl/opengl-sphere-그리기.html</link><guid isPermaLink="false">Qt/opengl/OpenGL Sphere 그리기.md</guid><pubDate>Thu, 03 Apr 2025 14:40:06 GMT</pubDate><enclosure url="images/sphere-indexing-screenshot.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="images/sphere-indexing-screenshot.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Qt Quick 3D - 기본 개념 정리]]></title><description><![CDATA[View3D는 Qt Quick 애플리케이션에서 3D 콘텐츠를 표시하는 핵심 컴포넌트입니다.View3D { id: view3D anchors.fill: parent environment: SceneEnvironment { clearColor: "skyblue" antialiasingMode: SceneEnvironment.MSAA antialiasingQuality: SceneEnvironment.Medium } // 여기에 카메라, 조명, 모델 등이 배치
+} environment: 3D 장면의 환경 설정 (배경색, 안티얼라이징 등)
+renderMode: 렌더링 방식 설정
+camera: 활성 카메라 지정 clearColor: 배경색 설정
+antialiasingMode: 계단 현상 방지 모드 (MSAA, SSAA 등)
+antialiasingQuality: 안티얼라이징 품질 (Low, Medium, High, VeryHigh)
+backgroundMode: 배경 모드 (단색, 스카이박스 등)
+카메라는 3D 공간을 어떤 시점에서 볼지 결정합니다.PerspectiveCamera { id: camera position: Qt.vector3d(0, 10, 12) // (x, y, z) 위치 eulerRotation: Qt.vector3d(-20, 0, 0) // (x, y, z) 회전 각도 // 또는 lookAt 함수 사용 function lookAt(targetPosition, upVector) { // 카메라가 특정 지점을 바라보도록 설정 }
+} x: 좌/우 위치 (양수: 오른쪽, 음수: 왼쪽)
+y: 높이 (양수: 위쪽, 음수: 아래쪽)
+z: 앞/뒤 위치 (양수: 뒤쪽, 음수: 앞쪽) x축 회전: 위/아래 시선 조절 (고개 끄덕이기, '-'값은 아래 보기) - pitch
+y축 회전: 좌/우 시선 조절 (고개 좌우로 돌리기)- yaw
+z축 회전: 카메라 기울기 (머리 기울이기) - roll targetPosition: 바라볼 대상의 위치
+upVector: 카메라의 "위쪽" 방향 (보통 Qt.vector3d(0, 1, 0)), 법선벡터 PerspectiveCamera: 원근감 있는 일반적인 3D 시점
+OrthographicCamera: 원근감 없는 도면 같은 시점
+조명은 3D 객체를 비추어 보이게 하는 광원입니다.DirectionalLight { eulerRotation: Qt.vector3d(-30, 30, 0) // 빛의 방향 brightness: 0.7 // 밝기 (0.0 ~ 1.0) ambientColor: Qt.rgba(0.3, 0.3, 0.3, 1.0) // 주변광
+} 역할: 태양광처럼 평행한 빛을 제공 (무한히 먼 곳에서 오는 빛)
+eulerRotation: 빛이 오는 방향 설정
+brightness: 빛의 강도 (0.0 ~ 1.0)
+ambientColor: 주변광의 색상과 강도
+PointLight { position: Qt.vector3d(0, 100, 0) // 광원 위치 brightness: 1.0 color: "white" constantFade: 1.0 linearFade: 0.0 quadraticFade: 0.0
+} 역할: 전구처럼 모든 방향으로 빛을 발산
+position: 광원의 위치
+색상 및 감쇠: 거리에 따른 빛의 감소 설정
+SpotLight { position: Qt.vector3d(0, 100, 0) eulerRotation: Qt.vector3d(-90, 0, 0) brightness: 1.0 coneAngle: 30.0 // 빛 원뿔의 각도
+} 역할: 원뿔 형태로 특정 방향을 비추는 빛
+coneAngle: 빛 원뿔의 각도
+Qt Quick 3D는 오른손 좌표계를 사용합니다. y (위) | | +----&gt; x (오른쪽) / / z (화면 안쪽) 오른손 좌표계: 오른손 엄지(x), 검지(y), 중지(z)가 서로 수직인 방향
+원점: (0, 0, 0) 좌표
+양수 방향: x: 오른쪽
+y: 위쪽
+z: 화면 안쪽(깊이) 엄지를 회전축 방향으로 향하면 나머지 손가락이 회전 방향
+x축 회전: 화면을 기준으로 상하 회전
+y축 회전: 화면을 기준으로 좌우 회전
+z축 회전: 화면을 기준으로 시계/반시계 회전
+View3D { // 1. 환경 설정 environment: SceneEnvironment { clearColor: "skyblue" // 하늘색 배경 antialiasingQuality: SceneEnvironment.Medium // 품질 설정 } // 2. 카메라 설정 PerspectiveCamera { id: camera position: Qt.vector3d(0, 10, 12) // 지면보다 위쪽, 약간 뒤쪽에서 바라봄 } // 3. 조명 설정 DirectionalLight { eulerRotation: Qt.vector3d(0, 0, 0) // 정면에서 비추는 빛 brightness: 0.7 // 밝기 70% ambientColor: Qt.rgba(0.3, 0.3, 0.3, 1.0) // 주변광 } // 4. 지면 모델 Model { id: ground position: Qt.vector3d(0, 0, 0) // 원점에 위치 scale: Qt.vector3d(500, 0.1, 500) // 넓고 얇은 판 source: "#Cube" // 내장 큐브 모델 사용 materials: DefaultMaterial { diffuseColor: "green" // 녹색 지면 } } // 5. 구 Model { id: ball source: "#Sphere" // 내장 구체 모델 scale: Qt.vector3d(0.3, 0.3, 0.3) // 크기 조정 position: Qt.vector3d(0, 5.0, 0) // 초기 위치 materials: DefaultMaterial { diffuseColor: "white" // 흰색 specularAmount: 0.9 // 반사도 } }
+}
+]]></description><link>qt/qt-quick-3d-기본-개념-정리.html</link><guid isPermaLink="false">Qt/Qt Quick 3D - 기본 개념 정리.md</guid><pubDate>Thu, 03 Apr 2025 14:40:06 GMT</pubDate></item><item><title><![CDATA[C++ static const 초기화]]></title><description><![CDATA[C++17에서는 다음과 같은 방법으로 헤더 파일에서 static const 변수를 초기화할 수 있다.// header.h
+#ifndef HEADER_H
+#define HEADER_H // C++17에서는 inline 키워드를 사용하여 헤더에서 정의 가능
+inline static const int MAX_SIZE = 100;
+inline static const double PI = 3.14159; class MyClass {
+public: // 클래스 내부의 static const static const int CLASS_CONSTANT = 200; // C++17에서는 inline을 사용하여 복잡한 타입도 가능 inline static const std::string NAME = "MyClass";
+};
+#endif
+// header.h
+#ifndef HEADER_H
+#define HEADER_H // constexpr을 사용하면 컴파일 타임에 값이 결정됨
+constexpr int MAX_SIZE = 100;
+constexpr double PI = 3.14159; class MyClass {
+public: // 클래스 내부에서도 constexpr 사용 가능 static constexpr int CLASS_CONSTANT = 200; // C++17에서는 문자열 리터럴도 가능 static constexpr const char* NAME = "MyClass";
+};
+#endif
+// header.h
+#ifndef HEADER_H
+#define HEADER_H #include &lt;vector&gt;
+#include &lt;string&gt; // 복잡한 객체도 inline을 사용하면 헤더에서 초기화 가능
+inline static const std::vector&lt;int&gt; DEFAULT_VALUES = {1, 2, 3, 4, 5};
+inline static const std::string APP_NAME = "My Application"; #endif
+C++에서 클래스 내에서 static const 변수의 초기화는 타입에 따라 규칙이 다름
+정수형 상수 (int, char, bool, enum 등) 클래스 선언 내에서 직접 초기화 가능 class MyClass { static const int a = 3; // 가능
+}; 부동 소수점형 상수 (float, double) 클래스 선언 내에서 직접 초기화 불가능 class MyClass { static const float a = 3.0f; // 컴파일 에러
+}; C++17 이상에서는 inline 키워드 사용:
+class MyClass { inline static const float a = 3.0f; // C++17 이상에서 가능
+}; 별도의 소스 파일(.cpp)에서 정의:
+// MyClass.h
+class MyClass { static const float a; // 선언만
+}; // MyClass.cpp
+const float MyClass::a = 3.0f; // 정의와 초기화 constexpr 사용 (권장):
+class MyClass { static constexpr float a = 3.0f; // 모든 타입에 가능
+}; static const는 정수형이 아닌 타입은 별도의 소스 파일에서 정의하는 것이 필요
+단 C++17 이상에서는 inline static const 또는 static constexpr을 사용하면 헤더에서 선언 정의 동시에 가능
+]]></description><link>cpp/etc/c++-static-const-초기화.html</link><guid isPermaLink="false">CPP/etc/C++ static const 초기화.md</guid><pubDate>Thu, 03 Apr 2025 14:40:06 GMT</pubDate></item><item><title><![CDATA[sphere-indexing-screenshot]]></title><description><![CDATA[<img src="images/sphere-indexing-screenshot.png" target="_self">]]></description><link>images/sphere-indexing-screenshot.html</link><guid isPermaLink="false">images/sphere-indexing-screenshot.png</guid><pubDate>Wed, 02 Apr 2025 14:36:44 GMT</pubDate><enclosure url="images/sphere-indexing-screenshot.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src="images/sphere-indexing-screenshot.png"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Floating Point]]></title><description/></item><item><title><![CDATA[152. Maximum Product Subarray]]></title><description><![CDATA[<a href=".?query=tag:algo" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#algo">#algo</a> <a href=".?query=tag:medium" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#medium">#medium</a> <a href=".?query=tag:blind75" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#blind75">#blind75</a> Given an integer array&nbsp;nums, find a&nbsp;subarray&nbsp;that has the largest product, and return&nbsp;the product.The test cases are generated so that the answer will fit in a&nbsp;32-bit&nbsp;integer.Example 1:Input: nums = [2,3,-2,4]
 Output: 6
 Explanation: [2,3] has the largest product 6.Example 2:Input: nums = [-2,0,-1]
 Output: 0
