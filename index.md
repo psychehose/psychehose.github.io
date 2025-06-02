@@ -6,32 +6,37 @@ title: " Home"
 
 ## Introduce
 ---
- 금융공학과 소프트웨어공학을 전공하며 쌓은 수학적, 논리적 사고를 바탕으로 iOS 개발을 시작했습니다. 현재는 Android / iOS SDK 개발과 언리얼엔진 플러그인을 개발을 하고 있습니다.
-시스템 설계와 구현에 강점이 있으며 모던 C++을 이용해서 크로스 플랫폼을 타겟으로 하는 물리 라이브러리를 개발하고 있습니다.
+ 
+ 금융공학과 소프트웨어공학을 전공하며 쌓은 수학적, 논리적 사고를 바탕으로 iOS 개발을 시작했습니다.  저는 시스템 설계와 구현에 강점이 있으며, 새로운 기술 도입에 적극적입니다.  iOS 개발과 Android / iOS SDK - 언리얼엔진 플러그인 개발을 해왔습니다.
+
+ 현재는 크로스플랫폼 (Windows, Android, iOS)을 타겟으로 하는 골프공 물리 시뮬레이터 개발과 스윙 모션 영상 처리를 개발 하고 있습니다.
 
 ## Skill.
 ---
-- `Swift` `Objective C` `RxSwift`
-- `Java` `Android`
-- `C++` `CMake`
-- `Unreal Engine`
-- `Git` `Perforce Helix Core`
+* `C++` `CMake` - ⭐⭐⭐
+* `OpenCV` - ⭐⭐⭐
+- `Swift` `Objective C` `RxSwift` - ⭐⭐⭐⭐
+- `Java` `Android` - ⭐⭐
+- `Unreal Engine` - ⭐⭐
+- `Git` `Perforce Helix Core` -⭐⭐⭐
 
+⭐⭐⭐⭐: 전문적 활용 - 심화 문제 해결 및 최적화 가능 
+⭐⭐⭐ : 실무 활용 - 일상적 개발 업무 수행 가능
+⭐⭐: 기본 활용 - 이해 및 참고 자료를 통한 구현 가능
 ## Interest.
 ---
-* `Game Engine`
 * `Graphics`
-* `OpenCV`
 * `Robotics`
+* `Computer Vision`
   
 ## Work.
 ---
 ### 골프존
-#### Mobile Engine Developer (23.10 ~ 재직중)
+#### SDK Developer (23.10 ~ 재직중)
 
-* 안드로이드 / iOS 네이티브 라이브러리를 개발하고 이를 언리얼엔진에서 사용할 수 있도록 C++ 플러그인을 제작하여 제공  
-* 물리 라이브러리 크로스플랫폼 지원 및 C++ 현대화
-* UDN과 Github을 이용한 모바일 플랫폼 한정 엔진 이슈 트러블 슈팅 담당
+* C++ 골프공 물리 Simulator 개발 (C++, Qt, OpenGL, Metal)  
+* 비디오 캡쳐 라이브러리 개발 (OpenCV)
+* 안드로이드 / iOS 네이티브 라이브러리 개발 및 언리얼엔진 통합
   
 	+  + 언리얼엔진 클라이언트 개발 및 언리얼 인사이트를 활용한 게임 최적화 경험  
 	+  + 브랜치 머지 전략 수립과 코드 리뷰 문화 도입 등을 통해 개발 문화를 정착
@@ -43,11 +48,9 @@ title: " Home"
 
 * 핀테크 기업에서 iOS 개발자로 근무하며 블록딜 및 비상장주식 플랫폼 개발을 주도  
 * 펀드고 앱 : 기획/디자인 단계부터 참여하며 모든 피쳐 개발을 담당  
-* 제이스톡 앱 : Modular Architecture를 바탕으로 비상장주식 거래 플랫폼을 개발  
+* 제이스톡 앱 : Modular Architecture를 바탕으로 비상장주식 거래 플랫폼을 개발 
   
 	+ + 회사 내 프로젝트를 위한 인앱결제, 네트워크, 유저 정보, OAuth 모듈을 개발 및  CI/CD 배포 환경을 구축
-
-
 
 ## Side Team Project
 ---
@@ -81,8 +84,9 @@ title: " Home"
 ## Education
 ---
 아주대학교 금융공학과 전공, 소프트웨어학과 복수전공
+딥러닝 컴퓨터 비전 완벽 가이드 - 인프런
+Qt 프로그래밍 1편 - 인프런
 SOPT 창업동아리 26th iOS 파트 수료
-
 
 ## Award
 ---
