@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Golf Simulator/Golf Simulator using SFML.md",
+                "file": "index.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Golf Simulator using SFML"
+              "title": "index"
             }
           }
         ]
@@ -177,8 +177,9 @@
       "webpage-html-export:Export as HTML": false
     }
   },
-  "active": "cf85eaff13e0717f",
+  "active": "e1025940bba3c3ee",
   "lastOpenFiles": [
+    "Golf Simulator/Golf Simulator using SFML.md",
     "docs/site-lib/search-index.json",
     "docs/site-lib/metadata.json",
     "docs/images/sphere-indexing-screenshot.png",
@@ -215,7 +216,6 @@
     "docs/cpp/etc/const-위치-헷갈리는-점-정리.html",
     "docs/cpp/etc/전역변수와-정적변수의-공통점과-차이점.html",
     "docs/cs/deadlock.html",
-    "docs/cs/context-switching.html",
     "docs/images/initializer_list_char.png",
     "Hose/Resume/Resume.canvas",
     "images/initializer_list_char.png",
