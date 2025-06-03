@@ -9,7 +9,7 @@
     "makeHeadersTrees": true,
     "postProcess": true,
     "displayProgress": true,
-    "inlineHTML": false,
+    "inlineHTML": true,
     "exportPath": "/Users/psychehose/psychehose.github.io/docs",
     "filesToExport": [
       "Algorithm",
@@ -82,8 +82,8 @@
     },
     "fileNavigationOptions": {
       "featureId": "file-navigation",
-      "enabled": true,
-      "unavailable": false,
+      "enabled": false,
+      "unavailable": true,
       "alwaysEnabled": false,
       "displayTitle": "",
       "featurePlacement": {
@@ -101,8 +101,8 @@
     },
     "searchOptions": {
       "featureId": "search",
-      "enabled": true,
-      "unavailable": false,
+      "enabled": false,
+      "unavailable": true,
       "alwaysEnabled": false,
       "displayTitle": "Search...",
       "featurePlacement": {
@@ -136,8 +136,8 @@
     },
     "graphViewOptions": {
       "featureId": "graph-view",
-      "enabled": true,
-      "unavailable": false,
+      "enabled": false,
+      "unavailable": true,
       "alwaysEnabled": false,
       "displayTitle": "Graph View",
       "featurePlacement": {
@@ -190,8 +190,8 @@
     },
     "rssOptions": {
       "featureId": "obsidian-document",
-      "enabled": true,
-      "unavailable": false,
+      "enabled": false,
+      "unavailable": true,
       "alwaysEnabled": false,
       "siteUrl": "",
       "siteName": "psychehose.github.io",
@@ -200,15 +200,15 @@
     "relativeHeaderLinks": false,
     "includeJS": true,
     "includeCSS": true,
-    "inlineMedia": false,
-    "inlineCSS": false,
-    "inlineJS": false,
-    "inlineFonts": false,
-    "inlineOther": false,
+    "inlineMedia": true,
+    "inlineCSS": true,
+    "inlineJS": true,
+    "inlineFonts": true,
+    "inlineOther": true,
     "combineAsSingleFile": false,
     "offlineResources": false,
     "themeName": "",
-    "slugifyPaths": true,
+    "slugifyPaths": false,
     "flattenExportPaths": false,
     "fixLinks": true,
     "faviconPath": "",
@@ -226,7 +226,7 @@
   "rssDateProperty": "date",
   "onlyExportModified": true,
   "deleteOldFiles": true,
-  "exportPreset": "online",
+  "exportPreset": "raw-documents",
   "openAfterExport": true,
   "filePickerBlacklist": [
     "(^|\\/)node_modules\\/",
