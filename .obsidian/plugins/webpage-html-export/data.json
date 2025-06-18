@@ -9,7 +9,7 @@
     "makeHeadersTrees": true,
     "postProcess": true,
     "displayProgress": true,
-    "inlineHTML": true,
+    "inlineHTML": false,
     "exportPath": "/Users/psychehose/psychehose.github.io/docs",
     "filesToExport": [
       "Algorithm",
@@ -82,8 +82,8 @@
     },
     "fileNavigationOptions": {
       "featureId": "file-navigation",
-      "enabled": false,
-      "unavailable": true,
+      "enabled": true,
+      "unavailable": false,
       "alwaysEnabled": false,
       "displayTitle": "",
       "featurePlacement": {
@@ -102,7 +102,7 @@
     "searchOptions": {
       "featureId": "search",
       "enabled": false,
-      "unavailable": true,
+      "unavailable": false,
       "alwaysEnabled": false,
       "displayTitle": "Search...",
       "featurePlacement": {
@@ -137,7 +137,7 @@
     "graphViewOptions": {
       "featureId": "graph-view",
       "enabled": false,
-      "unavailable": true,
+      "unavailable": false,
       "alwaysEnabled": false,
       "displayTitle": "Graph View",
       "featurePlacement": {
@@ -190,8 +190,8 @@
     },
     "rssOptions": {
       "featureId": "obsidian-document",
-      "enabled": false,
-      "unavailable": true,
+      "enabled": true,
+      "unavailable": false,
       "alwaysEnabled": false,
       "siteUrl": "",
       "siteName": "psychehose.github.io",
@@ -200,15 +200,15 @@
     "relativeHeaderLinks": false,
     "includeJS": true,
     "includeCSS": true,
-    "inlineMedia": true,
-    "inlineCSS": true,
-    "inlineJS": true,
-    "inlineFonts": true,
-    "inlineOther": true,
+    "inlineMedia": false,
+    "inlineCSS": false,
+    "inlineJS": false,
+    "inlineFonts": false,
+    "inlineOther": false,
     "combineAsSingleFile": false,
     "offlineResources": false,
     "themeName": "",
-    "slugifyPaths": false,
+    "slugifyPaths": true,
     "flattenExportPaths": false,
     "fixLinks": true,
     "faviconPath": "",
@@ -226,8 +226,8 @@
   "rssDateProperty": "date",
   "onlyExportModified": true,
   "deleteOldFiles": true,
-  "exportPreset": "raw-documents",
-  "openAfterExport": true,
+  "exportPreset": "online",
+  "openAfterExport": false,
   "filePickerBlacklist": [
     "(^|\\/)node_modules\\/",
     "(^|\\/)dist\\/",
