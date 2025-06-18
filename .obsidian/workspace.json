@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "index.md",
+                "file": "Algorithm/Lecture/BFS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "BFS"
             }
           }
         ]
@@ -177,8 +177,15 @@
       "webpage-html-export:Export as HTML": false
     }
   },
-  "active": "cf85eaff13e0717f",
+  "active": "e1025940bba3c3ee",
   "lastOpenFiles": [
+    "Algorithm/Lecture/DFS.md",
+    "Algorithm/Lecture/그리디 알고리즘.md",
+    "index.md",
+    "Untitled 1.canvas",
+    "Untitled.canvas",
+    "2025-06-18.md",
+    "Algorithm/Lecture/BFS.md",
     "docs/images/vertex_shader.png",
     "docs/images/var_error.jpg",
     "docs/images/wbp_ui_transition.png",
@@ -189,7 +196,6 @@
     "docs/images/symbol_result.png",
     "docs/images/u2_soundtype.png",
     "docs/images/sphere-indexing-screenshot.png",
-    "docs/images/slate_overview_1.png",
     "docs/site-lib/styles/theme.css",
     "docs/site-lib/styles/supported-plugins.css",
     "docs/site-lib/styles/other-plugins.css",
@@ -221,11 +227,6 @@
     "UE/UI 애니메이션.md",
     "Network/01. Network.md",
     "Network/06. TCP IP 송수신 구조.md",
-    "Network/05. 계층별 데이터 단위.md",
-    "Network/04. 패킷의 생성과 전달.md",
-    "Network/03. L3.md",
-    "Network/02. L2.md",
-    "Hose/Resume/Resume.canvas",
-    "Untitled.canvas"
+    "Hose/Resume/Resume.canvas"
   ]
 }

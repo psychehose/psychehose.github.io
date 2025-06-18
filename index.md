@@ -16,9 +16,11 @@ title: " Home"
 * `C++` `CMake` - ⭐⭐⭐
 * `OpenCV` - ⭐⭐⭐
 - `Swift` `Objective C` `RxSwift` - ⭐⭐⭐⭐
+- `Metal` - ⭐⭐
 - `Java` `Android` - ⭐⭐
 - `Unreal Engine` - ⭐⭐
 - `Git` `Perforce Helix Core` -⭐⭐⭐
+- `Qt` - ⭐⭐⭐
 
 ⭐⭐⭐⭐: 전문적 활용 - 심화 문제 해결 및 최적화 가능 
 ⭐⭐⭐ : 실무 활용 - 일상적 개발 업무 수행 가능
@@ -34,14 +36,16 @@ title: " Home"
 ### 골프존
 #### SDK Developer (23.10 ~ 재직중)
 
-* C++ 물리 라이브러리 리팩토링 (Only Windows -> 크로스 플랫폼)
-* C++ 골프공 물리 Simulator 개발 (C++, Qt, OpenGL, Metal)  
-* 크로스플랫폼 비디오 캡쳐 라이브러리 개발중 (OpenCV)
+* C++ 물리 라이브러리 리팩토링 (윈도우 Legacy C / C++ -> 크로스플랫폼 Modern C++ )
+* 골프공 물리 Simulator 개발, Qt, OpenGL, Metal)
+	* iOS: SwiftUI, Combine, Metal, MVMM (Front: Full Swift Native)
+	* Android, Linux, Windows: Qt
+	
+* 크로스플랫폼 비디오 캡쳐 라이브러리 개발 (OpenCV)
 * 안드로이드 / iOS 네이티브 라이브러리 개발 및 언리얼엔진 통합
-
+  
 	`+` 언리얼엔진 클라이언트 개발 및 언리얼 인사이트를 활용한 게임 최적화 경험
 	`+` 브랜치 머지 전략 수립과 코드 리뷰 문화 도입 등을 통해 개발 문화를 정착
-
 
 
 ### 제이스톡
