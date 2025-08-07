@@ -31,6 +31,7 @@
       "Unity",
       "index.md"
     ],
+    "useFallbackRenderer": false,
     "addBodyClasses": true,
     "addMathjaxStyles": true,
     "addHeadTag": true,
@@ -39,22 +40,24 @@
       "enabled": true,
       "unavailable": false,
       "alwaysEnabled": false,
-      "displayTitle": "Backlinks",
+      "hideSettingsButton": false,
       "featurePlacement": {
         "selector": ".footer",
         "type": "start"
-      }
+      },
+      "displayTitle": "Backlinks"
     },
     "tagOptions": {
       "featureId": "tags",
       "enabled": true,
       "unavailable": false,
       "alwaysEnabled": false,
-      "displayTitle": "",
+      "hideSettingsButton": false,
       "featurePlacement": {
         "selector": ".header .data-bar",
         "type": "end"
       },
+      "displayTitle": "",
       "showInlineTags": true,
       "showFrontmatterTags": true
     },
@@ -63,29 +66,31 @@
       "enabled": true,
       "unavailable": false,
       "alwaysEnabled": false,
-      "displayTitle": "",
+      "hideSettingsButton": false,
       "featurePlacement": {
         "selector": ".header .data-bar",
         "type": "start"
-      }
+      },
+      "displayTitle": ""
     },
     "propertiesOptions": {
       "featureId": "properties",
       "enabled": true,
       "unavailable": false,
       "alwaysEnabled": false,
-      "displayTitle": "Properties",
+      "hideSettingsButton": false,
       "featurePlacement": {
         "selector": ".header",
         "type": "start"
-      }
+      },
+      "displayTitle": "Properties"
     },
     "fileNavigationOptions": {
       "featureId": "file-navigation",
       "enabled": true,
       "unavailable": false,
       "alwaysEnabled": false,
-      "displayTitle": "",
+      "hideSettingsButton": false,
       "featurePlacement": {
         "selector": "#left-sidebar-content",
         "type": "end"
@@ -104,22 +109,24 @@
       "enabled": false,
       "unavailable": false,
       "alwaysEnabled": false,
-      "displayTitle": "Search...",
+      "hideSettingsButton": false,
       "featurePlacement": {
         "selector": "#left-sidebar .topbar-content",
         "type": "start"
-      }
+      },
+      "displayTitle": "Search..."
     },
     "outlineOptions": {
       "featureId": "outline",
       "enabled": true,
       "unavailable": false,
       "alwaysEnabled": false,
-      "displayTitle": "Outline",
+      "hideSettingsButton": false,
       "featurePlacement": {
         "selector": "#right-sidebar-content",
         "type": "end"
       },
+      "displayTitle": "Outline",
       "startCollapsed": false,
       "minCollapseDepth": 0
     },
@@ -128,22 +135,24 @@
       "enabled": true,
       "unavailable": false,
       "alwaysEnabled": false,
-      "displayTitle": "",
+      "hideSettingsButton": false,
       "featurePlacement": {
         "selector": "#right-sidebar .topbar-content",
         "type": "start"
-      }
+      },
+      "displayTitle": ""
     },
     "graphViewOptions": {
       "featureId": "graph-view",
       "enabled": false,
       "unavailable": false,
       "alwaysEnabled": false,
-      "displayTitle": "Graph View",
+      "hideSettingsButton": false,
       "featurePlacement": {
         "selector": "#right-sidebar-content",
         "type": "start"
       },
+      "displayTitle": "Graph View",
       "showOrphanNodes": true,
       "showAttachments": false,
       "allowGlobalGraph": true,
@@ -161,6 +170,7 @@
       "enabled": true,
       "unavailable": false,
       "alwaysEnabled": false,
+      "hideSettingsButton": false,
       "allowResizing": true,
       "allowCollapsing": true,
       "rightDefaultWidth": "20em",
@@ -171,7 +181,7 @@
       "enabled": true,
       "unavailable": false,
       "alwaysEnabled": false,
-      "displayTitle": "",
+      "hideSettingsButton": false,
       "featurePlacement": {
         "selector": "head",
         "type": "end"
@@ -184,6 +194,7 @@
       "enabled": true,
       "unavailable": false,
       "alwaysEnabled": true,
+      "hideSettingsButton": false,
       "allowFoldingLists": true,
       "allowFoldingHeadings": true,
       "documentWidth": "40em"
@@ -193,9 +204,16 @@
       "enabled": true,
       "unavailable": false,
       "alwaysEnabled": false,
+      "hideSettingsButton": false,
       "siteUrl": "",
-      "siteName": "psychehose.github.io",
       "authorName": ""
+    },
+    "linkPreviewOptions": {
+      "featureId": "link-preview",
+      "enabled": true,
+      "unavailable": false,
+      "alwaysEnabled": false,
+      "hideSettingsButton": true
     },
     "relativeHeaderLinks": false,
     "includeJS": true,
@@ -212,6 +230,7 @@
     "flattenExportPaths": false,
     "fixLinks": true,
     "faviconPath": "",
+    "siteName": "psychehose.github.io",
     "iconEmojiStyle": "Native",
     "exportRoot": "",
     "includePluginCss": [

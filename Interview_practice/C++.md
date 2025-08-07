@@ -1,5 +1,5 @@
 
-Q. VC++에서 Clang++으로 변경한 이유
+### Q. VC++에서 Clang++으로 변경한 이유
 
 표준을 준수해서 크로스플랫폼 호환성 확보하기 위해서 Clang++으로 변경했다.
 
@@ -20,7 +20,7 @@ std::min(a, b)
 ```
  
 
-Q. Legacy C / C++에서 Modern C++로 리팩토링 할 때 무엇을 했는지
+### Q. Legacy C / C++에서 Modern C++로 리팩토링 할 때 무엇을 했는지
 
 1. new / delete -> shared_ptr
 
@@ -36,7 +36,7 @@ A클래스가 B, C, D, E 클래스를 프로퍼티로 가지고 있어서 의존
 
 
 
-Q. 현대 C++에서 포인터를 사용 해야하는 경우
+### Q. 현대 C++에서 포인터를 사용 해야하는 경우
 
 C / C++은 스택과 힙 영역 할당에 자유가 있다. 데이터가 큰 객체들을 모두 스택에 올리면 스택오버플로우 위험이 있다. 이때 포인터를 이용해서 동적을 할당을 해서 힙에 올리면 된다. 하지만 현대 C++ STL 도입 후에는 STL 컨테이너를 이용하는 것이 낫다. STL 컨테이너는 값 타입이지만 내부적으로는 메모리를 힙으로 관리하기 때문이다. 또한 함수를 통과 시킬 때 파라미터로 call by reference를 이용해야하는 경우에도 참조 타입으로 사용하면 되어서 포인터를 사용할 여지가 줄어든다. 다만 포인터를 사용해야하는 경우도 있다.
 
@@ -129,6 +129,4 @@ Widget& Widget::operator=(const Widget& other) {
 
 Widget::Widget(Widget&&) noexcept = default;
 Widget& Widget::operator=(Widget&&) noexcept = default;
-
-
 ```
