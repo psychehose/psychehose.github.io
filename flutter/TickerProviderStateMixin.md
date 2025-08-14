@@ -1,5 +1,3 @@
-
-
 TickerProviderStateMixin는 애니메이션을 만들기 위해 필요한 기능
 
 Mixin이란?
