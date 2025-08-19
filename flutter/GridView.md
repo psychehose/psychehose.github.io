@@ -87,7 +87,7 @@ GridView.extent(
 
 ### GridView.custom
 
-위의 생성자들로 구현하기 어렵고 복잡한 커스텀된 그리드 레이아웃이 필요할 때 사용된다. 특징은 gridDelegate와 childrenDelegate를 직접 구현해야 한다.. childrenDelegate은 아이템을 생성하고 관리하는 방식을 완전히 제어할 수 있게 해준다.
+위의 생성자들로 구현하기 어렵고 복잡한 커스텀된 그리드 레이아웃이 필요할 때 사용된다. 특징은 gridDelegate와 childrenDelegate를 직접 구현해야 한다. childrenDelegate은 아이템을 생성하고 관리하는 방식을 완전히 제어할 수 있게 해준다.
 
 
 

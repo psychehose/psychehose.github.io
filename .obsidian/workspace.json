@@ -8,31 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "ac8c2ffa571776b3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "zDontCommit/interview/EA/EA 인터뷰 질문 대비.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "EA 인터뷰 질문 대비"
-            }
-          },
-          {
             "id": "0909480d80f365a4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "sdk/인앱결제 플로우.md",
+                "file": "zDontCommit/interview/EA/인터뷰 질문.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "인앱결제 플로우"
+              "title": "인터뷰 질문"
             }
           }
         ]
@@ -92,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 481.5
+    "width": 324.5
   },
   "right": {
     "id": "b314ce004c003f26",
@@ -196,18 +182,26 @@
       "webpage-html-export:Export as HTML": false
     }
   },
-  "active": "ac8c2ffa571776b3",
+  "active": "0909480d80f365a4",
   "lastOpenFiles": [
-    "zDontCommit/interview/EA/인터뷰 질문.md",
-    "zDontCommit/interview/EA/코딩테스트 문제.md",
-    "CPP/Basic/1. 참조와 포인터.md",
-    "CPP/Basic/0. c, c++ 컴파일 과정.md",
-    "CS/33. 레이스 컨디션에 대해 설명해주세요.md",
-    "CS/34. 포인터와 참조의 차이점.md",
-    "CS/35. 가상 메모리는 무엇인가.md",
-    "CS/36. static 키워드.md",
-    "CS/37. static library, dynamic library.md",
-    "CS/38. Context Switching이란?.md",
+    "Network/17. DNS.md",
+    "CS/49. push_back() vs emplace_back().md",
+    "CS/05. 정렬 알고리즘들의 시간복잡도와 특징.md",
+    "CS/06. STL은 어떤 정렬을 이용하는지? (정리).md",
+    "Network/06. TCP IP 송수신 구조.md",
+    "Network/07. IPv4 Header 형식.md",
+    "Network/08. 서브넷 마스크와 CIDR.md",
+    "Network/09. Broadcast IP 주소 & Loopback 주소.md",
+    "Network/10. TTL과 단편화.md",
+    "Network/11. 인터넷 자동 설정 - DHCP.md",
+    "Network/12. ARP.md",
+    "Network/13. Ping과 RTT.md",
+    "Network/14. TCP와 UDP 개요.md",
+    "Network/15. TCP 연결 과정.md",
+    "Network/18. HTTP.md",
+    "Network/16.  TCP 연결 종료 과정.md",
+    "Network/01. Network.md",
+    "CS/48. Web page가 표시될 때까지의 통신 과정.md",
     "CS/39. Floating Point.md",
     "CS/40. Pseudo random (의사 난수).md",
     "CS/41. HTTP와 HTTPS 차이점.md",
@@ -216,14 +210,6 @@
     "CS/44. 리틀 앤디언과 빅 앤디언.md",
     "CS/45. 캐시 전략.md",
     "CS/46. TCP vs UDP.md",
-    "CS/47. Restful API란?.md",
-    "CS/48. Web page가 표시될 때까지의 통신 과정.md",
-    "Algorithm/Study/코딩테스트를 위한 암기.md",
-    "Algorithm/Study/BFS.md",
-    "Algorithm/Study/DFS.md",
-    "Algorithm/Study/그리디 알고리즘.md",
-    "Algorithm/Study/이분탐색 & 파라메트릭 서치.md",
-    "Algorithm/Study/누적합 알고리즘.md",
     "sdk/Androiod",
     "sdk/iOS",
     "sdk",

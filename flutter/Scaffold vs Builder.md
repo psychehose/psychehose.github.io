@@ -46,9 +46,6 @@ body는 그중 **가장 크고 핵심적인 메인 콘텐츠 영역**을 담당
 }
 ```
 
-
-보면 body에 Fade
-
 ### Builder
 
 #### Builder
